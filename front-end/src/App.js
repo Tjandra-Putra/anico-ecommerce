@@ -10,6 +10,7 @@ import Login from "./components/user/Login/Login";
 import Register from "./components/user/Register/Register";
 import Cart from "./components/user/Cart/Cart";
 import Favourite from "./components/user/Favourite/Favourite";
+import Product from "./components/user/Products/Product/Product";
 
 import "./App.css";
 
@@ -29,6 +30,13 @@ class App extends Component {
 
                         {/* Products Page */}
                         <Route exact path="/products" component={Products} />
+
+                        {/* Product Detail Page */}
+                        <Route
+                            exact
+                            path="/products/:prodId"
+                            component={Product}
+                        />
 
                         {/* Login Page */}
                         <Route exact path="/login" component={Login} />

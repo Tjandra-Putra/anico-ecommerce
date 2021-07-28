@@ -1,6 +1,6 @@
 import React from "react";
 
-const Login = () => {
+const login = () => {
     return (
         <React.Fragment>
             <h1>Login Page</h1>
@@ -8,4 +8,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default login;

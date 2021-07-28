@@ -4,6 +4,7 @@
 :root {
     --font-poppins: "Poppins", sans-serif;
     --font-montserrat: "Montserrat", sans-serif;
+    --text-orange: #fa5400;
 }
 
 * {
