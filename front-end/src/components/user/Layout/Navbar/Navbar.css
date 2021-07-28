@@ -18,3 +18,7 @@
     transform: translateY(-2px);
     font-weight: 500;
 }
+
+.nav-link {
+    color: #000000 !important;
+}

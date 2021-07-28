@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect, Link } from "react-router-dom";
 
 // import classes from "./Navbar.module.css";
 import "./Navbar.css";
@@ -45,7 +45,7 @@ const navbar = () => {
 
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/login">
+                            <NavLink className="nav-link" to="/favourite">
                                 <img
                                     src={favouriteIcon}
                                     className="img-fluid"
@@ -55,17 +55,52 @@ const navbar = () => {
                             </NavLink>
                         </li>
                         <li className="nav-item pl-1">
-                            <NavLink className="nav-link" to="/register">
-                                <img
-                                    src={userIcon}
-                                    className="img-fluid"
-                                    alt="shopping bag"
-                                    width="23"
-                                />
-                            </NavLink>
+                            <div className="dropdown">
+                                <div
+                                    className="nav-link"
+                                    type="button"
+                                    id="dropdownMenuButton"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                >
+                                    <img
+                                        src={userIcon}
+                                        className="img-fluid"
+                                        alt="shopping bag"
+                                        width="23"
+                                    />
+                                    <div
+                                        class="dropdown-menu"
+                                        aria-labelledby="dropdownMenuButton"
+                                    >
+                                        <Link class="dropdown-item" to="/login">
+                                            Login
+                                        </Link>
+                                        <div
+                                            role="separator"
+                                            class="dropdown-divider"
+                                        ></div>
+
+                                        <Link
+                                            class="dropdown-item"
+                                            to="/register"
+                                        >
+                                            Register
+                                        </Link>
+                                        <div
+                                            role="separator"
+                                            class="dropdown-divider"
+                                        ></div>
+                                        <NavLink class="dropdown-item" to="/">
+                                            Order Status
+                                        </NavLink>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                         <li className="nav-item pl-1">
-                            <NavLink className="nav-link" to="/register">
+                            <NavLink className="nav-link" to="/cart">
                                 <img
                                     src={shoppingBagIcon}
                                     className="img-fluid"

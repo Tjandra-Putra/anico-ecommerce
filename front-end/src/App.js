@@ -8,6 +8,8 @@ import Support from "./components/user/Support/Support";
 import Products from "./components/user/Products/Products";
 import Login from "./components/user/Login/Login";
 import Register from "./components/user/Register/Register";
+import Cart from "./components/user/Cart/Cart";
+import Favourite from "./components/user/Favourite/Favourite";
 
 import "./App.css";
 
@@ -33,6 +35,12 @@ class App extends Component {
 
                         {/* Register Page */}
                         <Route exact path="/register" component={Register} />
+
+                        {/* Cart Page */}
+                        <Route exact path="/cart" component={Cart} />
+
+                        {/* Favourite Page */}
+                        <Route exact path="/favourite" component={Favourite} />
                     </Switch>
 
                     <Footer />
