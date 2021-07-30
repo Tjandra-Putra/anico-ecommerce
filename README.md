@@ -22,7 +22,7 @@ Installing dependencies
 ```
 > Back-end
 ```sh
-> <default path>
+> cd back-end
 > pip install -r requirements.txt
 ```
 
@@ -35,7 +35,7 @@ anico-app > Front-end | http://localhost:3000/
 
 anico-app > Server | 
 ```sh
-> <default path>
+> cd back-end
 > python app.py
 ```
 
