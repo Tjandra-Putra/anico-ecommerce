@@ -27,13 +27,13 @@ Installing dependencies
 ```
 
 ### Running the application
-anico-app > Front-end | http://localhost:3000/
+anico-ecommerce > front-end | http://localhost:3000/
 ```sh
 > cd front-end
 > npm start
 ```
 
-anico-app > Server | 
+anico-ecommerce > back-end | http://127.0.0.1:5000/
 ```sh
 > cd back-end
 > python app.py
