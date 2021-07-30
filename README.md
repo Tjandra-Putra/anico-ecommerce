@@ -15,13 +15,12 @@ live demo: [coming soon]
 
 ### Installation
 Installing dependencies 
+> Front-end
 ```sh
 > cd front-end
 > npm install --save
 ```
-```sh
-> cd ..
-```
+> Back-end
 ```sh
 > <default path>
 > pip install -r requirements.txt
