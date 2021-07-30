@@ -1,0 +1,24 @@
+.products{
+    margin-top:1rem;
+}
+
+.products .product-tag {
+    margin-top: 0.8rem;
+    color: var(--text-orange);
+}
+
+.products .product-name {
+    font-weight: 500;
+}
+
+.products .product-wrapper:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    transform: translateY(-4px);
+}
+
+.products .filter-nav .title {
+    font-weight: 400 !important;
+    font-size: 1.4rem;
+    padding-top:0.1rem;
+}

@@ -11,6 +11,7 @@
 .carousel-img {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
         rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    margin-top: 0.4rem;
 }
 
 .product .product-description {
@@ -94,44 +95,4 @@
 
 .product .more-detail {
     margin-top: 2rem;
-}
-
-.product .accordion {
-    background-color: white;
-    border-top: 1px solid #ccc !important;
-    color: #000000;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-    font-weight: 500;
-    transition: 0.4s;
-}
-
-.product .active,
-.product .accordion:hover {
-    background-color: #ddd;
-}
-
-.product .accordion:after {
-    content: "\002B";
-    color: #000000;
-    font-weight: bold;
-    float: right;
-    margin-left: 5px;
-}
-
-.product .active:after {
-    content: "\2212";
-}
-
-.product .panel {
-    padding: 0 18px;
-    background-color: white;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
 }

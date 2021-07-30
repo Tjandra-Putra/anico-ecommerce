@@ -1,11 +1,38 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { React, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { Accordion } from "react-bootstrap";
 
 import "./Product.css";
 
-import Product_1 from "../../../../assets/img/itam.jpg";
+const Product = (props) => {
+    // getting id from parameter url
+    let { prodId } = useParams();
 
-const product = (props) => {
+    const product = props.product_list.filter((item) => item.id === prodId);
+
+    // state: form submit
+    const [size, setSize] = useState("");
+
+    // state: form error message
+    const [sizeError, setSizeError] = useState("");
+
+    const addToCartHandler = (e) => {
+        e.preventDefault();
+
+        if (size === "") {
+            setSizeError("Please select a size.");
+            return;
+        } else {
+            setSizeError("");
+            alert("Added to cart");
+        }
+    };
+
+    const addToFavouriteHandler = (e) => {
+        e.preventDefault();
+        alert("added to favourite");
+    };
+
     return (
         <div className="product">
             <div className="container">
@@ -26,7 +53,7 @@ const product = (props) => {
                             className="breadcrumb-item text-muted"
                             aria-current="page"
                         >
-                            Nexa Lanite Dress
+                            {product[0].name}
                         </li>
                     </ol>
                 </nav>
@@ -34,7 +61,7 @@ const product = (props) => {
                 <div className="row">
                     <div className="col-md-6">
                         <img
-                            src={Product_1}
+                            src={product[0].imgUrl}
                             className="img-fluid carousel-img"
                             alt="product_1"
                             width="500"
@@ -44,23 +71,18 @@ const product = (props) => {
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="product-tag">
-                                    Summer Clothing
+                                    {product[0].tag}
                                 </div>
                             </div>
                             <div className="col-md-6">
-                                <div className="product-price">S$65</div>
+                                <div className="product-price">
+                                    S${product[0].price}
+                                </div>
                             </div>
                         </div>
-                        <div className="product-title">Nexa Lanite Dress</div>
+                        <div className="product-title">{product[0].name}</div>
                         <div className="product-description">
-                            The Nike Dri-FIT Indy Zip-Front Sports Bra takes the
-                            lightweight design to the next level, with fabric
-                            made from at least 50% recycled polyester
-                            fibres.It's easy to get on and off, and it's extra
-                            cool at the back with breathable mesh.Thin,
-                            adjustable straps let you get the perfect fit. The
-                            recycled polyester used in Nike products begins as
-                            recycled plastic bottles, which are cleaned
+                            {product[0].desc}
                         </div>
                         <div className="d-flex justify-content-between">
                             <div className="bd-highlight">
@@ -75,103 +97,69 @@ const product = (props) => {
                             </div>
                         </div>
 
-                        <form action="">
+                        <form onSubmit={addToCartHandler}>
                             <input
                                 type="radio"
                                 id="radio1"
                                 name="radios"
                                 value="XS"
-                                required
+                                onChange={(e) => setSize(e.target.value)}
                             />
-                            <label for="radio1">XS</label>
+                            <label htmlFor="radio1">XS</label>
 
                             <input
                                 type="radio"
                                 id="radio2"
                                 name="radios"
                                 value="S"
+                                onChange={(e) => setSize(e.target.value)}
                             />
-                            <label for="radio2">S</label>
+                            <label htmlFor="radio2">S</label>
 
                             <input
                                 type="radio"
                                 id="radio3"
                                 name="radios"
                                 value="M"
+                                onChange={(e) => setSize(e.target.value)}
                             />
-                            <label for="radio3">M</label>
+                            <label htmlFor="radio3">M</label>
 
                             <input
                                 type="radio"
                                 id="radio4"
                                 name="radios"
                                 value="L"
+                                onChange={(e) => setSize(e.target.value)}
                             />
-                            <label for="radio4">L</label>
+                            <label htmlFor="radio4">L</label>
 
                             <input
                                 type="radio"
                                 id="radio5"
                                 name="radios"
                                 value="XL"
+                                onChange={(e) => setSize(e.target.value)}
                             />
-                            <label for="radio5">XL</label>
+                            <label htmlFor="radio5">XL</label>
 
-                            <button className="btn btn-dark btn-block">
+                            <div className="text-danger">{sizeError}</div>
+
+                            <button
+                                className="btn btn-dark btn-block"
+                                type="submit"
+                            >
                                 Add to Bag
                             </button>
-                            <button className="btn btn-outline-dark btn-block">
+                        </form>
+                        <form onSubmit={addToFavouriteHandler}>
+                            <button
+                                className="btn btn-outline-dark btn-block"
+                                type="submit"
+                            >
                                 Favourite <i className="far fa-heart"></i>
                             </button>
                         </form>
-
-                        <div className="more-detail">
-                            <button className="accordion">Size & Fit</button>
-                            <div className="panel">
-                                <p className="pt-3">
-                                    <ul>
-                                        <li>Model is wearing size S</li>
-                                        <li>
-                                            Model height: 5'6" (168cm approx.)
-                                        </li>
-                                        <li>Model bust: 32" (81cm approx.)</li>{" "}
-                                        <li>
-                                            Tight fit for a body-hugging feel
-                                            Light support
-                                        </li>
-                                        <li>Size Guide</li>
-                                    </ul>
-                                </p>
-                            </div>
-
-                            <button className="accordion">
-                                Free Delivery and Returns
-                            </button>
-                            <div className="panel">
-                                <p className="pt-3">
-                                    Your order of S$75 or more gets free
-                                    standard delivery.
-                                </p>
-                                <p>Standard delivered 1-3 Business Days</p>
-                                <p>Express delivered 0-2 Business Days</p>
-                                <p>
-                                    Orders are processed and delivered
-                                    Monday-Friday (excluding public holidays).
-                                </p>
-                            </div>
-
-                            <button className="accordion">Reviews (0)</button>
-                            <div className="panel">
-                                <p className="pt-3">
-                                    Have your say. Be the first to review the
-                                    Nike Dri-FIT Indy Zip-Front.
-                                </p>
-                                <p className="text-primary">
-                                    Write a review.
-                                    <i class="fas fa-arrow-right pl-2"></i>
-                                </p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -179,4 +167,4 @@ const product = (props) => {
     );
 };
 
-export default product;
+export default Product;

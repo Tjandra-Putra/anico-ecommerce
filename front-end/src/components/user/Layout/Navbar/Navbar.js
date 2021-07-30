@@ -16,7 +16,7 @@ const navbar = () => {
                     Anico
                 </NavLink> */}
                 <Link className="navbar-brand" to="/">
-                    Anico.
+                    anico.
                 </Link>
                 <button
                     className="navbar-toggler"
