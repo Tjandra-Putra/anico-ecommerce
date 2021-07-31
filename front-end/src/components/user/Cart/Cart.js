@@ -58,6 +58,9 @@ const cart = () => {
                                                     <div className="product-price">
                                                         S$24.99
                                                     </div>
+                                                    <div className="product-size">
+                                                        Size M
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -115,6 +118,9 @@ const cart = () => {
                                                     </div>
                                                     <div className="product-price">
                                                         S$24.99
+                                                    </div>
+                                                    <div className="product-size">
+                                                        Size M
                                                     </div>
                                                 </div>
                                             </div>
@@ -203,7 +209,10 @@ const cart = () => {
                                     <button className="btn btn-dark btn-block btn-checkout">
                                         Checkout
                                     </button>
-                                    <button className="btn btn-secondary btn-block btn-checkout" disabled>
+                                    <button
+                                        className="btn btn-secondary btn-block btn-checkout"
+                                        disabled
+                                    >
                                         Pay Later
                                     </button>
                                 </div>
