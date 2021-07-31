@@ -10,7 +10,10 @@ import favouriteIcon from "../../../../assets/img/heart.png";
 
 const navbar = () => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-white">
+        <nav
+            className="navbar navbar-expand-lg navbar-light bg-white"
+            id="navbar"
+        >
             <div className="container">
                 {/* <NavLink className={`navbar-brand ${classes.textRed}`} to="/">
                     Anico
