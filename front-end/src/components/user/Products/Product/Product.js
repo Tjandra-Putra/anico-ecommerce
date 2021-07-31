@@ -15,6 +15,7 @@ const Product = (props) => {
     // state: form error message
     const [sizeError, setSizeError] = useState("");
 
+    // form: add to cart handler
     const addToCartHandler = (e) => {
         e.preventDefault();
 
@@ -27,6 +28,7 @@ const Product = (props) => {
         }
     };
 
+    // form: add to favourite handler
     const addToFavouriteHandler = (e) => {
         e.preventDefault();
         alert("added to favourite");
