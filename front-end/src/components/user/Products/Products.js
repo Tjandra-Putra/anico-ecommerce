@@ -14,7 +14,7 @@ const products = (props) => {
                         <div className="col-md-6">
                             <div className="text-right">
                                 <p className="text-secondary d-inline pr-3">
-                                    367 Results
+                                    {props.product_list.length} Results
                                 </p>
                                 <div className="dropdown d-inline">
                                     <button
@@ -36,13 +36,16 @@ const products = (props) => {
                                         aria-labelledby="dropdownMenuButton"
                                     >
                                         <div className="dropdown-item" href="#">
-                                            Action
+                                            Price (low -high)
                                         </div>
                                         <div className="dropdown-item" href="#">
-                                            Another action
+                                            Newest
                                         </div>
                                         <div className="dropdown-item" href="#">
-                                            Something else here
+                                            Top Sellers
+                                        </div>
+                                        <div className="dropdown-item" href="#">
+                                            Price (high - low)
                                         </div>
                                     </div>
                                 </div>
