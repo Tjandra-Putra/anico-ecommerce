@@ -26,6 +26,12 @@ footer .info-wrapper {
     border-top: 1px solid hsla(0, 0%, 100%, 0.3) !important;
 }
 
+.info-wrapper:hover .info-title {
+    background: linear-gradient(to right, #fffffff3 0%, #b68d08 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 footer .info-title {
     margin-top: 1rem;
     font-size: 1.2rem;

@@ -8,7 +8,12 @@ const footer = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-md-8">
-                        <div className="title">Get In Touch</div>
+                        <div className="title">
+                            Explore{" "}
+                            <span style={{ fontFamily: "var(--font-poppins)" }}>
+                                anico.
+                            </span>
+                        </div>
                     </div>
                     <div className="col-md-4 text-right">
                         <a href="#navbar" className="text-white">
