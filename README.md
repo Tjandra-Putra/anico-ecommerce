@@ -22,20 +22,20 @@ Installing dependencies
 ```
 > Back-end
 ```sh
-> <default path>
+> cd back-end
 > pip install -r requirements.txt
 ```
 
 ### Running the application
-anico-app > Front-end | http://localhost:3000/
+anico-ecommerce > front-end | http://localhost:3000/
 ```sh
 > cd front-end
 > npm start
 ```
 
-anico-app > Server | 
+anico-ecommerce > back-end | http://127.0.0.1:5000/
 ```sh
-> <default path>
+> cd back-end
 > python app.py
 ```
 
