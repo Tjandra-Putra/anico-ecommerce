@@ -2,9 +2,14 @@ import React from "react";
 
 const login = () => {
     return (
-        <React.Fragment>
-            <h1>Login Page</h1>
-        </React.Fragment>
+        <div className="login">
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-6"></div>
+                    <div className="col-md-6"></div>
+                </div>
+            </div>
+        </div>
     );
 };
 

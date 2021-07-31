@@ -9,9 +9,7 @@ const products = (props) => {
                 <div className="filter-nav">
                     <div className="row">
                         <div className="col-md-6">
-                            <div className="title">
-                                Women's Clothing
-                            </div>
+                            <div className="title">Women's Clothing</div>
                         </div>
                         <div className="col-md-6">
                             <div className="text-right">
@@ -64,11 +62,24 @@ const products = (props) => {
                                             color: "unset",
                                         }}
                                     >
-                                        <img
-                                            src={product.imgUrl}
-                                            alt={product.name}
-                                            className="img-fluid"
-                                        />
+                                        <div className="img-wrapper">
+                                            <div className="content">
+                                                <div className="content-overlay"></div>
+                                                <img
+                                                    src={product.imgUrl}
+                                                    alt={product.name}
+                                                    className="img-fluid content-image"
+                                                />
+                                                <div class="content-details fadeIn-bottom">
+                                                    <h3>{product.name}</h3>
+                                                    <p>
+                                                        View
+                                                        <i class="fas fa-arrow-right pl-2"></i>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div className="product-tag">
                                             {product.tag}
                                         </div>
