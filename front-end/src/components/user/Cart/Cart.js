@@ -162,19 +162,20 @@ const cart = () => {
                     </div>
                     <div className="col-md-4">
                         <div className="summary">
-                            <div className="text-summary">Summary</div>
+                            <div className="text-summary">Order Summary</div>
                             <div className="summary-info">
                                 <div className="summary-box">
-                                    <div className="sub-total-wrapper">
+                                    <div className="total-item-wrapper">
                                         <div class="d-flex justify-content-between">
                                             <div class="pr-2">
                                                 <div className="sub-total">
-                                                    Sub Total
+                                                 Item(s) x2
                                                 </div>
                                             </div>
-                                            <div class="pl-2">S$125</div>
+                                            <div class="pl-2">S$125.00</div>
                                         </div>
                                     </div>
+
                                     <div className="additional-fee-wrapper">
                                         <div class="d-flex justify-content-between">
                                             <div class="pr-2">
@@ -184,23 +185,25 @@ const cart = () => {
                                                 </div>
                                             </div>
                                             <div class="pl-2">
-                                                <div className="text-free">
-                                                    Free
+                                                <div className="text-shipping">
+                                                    S$4.00
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
                                     <hr />
+
                                     <div className="total-fee-wrapper">
                                         <div class="d-flex justify-content-between">
                                             <div class="pr-2">
-                                                <div className="sub-total">
+                                                <div className="total">
                                                     Total
                                                 </div>
                                             </div>
                                             <div class="pl-2">
                                                 <div className="text-total">
-                                                    S$129
+                                                    S$129.00
                                                 </div>
                                             </div>
                                         </div>
