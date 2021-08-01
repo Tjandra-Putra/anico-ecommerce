@@ -22,7 +22,7 @@ const navbar = () => {
                     anico.
                 </Link>
                 <button
-                    className="navbar-toggler"
+                    className="hamburger hamburger--collapse navbar-toggler"
                     type="button"
                     data-toggle="collapse"
                     data-target="#navbarNav"
@@ -30,7 +30,9 @@ const navbar = () => {
                     aria-expanded="false"
                     aria-label="Toggle navigation"
                 >
-                    <span className="navbar-toggler-icon" />
+                    <span className="hamburger-box">
+                        <span className="hamburger-inner"></span>
+                    </span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
