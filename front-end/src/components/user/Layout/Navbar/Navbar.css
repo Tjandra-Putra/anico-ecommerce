@@ -29,3 +29,9 @@
 .nav-link:hover {
     font-weight: 700 !important;
 }
+
+.navbar .item-count {
+    transform: translateY(-1.2rem);
+    text-align: center;
+    font-weight: 500;
+}

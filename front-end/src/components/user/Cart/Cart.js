@@ -169,7 +169,7 @@ const cart = () => {
                                         <div class="d-flex justify-content-between">
                                             <div class="pr-2">
                                                 <div className="sub-total">
-                                                 Item(s) x2
+                                                    Item(s) x2
                                                 </div>
                                             </div>
                                             <div class="pl-2">S$125.00</div>

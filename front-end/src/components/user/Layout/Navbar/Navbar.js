@@ -53,7 +53,7 @@ const navbar = () => {
                                     src={favouriteIcon}
                                     className="img-fluid"
                                     alt="shopping bag"
-                                    width="23"
+                                    width="25"
                                 />
                             </Link>
                         </li>
@@ -63,7 +63,7 @@ const navbar = () => {
                                     src={userIcon}
                                     className="img-fluid"
                                     alt="shopping bag"
-                                    width="23"
+                                    width="25"
                                 />
                             </Link>
                         </li>
@@ -71,10 +71,11 @@ const navbar = () => {
                             <Link className="nav-link" to="/cart">
                                 <img
                                     src={shoppingBagIcon}
-                                    className="img-fluid"
+                                    className="img-fluid d-inline"
                                     alt="shopping bag"
-                                    width="23"
+                                    width="25"
                                 />
+                                <div className="item-count">13</div>
                             </Link>
                         </li>
                     </ul>
