@@ -49,7 +49,7 @@ const navbar = () => {
                     </ul>
 
                     <ul className="navbar-nav ml-auto">
-                        <li className="nav-item">
+                        <li className="nav-item  d-none d-sm-block">
                             <Link className="nav-link" to="/favourite">
                                 <img
                                     src={favouriteIcon}
@@ -59,7 +59,7 @@ const navbar = () => {
                                 />
                             </Link>
                         </li>
-                        <li className="nav-item pl-1">
+                        <li className="nav-item pl-1  d-none d-sm-block">
                             <Link className="nav-link" to="/login">
                                 <img
                                     src={userIcon}
@@ -69,7 +69,7 @@ const navbar = () => {
                                 />
                             </Link>
                         </li>
-                        <li className="nav-item pl-1">
+                        <li className="nav-item pl-1  d-none d-sm-block">
                             <Link className="nav-link" to="/cart">
                                 <img
                                     src={shoppingBagIcon}

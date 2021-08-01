@@ -35,3 +35,14 @@
     text-align: center;
     font-weight: 500;
 }
+
+/** RESPONSIVE **/
+@media only screen and (min-device-width: 320px) and (max-device-width: 625px) {
+    .navbar .navbar-nav .nav-item {
+        text-align: center !important;
+    }
+
+    .navbar .navbar-nav .nav-link {
+        padding-right: unset !important;
+    }
+}
