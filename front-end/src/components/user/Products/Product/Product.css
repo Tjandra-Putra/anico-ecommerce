@@ -68,7 +68,8 @@
 .product .btn-dark {
     margin-top: 2.5rem;
     height: 3.5rem !important;
-    border-radius: 50px;
+    /* border-radius: 50px; */
+    border-radius: 3px;
 }
 
 .product .btn-dark:hover {
@@ -78,7 +79,8 @@
 .product .btn-outline-dark {
     margin-top: 0.5rem;
     height: 3.5rem !important;
-    border-radius: 50px;
+    /* border-radius: 50px; */
+    border-radius: 3px;
     border: 2px solid #ccc;
 }
 
