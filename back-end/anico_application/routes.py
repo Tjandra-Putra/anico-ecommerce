@@ -7,6 +7,7 @@ from flask_mail import Message
 
 from anico_application import app, db, bcrypt, mail
 
+
 @app.route('/')
 def home():
     return "<h1>Hello World </h1>"

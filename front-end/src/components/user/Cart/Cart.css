@@ -43,11 +43,11 @@
     /* border-radius: 5px; */
 }
 
-.cart .row-box:hover {
+/* .cart .row-box:hover {
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
         rgba(0, 0, 0, 9) 0px 0px 0px 2px;
     transition: ease-in 0.5s;
-}
+} */
 
 .cart .icon-delete,
 .close {
