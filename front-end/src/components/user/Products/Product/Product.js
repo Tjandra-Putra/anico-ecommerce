@@ -1,9 +1,14 @@
 import { React, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { connect } from "react-redux";
 
+import * as actionTypes from "../../../../store/actions";
 import "./Product.css";
 
 const Product = (props) => {
+    //state
+    const [addToBagText, setAddToBagText] = useState("Add To Bag");
+
     // getting id from parameter url
     let { prodId } = useParams();
 
@@ -23,8 +28,16 @@ const Product = (props) => {
             setSizeError("Please select a size.");
             return;
         } else {
+            // removes error message
             setSizeError("");
-            alert("Added to cart");
+
+            // redux: adding to cart
+            product[0].quantity = 1;
+            product[0].size = size;
+
+            props.addToCart(product[0]);
+
+            setAddToBagText("Added To Cart ✓");
         }
     };
 
@@ -150,7 +163,7 @@ const Product = (props) => {
                                 className="btn btn-dark btn-block"
                                 type="submit"
                             >
-                                Add to Bag
+                                {addToBagText}
                             </button>
                         </form>
                         <form onSubmit={addToFavouriteHandler}>
@@ -168,4 +181,24 @@ const Product = (props) => {
     );
 };
 
-export default Product;
+// REDUX SECTION
+
+// STORE - Getting all the state from reducer.js
+const mapStateToProps = (global_state) => {
+    // return {
+    //     loadedMyCart: global_state.myCart,
+    // };
+};
+
+// ACTION - returning value to the reducer.js for processing and computation
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addToCart: (item) =>
+            dispatch({
+                type: actionTypes.ADD_TO_CART,
+                product: item,
+            }),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

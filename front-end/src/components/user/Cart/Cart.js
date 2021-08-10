@@ -1,23 +1,113 @@
-import React from "react";
+import { React } from "react";
+import { connect } from "react-redux";
+import * as actionTypes from "../../../store/actions";
+import { Link } from "react-router-dom";
 
+import cartImage from "../../../assets/img/online-shopping.png";
 import "./Cart.css";
 
-const cart = () => {
+const Cart = (props) => {
+    // init
+    let loadedCart = props.loadedMyCart.map((item, index) => (
+        <tr className="row-box" key={index}>
+            <td>
+                <i className="fas fa-times ml-3 icon-delete"></i>
+            </td>
+            <td>
+                <div className="d-flex flex-row">
+                    <div className="p-2">
+                        <img src={item.imgUrl} alt="" className="img-fluid" />
+                    </div>
+                    <div className="p-2">
+                        <div className="product-info">
+                            <div className="product-name">{item.name}</div>
+                            <div className="product-price">S${item.price}</div>
+                            <div className="product-size">Size {item.size}</div>
+                        </div>
+                    </div>
+                </div>
+                <div className="d-flex flex-row">
+                    <div className="text-move-to-favourite">
+                        Move to Favourite
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div className="d-flex flex-row">
+                    <div className="p-2">
+                        <button className="btn btn-light btn-decrease btn-quantity">
+                            -
+                        </button>
+                    </div>
+                    <div className="p-2">
+                        <input
+                            type="number"
+                            name=""
+                            id=""
+                            className="form-control input-quantity"
+                            value={item.quantity}
+                        />
+                    </div>
+                    <div className="p-2">
+                        <button className="btn btn-increase btn-quantity">
+                            +
+                        </button>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div className="sub-total">S${item.price}</div>
+            </td>
+        </tr>
+    ));
+
+    let loadedCartHead = (
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Product</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Sub Total</th>
+            </tr>
+        </thead>
+    );
+
+    if (loadedCart.length === 0) {
+        loadedCart = (
+            <div className="cart-empty-wrapper">
+                <img src={cartImage} alt="" className="img-fluid" width="100" />
+                <h4>There are no items in your bag!</h4>
+                <Link to="/products">
+                    <button className="btn btn-outline-dark btn-continue-shopping">
+                        Continue Shopping
+                    </button>
+                </Link>
+            </div>
+        );
+        loadedCartHead = null;
+    }
+
+    // States
+
+    // Handlers;
+
     return (
         <div className="cart">
             <div className="container">
                 <div
-                    class="alert alert-light alert-dismissible fade show"
+                    className="alert alert-light alert-dismissible fade show"
                     role="alert"
                 >
-                    <strong style={{ fontWeight: "600" }}>
+                    <strong
+                        style={{ fontWeight: "600", paddingRight: "0.3rem" }}
+                    >
                         HAVE A PROMO CODE?
-                    </strong>{" "}
+                    </strong>
                     You will be able to apply it on the payment page during
                     checkout.
                     <button
                         type="button"
-                        class="close"
+                        className="close"
                         data-dismiss="alert"
                         aria-label="Close"
                     >
@@ -28,136 +118,8 @@ const cart = () => {
                 <div className="row">
                     <div className="col-md-8">
                         <table className="table borderless table-responsive">
-                            <thead>
-                                <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col">Product</th>
-                                    <th scope="col">Quantity</th>
-                                    <th scope="col">Sub Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr className="row-box">
-                                    <td>
-                                        <i class="fas fa-times ml-3 icon-delete"></i>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex flex-row">
-                                            <div class="p-2">
-                                                <img
-                                                    src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/2ae375f6-ac20-4cc0-92ff-ce0e307fb801/dri-fit-indy-zip-front-light-support-padded-sports-bra-K7ZvFg.png"
-                                                    alt=""
-                                                    className="img-fluid"
-                                                />
-                                            </div>
-                                            <div class="p-2">
-                                                <div className="product-info">
-                                                    <div className="product-name">
-                                                        Neux Extra
-                                                    </div>
-                                                    <div className="product-price">
-                                                        S$24.99
-                                                    </div>
-                                                    <div className="product-size">
-                                                        Size M
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="d-flex flex-row">
-                                            <div className="text-move-to-favourite">
-                                                Move to Favourite
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex flex-row">
-                                            <div class="p-2">
-                                                <button className="btn btn-light btn-decrease">
-                                                    -
-                                                </button>
-                                            </div>
-                                            <div class="p-2">
-                                                <input
-                                                    type="number"
-                                                    name=""
-                                                    id=""
-                                                    className="form-control input-quantity"
-                                                />
-                                            </div>
-                                            <div class="p-2">
-                                                <button className="btn btn-increase">
-                                                    +
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="sub-total">S$20.59</div>
-                                    </td>
-                                </tr>{" "}
-                                <tr className="row-box">
-                                    <td>
-                                        <i class="fas fa-times ml-3 icon-delete"></i>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex flex-row">
-                                            <div class="p-2">
-                                                <img
-                                                    src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/2ae375f6-ac20-4cc0-92ff-ce0e307fb801/dri-fit-indy-zip-front-light-support-padded-sports-bra-K7ZvFg.png"
-                                                    alt=""
-                                                    className="img-fluid"
-                                                />
-                                            </div>
-                                            <div class="p-2">
-                                                <div className="product-info">
-                                                    <div className="product-name">
-                                                        Summer Special Jacket
-                                                        Lorem ipsum dolor sit
-                                                        amet.
-                                                    </div>
-                                                    <div className="product-price">
-                                                        S$24.99
-                                                    </div>
-                                                    <div className="product-size">
-                                                        Size M
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="d-flex flex-row">
-                                            <div className="text-move-to-favourite">
-                                                Move to Favourite
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex flex-row">
-                                            <div class="p-2">
-                                                <button className="btn btn-light btn-decrease">
-                                                    -
-                                                </button>
-                                            </div>
-                                            <div class="p-2">
-                                                <input
-                                                    type="number"
-                                                    name=""
-                                                    id=""
-                                                    className="form-control input-quantity"
-                                                />
-                                            </div>
-                                            <div class="p-2">
-                                                <button className="btn btn-increase">
-                                                    +
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="sub-total">S$20.59</div>
-                                    </td>
-                                </tr>
-                            </tbody>
+                            {loadedCartHead}
+                            <tbody>{loadedCart}</tbody>
                         </table>
                     </div>
                     <div className="col-md-4">
@@ -166,25 +128,25 @@ const cart = () => {
                             <div className="summary-info">
                                 <div className="summary-box">
                                     <div className="total-item-wrapper">
-                                        <div class="d-flex justify-content-between">
-                                            <div class="pr-2">
+                                        <div className="d-flex justify-content-between">
+                                            <div className="pr-2">
                                                 <div className="sub-total">
                                                     Item(s) x2
                                                 </div>
                                             </div>
-                                            <div class="pl-2">S$125.00</div>
+                                            <div className="pl-2">S$125.00</div>
                                         </div>
                                     </div>
 
                                     <div className="additional-fee-wrapper">
-                                        <div class="d-flex justify-content-between">
-                                            <div class="pr-2">
+                                        <div className="d-flex justify-content-between">
+                                            <div className="pr-2">
                                                 <div className="sub-total">
                                                     Estimated Delivery &
                                                     Handling
                                                 </div>
                                             </div>
-                                            <div class="pl-2">
+                                            <div className="pl-2">
                                                 <div className="text-shipping">
                                                     S$4.00
                                                 </div>
@@ -195,13 +157,13 @@ const cart = () => {
                                     <hr />
 
                                     <div className="total-fee-wrapper">
-                                        <div class="d-flex justify-content-between">
-                                            <div class="pr-2">
+                                        <div className="d-flex justify-content-between">
+                                            <div className="pr-2">
                                                 <div className="total">
                                                     Total
                                                 </div>
                                             </div>
-                                            <div class="pl-2">
+                                            <div className="pl-2">
                                                 <div className="text-total">
                                                     S$129.00
                                                 </div>
@@ -228,4 +190,18 @@ const cart = () => {
     );
 };
 
-export default cart;
+// REDUX SECTION
+
+// STORE - Getting all the state from reducer.js
+const mapStateToProps = (global_state) => {
+    return {
+        loadedMyCart: global_state.myCart,
+    };
+};
+
+// ACTION - returning value to the reducer.js for processing and computation
+const mapDispatchToProps = (dispatch) => {
+    return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

@@ -17,7 +17,7 @@ const footer = () => {
                     </div>
                     <div className="col-md-4 text-right">
                         <a href="#navbar" className="text-white">
-                            <i class="fas fa-arrow-up"></i>
+                            <i className="fas fa-arrow-up"></i>
                         </a>
                     </div>
                 </div>
@@ -60,18 +60,18 @@ const footer = () => {
                         <div className="info-wrapper">
                             <div className="info-title">Connect with us</div>
                             <div className="info-sub">
-                                <div class="d-flex justify-content-between">
-                                    <div class="p-2">
-                                        <i class="fab fa-instagram footer-icon"></i>
+                                <div className="d-flex justify-content-between">
+                                    <div className="p-2">
+                                        <i className="fab fa-instagram footer-icon"></i>
                                     </div>
-                                    <div class="p-2">
-                                        <i class="fab fa-facebook-square footer-icon"></i>
+                                    <div className="p-2">
+                                        <i className="fab fa-facebook-square footer-icon"></i>
                                     </div>
-                                    <div class="p-2">
-                                        <i class="fab fa-twitter-square footer-icon"></i>
+                                    <div className="p-2">
+                                        <i className="fab fa-twitter-square footer-icon"></i>
                                     </div>
-                                    <div class="p-2">
-                                        <i class="fas fa-envelope-open footer-icon"></i>
+                                    <div className="p-2">
+                                        <i className="fas fa-envelope-open footer-icon"></i>
                                     </div>
                                 </div>
                             </div>
@@ -87,17 +87,17 @@ const footer = () => {
                     </div>
 
                     <div className="col-md-6">
-                        <div class="d-flex justify-content-end">
-                            <div class="pl-4">
+                        <div className="d-flex justify-content-end">
+                            <div className="pl-4">
                                 <p>Guides</p>
                             </div>
-                            <div class="pl-4">
+                            <div className="pl-4">
                                 <p>Terms of Sales</p>
                             </div>
-                            <div class="pl-4">
+                            <div className="pl-4">
                                 <p>Terms of Use</p>
                             </div>
-                            <div class="pl-4">
+                            <div className="pl-4">
                                 <p>anico Privacy Policy</p>
                             </div>
                         </div>
