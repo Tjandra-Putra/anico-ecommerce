@@ -12,9 +12,9 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.ADD_TO_CART: {
             // default value of quantity is 1 when cart is empty
-            if (state.myCart.length === 0) {
-                action.product.quantity = 1;
-            }
+            // if (state.myCart.length === 0) {
+            //     action.product.quantity = 1;
+            // }
 
             // if item already exist in cart, increment the quantity by 1
             if (state.myCart.some((item) => item.id === action.product.id)) {
@@ -34,6 +34,8 @@ const reducer = (state = initialState, action) => {
             }
             // adding new item to cart first time
             else {
+                action.product.quantity = 1;
+
                 let array = [...state.myCart];
                 array.push(action.product);
 

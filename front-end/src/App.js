@@ -58,19 +58,6 @@ class App extends Component {
         },
     ];
 
-    my_cart = [
-        {
-            id: "5",
-            name: "Nike x AMBUSH",
-            desc: "The Nike x AMBUSH Crop Top features sweat-wicking technology and soft knit fabrics to create a comfortable feel, while its bold colour-blocking creates a futuristic look for the worldwide stage.",
-            price: 119,
-            tag: "Exclusively on  SNKRS",
-            imgUrl: "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/22fe3165-fa1d-4365-9b5b-b79d55f1a808/ambush-short-sleeve-t-shirt.png",
-            size: "S",
-            quantity: 2,
-        },
-    ];
-
     render() {
         return (
             <BrowserRouter>
