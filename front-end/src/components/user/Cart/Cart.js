@@ -11,7 +11,10 @@ const Cart = (props) => {
     let loadedCart = props.loadedMyCart.map((item, index) => (
         <tr className="row-box" key={index}>
             <td>
-                <i className="fas fa-times ml-3 icon-delete"></i>
+                <i
+                    className="fas fa-times ml-3 icon-delete"
+                    onClick={() => props.removeCartItemHandler(index)}
+                ></i>
             </td>
             <td>
                 <div className="d-flex flex-row">
@@ -201,7 +204,10 @@ const mapStateToProps = (global_state) => {
 
 // ACTION - returning value to the reducer.js for processing and computation
 const mapDispatchToProps = (dispatch) => {
-    return {};
+    return {
+        removeCartItemHandler: (index) =>
+            dispatch({ type: actionTypes.REMOVE_CART_ITEM, index: index }),
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

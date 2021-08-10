@@ -20,6 +20,15 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 myCart: array,
             };
+
+        case actionTypes.REMOVE_CART_ITEM:
+            const myCartArray = [...state.myCart];
+            myCartArray.splice(action.index, 1);
+
+            return {
+                ...state,
+                myCart: myCartArray,
+            };
     }
 
     return state;
