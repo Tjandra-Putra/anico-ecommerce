@@ -10,7 +10,7 @@ const reducer = (state = initialState, action) => {
     // FUNCTION: ADD TO CART
     // eslint-disable-next-line default-case
     switch (action.type) {
-        case actionTypes.ADD_TO_CART:
+        case actionTypes.ADD_TO_CART: {
             // default value of quantity is 1 when cart is empty
             if (state.myCart.length === 0) {
                 action.product.quantity = 1;
@@ -42,9 +42,10 @@ const reducer = (state = initialState, action) => {
                     myCart: array,
                 };
             }
+        }
 
         // FUNCTION: REMOVE CART ITEM
-        case actionTypes.REMOVE_CART_ITEM:
+        case actionTypes.REMOVE_CART_ITEM: {
             const myCartArray = [...state.myCart];
             myCartArray.splice(action.index, 1);
 
@@ -52,6 +53,59 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 myCart: myCartArray,
             };
+        }
+
+        // FUNCTION: INCREASE CART ITEM QUANTITY
+        case actionTypes.INCREASE_CART_QUANTITY: {
+            // index value of item
+            const itemIndex = state.myCart.findIndex((item) => {
+                return item.id === action.itemId;
+            });
+
+            const itemObj = { ...state.myCart[itemIndex] };
+
+            action.currentQuantity++;
+            itemObj.quantity = action.currentQuantity;
+
+            const itemArray = [...state.myCart];
+            itemArray[itemIndex] = itemObj;
+
+            return {
+                ...state,
+                myCart: itemArray,
+            };
+        }
+
+        // FUNCTION: DECREASE CART ITEM QUANTITY
+        case actionTypes.DECREASE_CART_QUANTITY: {
+            // index value of item
+            const itemIndex = state.myCart.findIndex((item) => {
+                return item.id === action.itemId;
+            });
+
+            const itemObj = { ...state.myCart[itemIndex] };
+
+            action.currentQuantity--;
+            itemObj.quantity = action.currentQuantity;
+
+            // if quantity is zero, remove item from cart
+            if (itemObj.quantity === 0) {
+                const itemArray = [...state.myCart];
+                itemArray.splice(itemIndex, 1);
+                return {
+                    ...state,
+                    myCart: itemArray,
+                };
+            }
+
+            const itemArray = [...state.myCart];
+            itemArray[itemIndex] = itemObj;
+
+            return {
+                ...state,
+                myCart: itemArray,
+            };
+        }
     }
 
     return state;

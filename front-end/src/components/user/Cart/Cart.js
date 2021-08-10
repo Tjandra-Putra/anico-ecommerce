@@ -38,7 +38,15 @@ const Cart = (props) => {
             <td>
                 <div className="d-flex flex-row">
                     <div className="p-2">
-                        <button className="btn btn-light btn-decrease btn-quantity">
+                        <button
+                            className="btn btn-light btn-decrease btn-quantity"
+                            onClick={() =>
+                                props.decreaseCartQuantityHandler(
+                                    item.id,
+                                    item.quantity
+                                )
+                            }
+                        >
                             -
                         </button>
                     </div>
@@ -52,7 +60,15 @@ const Cart = (props) => {
                         />
                     </div>
                     <div className="p-2">
-                        <button className="btn btn-increase btn-quantity">
+                        <button
+                            className="btn btn-increase btn-quantity"
+                            onClick={() =>
+                                props.increaseCartQuantityHandler(
+                                    item.id,
+                                    item.quantity
+                                )
+                            }
+                        >
                             +
                         </button>
                     </div>
@@ -206,6 +222,18 @@ const mapStateToProps = (global_state) => {
 // ACTION - returning value to the reducer.js for processing and computation
 const mapDispatchToProps = (dispatch) => {
     return {
+        increaseCartQuantityHandler: (itemId, itemQuantity) =>
+            dispatch({
+                type: actionTypes.INCREASE_CART_QUANTITY,
+                itemId: itemId,
+                currentQuantity: itemQuantity,
+            }),
+        decreaseCartQuantityHandler: (itemId, itemQuantity) =>
+            dispatch({
+                type: actionTypes.DECREASE_CART_QUANTITY,
+                itemId: itemId,
+                currentQuantity: itemQuantity,
+            }),
         removeCartItemHandler: (index) =>
             dispatch({ type: actionTypes.REMOVE_CART_ITEM, index: index }),
     };
