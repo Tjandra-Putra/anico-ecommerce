@@ -134,7 +134,8 @@ const Cart = (props) => {
                                         <div className="d-flex justify-content-between">
                                             <div className="pr-2">
                                                 <div className="sub-total">
-                                                    Item(s) x2
+                                                    Item(s) x
+                                                    {props.loadedMyCart.length}
                                                 </div>
                                             </div>
                                             <div className="pl-2">S$125.00</div>

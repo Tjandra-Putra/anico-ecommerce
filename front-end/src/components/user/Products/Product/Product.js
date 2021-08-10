@@ -32,7 +32,7 @@ const Product = (props) => {
             setSizeError("");
 
             // redux: adding to cart
-            product[0].quantity = 1;
+            // product[0].quantity = 1;
             product[0].size = size;
 
             props.addToCart(product[0]);
