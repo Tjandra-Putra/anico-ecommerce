@@ -85,10 +85,7 @@ class App extends Component {
                             exact
                             path="/products/:prodId"
                             render={() => (
-                                <Product
-                                    product_list={this.product_list}
-                                    my_cart={this.my_cart}
-                                />
+                                <Product product_list={this.product_list} />
                             )}
                         />
 
@@ -99,11 +96,7 @@ class App extends Component {
                         <Route exact path="/register" component={Register} />
 
                         {/* Cart Page */}
-                        <Route
-                            exact
-                            path="/cart"
-                            render={() => <Cart my_cart={this.my_cart} />}
-                        />
+                        <Route exact path="/cart" render={() => <Cart />} />
 
                         {/* Favourite Page */}
                         <Route exact path="/favourite" component={Favourite} />
