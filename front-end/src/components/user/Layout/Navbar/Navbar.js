@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 // import classes from "./Navbar.module.css";
 import "./Navbar.css";
@@ -8,7 +9,7 @@ import shoppingBagIcon from "../../../../assets/img/shopping-bag.png";
 import userIcon from "../../../../assets/img/user.png";
 import favouriteIcon from "../../../../assets/img/heart.png";
 
-const navbar = () => {
+const Navbar = (props) => {
     return (
         <nav
             className="navbar navbar-expand-lg navbar-light bg-white"
@@ -77,7 +78,9 @@ const navbar = () => {
                                     alt="shopping bag"
                                     width="25"
                                 />
-                                <div className="item-count">13</div>
+                                <div className="item-count">
+                                    {props.itemCount}
+                                </div>
                             </Link>
                         </li>
                     </ul>
@@ -87,4 +90,18 @@ const navbar = () => {
     );
 };
 
-export default navbar;
+// REDUX SECTION
+
+// STORE - Getting all the state from reducer.js
+const mapStateToProps = (global_state) => {
+    return {
+        itemCount: global_state.myCart.length,
+    };
+};
+
+// ACTION - returning value to the reducer.js for processing and computation
+const mapDispatchToProps = (dispatch) => {
+    return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
