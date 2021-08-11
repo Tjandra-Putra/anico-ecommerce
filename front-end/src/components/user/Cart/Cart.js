@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useState } from "react";
 import { connect } from "react-redux";
 import * as actionTypes from "../../../store/actions";
 import { Link } from "react-router-dom";
@@ -7,6 +7,9 @@ import cartImage from "../../../assets/img/online-shopping.png";
 import "./Cart.css";
 
 const Cart = (props) => {
+    // Variables
+    let setBtnCheckOut = false;
+
     // init
     let loadedCart = props.loadedMyCart.map((item, index) => (
         <tr className="row-box" key={index}>
@@ -104,11 +107,8 @@ const Cart = (props) => {
             </div>
         );
         loadedCartHead = null;
+        setBtnCheckOut = true;
     }
-
-    // States
-
-    // Handlers;
 
     return (
         <div className="cart">
@@ -191,7 +191,10 @@ const Cart = (props) => {
                                         </div>
                                     </div>
                                     <hr />
-                                    <button className="btn btn-dark btn-block btn-checkout">
+                                    <button
+                                        className="btn btn-dark btn-block btn-checkout"
+                                        disabled={setBtnCheckOut}
+                                    >
                                         Checkout
                                     </button>
                                     <button
