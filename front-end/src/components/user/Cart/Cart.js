@@ -94,6 +94,7 @@ const Cart = (props) => {
         </thead>
     );
 
+    // Conditions
     if (loadedCart.length === 0) {
         loadedCart = (
             <div className="cart-empty-wrapper">
@@ -109,6 +110,21 @@ const Cart = (props) => {
         loadedCartHead = null;
         setBtnCheckOut = true;
     }
+
+    // computing total amount
+    let finalAmount = 0;
+    let totalCartAmount = 0;
+
+    props.loadedMyCart.map((item) => {
+        totalCartAmount += item.price * item.quantity;
+    });
+
+    if (loadedCart.length > 0) {
+        // shipping fee
+        finalAmount = totalCartAmount + 4;
+    }
+
+    props.totalCartAmountHandler(finalAmount);
 
     return (
         <div className="cart">
@@ -154,7 +170,9 @@ const Cart = (props) => {
                                                     {props.loadedMyCart.length}
                                                 </div>
                                             </div>
-                                            <div className="pl-2">S$125.00</div>
+                                            <div className="pl-2">
+                                                S${totalCartAmount.toFixed(2)}
+                                            </div>
                                         </div>
                                     </div>
 
@@ -185,7 +203,7 @@ const Cart = (props) => {
                                             </div>
                                             <div className="pl-2">
                                                 <div className="text-total">
-                                                    S$129.00
+                                                    S${finalAmount.toFixed(2)}
                                                 </div>
                                             </div>
                                         </div>
@@ -219,6 +237,7 @@ const Cart = (props) => {
 const mapStateToProps = (global_state) => {
     return {
         loadedMyCart: global_state.myCart,
+        totalAmount: global_state.totalAmount,
     };
 };
 
@@ -239,6 +258,11 @@ const mapDispatchToProps = (dispatch) => {
             }),
         removeCartItemHandler: (index) =>
             dispatch({ type: actionTypes.REMOVE_CART_ITEM, index: index }),
+        totalCartAmountHandler: (total) =>
+            dispatch({
+                type: actionTypes.TOTAL_CART_AMOUNT,
+                totalAmount: total,
+            }),
     };
 };
 

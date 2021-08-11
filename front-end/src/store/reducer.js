@@ -3,7 +3,7 @@ import * as actionTypes from "./actions";
 // =========== GLOBAL STATE ===========
 const initialState = {
     myCart: [], // contains a list of objects
-    totalPrice: 0,
+    totalAmount: 0,
 };
 
 const reducer = (state = initialState, action) => {
@@ -101,6 +101,14 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 myCart: itemArray,
+            };
+        }
+
+        // FUNCTION: TOTAL CART AMOUNT
+        case actionTypes.TOTAL_CART_AMOUNT: {
+            return {
+                ...state,
+                totalAmount: action.totalAmount,
             };
         }
     }
