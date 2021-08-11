@@ -82,7 +82,7 @@ const Cart = (props) => {
                 </div>
             </td>
             <td>
-                <div className="sub-total">S${item.price}</div>
+                <div className="sub-total">S${item.price * item.quantity}</div>
             </td>
         </tr>
     ));
