@@ -46,6 +46,7 @@ const Cart = (props) => {
                             onClick={() =>
                                 props.decreaseCartQuantityHandler(
                                     item.id,
+                                    item.size,
                                     item.quantity
                                 )
                             }
@@ -60,6 +61,8 @@ const Cart = (props) => {
                             id=""
                             className="form-control input-quantity"
                             value={item.quantity}
+                            disabled="disabled"
+                            style={{ backgroundColor: "white" }}
                         />
                     </div>
                     <div className="p-2">
@@ -68,6 +71,7 @@ const Cart = (props) => {
                             onClick={() =>
                                 props.increaseCartQuantityHandler(
                                     item.id,
+                                    item.size,
                                     item.quantity
                                 )
                             }
@@ -116,7 +120,7 @@ const Cart = (props) => {
     let totalCartAmount = 0;
 
     props.loadedMyCart.map((item) => {
-        totalCartAmount += item.price * item.quantity;
+        return (totalCartAmount += item.price * item.quantity);
     });
 
     if (loadedCart.length > 0) {
@@ -244,16 +248,18 @@ const mapStateToProps = (global_state) => {
 // ACTION - returning value to the reducer.js for processing and computation
 const mapDispatchToProps = (dispatch) => {
     return {
-        increaseCartQuantityHandler: (itemId, itemQuantity) =>
+        increaseCartQuantityHandler: (itemId, itemSize, itemQuantity) =>
             dispatch({
                 type: actionTypes.INCREASE_CART_QUANTITY,
                 itemId: itemId,
+                itemSize: itemSize,
                 currentQuantity: itemQuantity,
             }),
-        decreaseCartQuantityHandler: (itemId, itemQuantity) =>
+        decreaseCartQuantityHandler: (itemId, itemSize, itemQuantity) =>
             dispatch({
                 type: actionTypes.DECREASE_CART_QUANTITY,
                 itemId: itemId,
+                itemSize: itemSize,
                 currentQuantity: itemQuantity,
             }),
         removeCartItemHandler: (index) =>

@@ -11,16 +11,18 @@ const reducer = (state = initialState, action) => {
     // eslint-disable-next-line default-case
     switch (action.type) {
         case actionTypes.ADD_TO_CART: {
-            // if item already exist in cart, increment the quantity by 1
-            if (state.myCart.some((item) => item.id === action.product.id)) {
-                const itemIndex = state.myCart.findIndex((item) => {
-                    return item.id === action.product.id;
-                });
+            // return index of item that has already existing in the cart. add to existing cart item if exists.
+            const itemIndex = state.myCart.findIndex((item) => {
+                return (
+                    item.id === action.product.id &&
+                    item.size === action.product.size
+                );
+            });
 
-                action.product.quantity++;
-
+            // if item exists in cart, index -1 means does not exist
+            if (itemIndex !== -1) {
                 const myCartArray = [...state.myCart];
-                myCartArray[itemIndex] = action.product;
+                myCartArray[itemIndex].quantity++;
 
                 return {
                     ...state,
@@ -29,10 +31,11 @@ const reducer = (state = initialState, action) => {
             }
             // adding new item to cart first time
             else {
-                action.product.quantity = 1;
-
                 let array = [...state.myCart];
-                array.push(action.product);
+
+                var tempProductObj = { ...action.product };
+                tempProductObj.quantity = 1;
+                array.push(tempProductObj);
 
                 return {
                     ...state,
@@ -56,9 +59,12 @@ const reducer = (state = initialState, action) => {
         case actionTypes.INCREASE_CART_QUANTITY: {
             // index value of item
             const itemIndex = state.myCart.findIndex((item) => {
-                return item.id === action.itemId;
+                return (
+                    item.id === action.itemId && item.size === action.itemSize
+                );
             });
 
+            console.log("INDEX" + itemIndex);
             const itemObj = { ...state.myCart[itemIndex] };
 
             action.currentQuantity++;
@@ -77,9 +83,10 @@ const reducer = (state = initialState, action) => {
         case actionTypes.DECREASE_CART_QUANTITY: {
             // index value of item
             const itemIndex = state.myCart.findIndex((item) => {
-                return item.id === action.itemId;
+                return (
+                    item.id === action.itemId && item.size === action.itemSize
+                );
             });
-
             const itemObj = { ...state.myCart[itemIndex] };
 
             action.currentQuantity--;
