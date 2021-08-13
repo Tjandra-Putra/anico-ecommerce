@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Swal from "sweetalert2";
 
 import "./Support.css";
 import tentImage from "../../../../src/assets/img/tent.png";
@@ -77,25 +78,39 @@ class Support extends Component {
             errors["message"] = "Please enter a message.";
         }
 
+        // message must have minimum 20 characters
         if (fields["message"] && fields["message"].length < 20) {
             formIsValid = false;
             errors["message"] = "Please enter at least 20 characters";
         }
 
-        console.log(typeof fields["message"]);
-
         this.setState({ errors: errors });
         return formIsValid;
     };
 
+    // submit form
     submitFormHandler = (event) => {
         event.preventDefault();
 
         if (this.fieldValidationHandler()) {
             this.setState({ isFormValid: true, btnEnable: true });
+
+            this.sweetAlertModal();
         } else {
             console.log("Form has validation errors");
         }
+    };
+
+    // sweet alert animation
+
+    sweetAlertModal = () => {
+        Swal.fire({
+            title: "Success",
+            icon: "success",
+            animation: true,
+            text: "Your message has been sent.",
+            confirmButtonColor: "#000000",
+        });
     };
 
     render() {
