@@ -37,3 +37,12 @@ class ProductStock(db.Model):
 
     # Foreign Keys
     product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
+
+
+class Support(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    email = db.Column(db.String(100), nullable=False)
+    subject = db.Column(db.String(50), nullable=False)
+    message = db.Column(db.String(500), nullable=False)
+    date = db.Column(db.String(50), nullable=False)
