@@ -23,13 +23,12 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 db = SQLAlchemy(app)  # Database instance
 bcrypt = Bcrypt(app)
-# login_manager = LoginManager(app)
+login_manager = LoginManager(app)
 migrate = Migrate(app, db)
 mail = Mail(app)
 cors = CORS(app)
 
 
-# login_manager.login_view = 'login'  # Function name of route
-# login_manager.login_message_category = 'info'
+login_manager.login_view = 'login'  # Function name of route
 
 from anico_application import routes  # Has to be imported at the bottom to prevent 'circular' import

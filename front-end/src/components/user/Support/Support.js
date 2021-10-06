@@ -15,24 +15,24 @@ class Support extends Component {
     };
   }
 
-  componentDidMount = () => {
-    // fetch("/api/support/form-submit")
-    //   .then((response) => response.json())
-    //   .then((data) => console.log("This is your data", data));
-    // axios.get("http://localhost:5000/api/support/form-submit").then((res) => {
-    //   console.log(res.data);
-    // });
-  };
+  // componentDidMount = () => {
+  //   fetch("/api/support/form-submit")
+  //     .then((response) => response.json())
+  //     .then((data) => console.log("This is your data", data));
+  //   axios.get("http://localhost:5000/api/support/form-submit").then((res) => {
+  //     console.log(res.data);
+  //   });
+  // };
 
-  dateHandler = () => {
-    let newDate = new Date();
-    let date = newDate.getDate();
-    let month = newDate.getMonth() + 1;
-    let year = newDate.getFullYear();
-    let time = newDate.toLocaleTimeString();
+  // dateHandler = () => {
+  //   let newDate = new Date();
+  //   let date = newDate.getDate();
+  //   let month = newDate.getMonth() + 1;
+  //   let year = newDate.getFullYear();
+  //   let time = newDate.toLocaleTimeString();
 
-    return date + "/" + month + "/" + year + ", " + time;
-  };
+  //   return date + "/" + month + "/" + year + ", " + time;
+  // };
 
   fieldChangeHandler = (field, event) => {
     let fields = this.state.fields;
