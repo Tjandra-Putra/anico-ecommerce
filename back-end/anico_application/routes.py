@@ -1,14 +1,13 @@
 import json
-import datetime
+import requests
 from flask import render_template, url_for, flash, redirect, request, jsonify
 from flask_login import login_user, logout_user, current_user, login_required
 from flask_mail import Message
-from datetime import date
 
 from anico_application.forms import validate_register_form
 from anico_application import app, db, bcrypt, mail, csrf
 from anico_application.models import Support, User
-from anico_application.controller import get_username, get_hashed_password
+from anico_application.controller import get_username, get_hashed_password, get_custom_date
 
 @app.route('/api/register/form-submit', methods=['POST', 'GET'])
 @csrf.exempt #prevent form spams
@@ -26,7 +25,7 @@ def register():
                 isValidated = False
         
         # save to database
-        if isValidated:
+        if isValidated: # True
             user_name_sliced = get_username(req['email'])
             hashed_password = get_hashed_password(req['password'])
 
@@ -38,7 +37,8 @@ def register():
         # send error response to client side
         else:
             print("sent to client side")
-        
+            return validated_form
+
     return ''
 
 
@@ -54,16 +54,10 @@ def support():
             subject_field = req['subject']
             message_field = req['message']
 
-            today = date.today()
-            d1 = today.strftime("%d/%m/%Y")
+            formatted_date = get_custom_date()
 
-            current_time = datetime.datetime.now()
 
-            format_time = str(d1) + ", " + str(current_time.strftime("%I")) + ":" + str(current_time.strftime("%M")) + " " + str(current_time.strftime("%p"))
-
-            print(format_time)
-
-            data = Support(name=name_field, email=email_field, subject=subject_field, message=message_field, date=format_time)
+            data = Support(name=name_field, email=email_field, subject=subject_field, message=message_field, date=formatted_date)
             
             db.session.add(data)
             db.session.commit()
