@@ -7,7 +7,8 @@ from datetime import date
 
 from anico_application.forms import validate_register_form
 from anico_application import app, db, bcrypt, mail, csrf
-from anico_application.models import Support
+from anico_application.models import Support, User
+from anico_application.controller import get_username, get_hashed_password
 
 @app.route('/api/register/form-submit', methods=['POST', 'GET'])
 @csrf.exempt #prevent form spams
@@ -17,17 +18,28 @@ def register():
 
         validated_form = validate_register_form(req)
 
+        # Has errors, send a response to client side
+        isValidated = True
+        print(validated_form)
+
+        for key, value in validated_form.items():
+            if value != '':
+                isValidated = False
         
+        # save to database
+        if isValidated:
+            user_name_sliced = get_username(req['email'])
+            hashed_password = get_hashed_password(req['password'])
+
+            user_data = User(username=user_name_sliced, email=req['email'], phone_number=req['phone'], password=hashed_password)
+
+            db.session.add(user_data)
+            db.session.commit()
+
+        # send error response to client side
+        else:
+            print("sent to client side")
         
-        today = date.today()
-        d1 = today.strftime("%d/%m/%Y")
-
-        current_time = datetime.datetime.now()
-
-        formatted_date = str(d1) + ", " + str(current_time.strftime("%I")) + ":" + str(current_time.strftime("%M")) + " " + str(current_time.strftime("%p"))
-
-        return req
-
     return ''
 
 
