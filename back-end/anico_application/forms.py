@@ -11,7 +11,6 @@ def validate_register_form(req):
         'phone': error_msg_phone,
         'password': error_msg_password,
         'password_confirm': error_msg_password_confirm
-
     }
 
     # check if the field exists in the response json, if empty, it will not be in the response
