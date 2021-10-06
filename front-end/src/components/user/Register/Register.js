@@ -11,7 +11,6 @@ class Register extends Component {
     this.state = {
       btnEnable: false,
       fields: {},
-      errors: {},
     };
   }
 
@@ -34,6 +33,9 @@ class Register extends Component {
         console.log(err);
       });
   };
+
+  // TODO:
+  // Empty the fields once validated successfully from response
 
   render() {
     return (

@@ -18,7 +18,6 @@ def register():
 
         validated_form = validate_register_form(req)
 
-        # Has errors, send a response to client side
         isValidated = True
         print(validated_form)
 
