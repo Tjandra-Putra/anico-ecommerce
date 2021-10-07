@@ -17,15 +17,18 @@ class Register extends Component {
     };
   }
 
+  // toast component
   notify_success = () => toast.success("You may now login!");
   notify_error = () => toast.error("Invalid Field");
 
+  // binding Fields
   fieldChangeHandler = (field, event) => {
     let fields = this.state.fields;
     fields[field] = event.target.value;
     this.setState({ fields });
   };
 
+  // form handler
   submitFormHandler = (event) => {
     event.preventDefault();
 
@@ -42,6 +45,7 @@ class Register extends Component {
         console.log(err);
       });
 
+    // counting number of valid fields
     let invalidFieldCounter = 1;
     for (const [key, value] of Object.entries(this.state.errorMsg)) {
       if (value == "") {
@@ -49,6 +53,7 @@ class Register extends Component {
       }
     }
 
+    // if valid fields is 4, means form is completely validated
     if (invalidFieldCounter == 4) {
       this.setState({
         btnEnable: "disabled",
