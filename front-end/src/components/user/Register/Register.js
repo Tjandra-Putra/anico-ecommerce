@@ -11,8 +11,8 @@ class Register extends Component {
     this.state = {
       btnEnable: false,
       fields: {},
-      isFetched: 0,
       errorMsg: {},
+      isValid: false,
     };
   }
 
@@ -25,40 +25,36 @@ class Register extends Component {
   submitFormHandler = (event) => {
     event.preventDefault();
 
-    // passing to back-end
+    // pass form to back-end, back-end returns a response
     axios
       .post("http://localhost:5000/api/register/form-submit", this.state.fields)
       .then((res) => {
         console.log(res);
         this.setState({
-          isFetched: Object.keys(res.data).length,
+          errorMsg: res.data,
         });
       })
       .catch((err) => {
         console.log(err);
       });
-  };
 
-  // TODO:
-  // Empty the fields once validated successfully from response
-
-  render() {
-    // get error message from back-end
-    if (this.state.isFetched > 0) {
-      console.log(this.state.isFetched);
-      axios
-        .get("http://localhost:5000/api/register/form-submit")
-        .then((res) => {
-          console.log(res);
-          this.setState({
-            errorMsg: res,
-          });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    let invalidFieldCounter = 1;
+    for (const [key, value] of Object.entries(this.state.errorMsg)) {
+      if (value == "") {
+        invalidFieldCounter++;
+      }
     }
 
+    if (invalidFieldCounter == 4) {
+      this.setState({
+        btnEnable: "disabled",
+      });
+    }
+
+    console.log(invalidFieldCounter);
+  };
+
+  render() {
     return (
       <div className="register">
         <div className="container">
@@ -70,14 +66,6 @@ class Register extends Component {
                 very best of our products, inspiration and community.
               </div>
 
-              <p>
-                {/* {Object.keys(this.state.errorMsg).map((key, index) => (
-                  <ul>
-                    <li>{key}</li>
-                  </ul>
-                ))} */}
-              </p>
-
               <form onSubmit={this.submitFormHandler}>
                 <div className="form-group">
                   <label htmlFor="exampleInputEmail1">Email address</label>
@@ -87,6 +75,13 @@ class Register extends Component {
                     onChange={this.fieldChangeHandler.bind(this, "email")}
                     value={this.state.fields["email"]}
                   />
+                  {this.state.errorMsg["email"] == "" ? (
+                    <small className="text-success">Looks good!</small>
+                  ) : (
+                    <small className="text-danger">
+                      {this.state.errorMsg["email"]}
+                    </small>
+                  )}
                 </div>
 
                 <div className="form-group">
@@ -98,6 +93,13 @@ class Register extends Component {
                     onChange={this.fieldChangeHandler.bind(this, "phone")}
                     value={this.state.fields["phone"]}
                   />
+                  {this.state.errorMsg["phone"] == "" ? (
+                    <small className="text-success">Looks good!</small>
+                  ) : (
+                    <small className="text-danger">
+                      {this.state.errorMsg["phone"]}
+                    </small>
+                  )}
                 </div>
 
                 <div className="form-group">
@@ -108,6 +110,13 @@ class Register extends Component {
                     onChange={this.fieldChangeHandler.bind(this, "password")}
                     value={this.state.fields["password"]}
                   />
+                  {this.state.errorMsg["password"] == "" ? (
+                    <small className="text-success">Looks good!</small>
+                  ) : (
+                    <small className="text-danger">
+                      {this.state.errorMsg["password"]}
+                    </small>
+                  )}
                 </div>
 
                 <div className="form-group">
@@ -121,6 +130,13 @@ class Register extends Component {
                     )}
                     value={this.state.fields["password_confirm"]}
                   />
+                  {this.state.errorMsg["password_confirm"] == "" ? (
+                    <small className="text-success">Looks good!</small>
+                  ) : (
+                    <small className="text-danger">
+                      {this.state.errorMsg["password_confirm"]}
+                    </small>
+                  )}
                 </div>
 
                 <button
