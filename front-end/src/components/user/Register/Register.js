@@ -168,7 +168,7 @@ class Register extends Component {
                   alt={backPack}
                   className="img-fluid mx-auto d-block"
                   width="400"
-                  style={{ marginTop: "5em" }}
+                  style={{ marginTop: "7em" }}
                 />
               </div>
             </div>
