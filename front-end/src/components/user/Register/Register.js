@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
+import { Redirect } from "react-router-dom";
 
 import "./Register.css";
 import backPack from "../../../../src/assets/img/backpack.png";
@@ -14,6 +15,7 @@ class Register extends Component {
       fields: {},
       errorMsg: {},
       isValid: false,
+      redirect: null,
     };
   }
 
@@ -60,6 +62,13 @@ class Register extends Component {
       });
 
       this.notify_success();
+
+      setTimeout(() => {
+        this.setState({ redirect: <Redirect to="/login" /> });
+      }, 3000);
+
+      // todo:
+      // Redirect to login page with a timer. do it after notify success is done
     } else {
       this.notify_error();
     }
@@ -71,6 +80,8 @@ class Register extends Component {
     return (
       <div className="register">
         <Toaster />
+        {this.state.redirect}
+
         <div className="container">
           <div className="row">
             <div className="col-md-6">
