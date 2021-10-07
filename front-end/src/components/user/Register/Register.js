@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 import "./Register.css";
 import backPack from "../../../../src/assets/img/backpack.png";
@@ -15,6 +16,9 @@ class Register extends Component {
       isValid: false,
     };
   }
+
+  notify_success = () => toast.success("You may now login!");
+  notify_error = () => toast.error("Invalid Field");
 
   fieldChangeHandler = (field, event) => {
     let fields = this.state.fields;
@@ -49,6 +53,10 @@ class Register extends Component {
       this.setState({
         btnEnable: "disabled",
       });
+
+      this.notify_success();
+    } else {
+      this.notify_error();
     }
 
     console.log(invalidFieldCounter);
@@ -57,6 +65,7 @@ class Register extends Component {
   render() {
     return (
       <div className="register">
+        <Toaster />
         <div className="container">
           <div className="row">
             <div className="col-md-6">
