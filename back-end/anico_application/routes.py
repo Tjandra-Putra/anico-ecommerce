@@ -69,3 +69,6 @@ def support():
 
     return ''
 
+@app.route('/api/favourite/form-submit', methods=['POST', 'GET'])
+def favourite():
+    return {"Hello": "World"}

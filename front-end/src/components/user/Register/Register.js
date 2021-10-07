@@ -11,6 +11,8 @@ class Register extends Component {
     this.state = {
       btnEnable: false,
       fields: {},
+      isFetched: 0,
+      errorMsg: {},
     };
   }
 
@@ -28,6 +30,9 @@ class Register extends Component {
       .post("http://localhost:5000/api/register/form-submit", this.state.fields)
       .then((res) => {
         console.log(res);
+        this.setState({
+          isFetched: Object.keys(res.data).length,
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -38,6 +43,22 @@ class Register extends Component {
   // Empty the fields once validated successfully from response
 
   render() {
+    // get error message from back-end
+    if (this.state.isFetched > 0) {
+      console.log(this.state.isFetched);
+      axios
+        .get("http://localhost:5000/api/register/form-submit")
+        .then((res) => {
+          console.log(res);
+          this.setState({
+            errorMsg: res,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+
     return (
       <div className="register">
         <div className="container">
@@ -48,6 +69,14 @@ class Register extends Component {
                 Create your anico Member profile and get first access to the
                 very best of our products, inspiration and community.
               </div>
+
+              <p>
+                {/* {Object.keys(this.state.errorMsg).map((key, index) => (
+                  <ul>
+                    <li>{key}</li>
+                  </ul>
+                ))} */}
+              </p>
 
               <form onSubmit={this.submitFormHandler}>
                 <div className="form-group">
