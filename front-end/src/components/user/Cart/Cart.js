@@ -207,7 +207,7 @@ const Cart = (props) => {
                     Checkout
                   </button>
                   <button
-                    className="btn btn-secondary btn-block btn-checkout"
+                    className="btn btn-outline-dark btn-block btn-checkout"
                     disabled
                   >
                     Pay Later
