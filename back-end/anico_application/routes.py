@@ -2,6 +2,7 @@ import json
 from flask import render_template, url_for, flash, redirect, request, jsonify
 from flask_login import login_user, logout_user, current_user, login_required
 from flask_mail import Message
+from flask_migrate import current
 
 from anico_application.forms import validate_register_form, validate_login_form
 from anico_application import app, db, bcrypt, mail, csrf
@@ -54,14 +55,21 @@ def login():
             if value != '':
                 isValidated = False
         
-        # save to database
+        # successful login
         if isValidated: # True
-            hashed_password = get_hashed_password(req['password'])
+            user_db = User.query.filter_by(email=req['email']).first()
+
+            login_user(user_db)
+            print(current_user.email)
+
 
         # send error response to client side
         else:
             print("sent to client side")
             return validated_form
+
+    else:
+        print(current_user.email)
 
     return ''
 
@@ -94,4 +102,6 @@ def support():
 
 @app.route('/api/favourite/form-submit', methods=['POST', 'GET'])
 def favourite():
+    print(current_user.email)
+
     return {"Hello": "World"}

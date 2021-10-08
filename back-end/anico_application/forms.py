@@ -1,5 +1,6 @@
 import re
 from anico_application.models import User
+from anico_application import bcrypt
 
 def validate_register_form(req):
     # For client side, just check if error is not empty means got error hence will not submit the form
@@ -77,6 +78,9 @@ def validate_register_form(req):
 
 def validate_login_form(req):
     error_msg_email = error_msg_password = ''
+    # user_db = User.query.filter_by(email=req['email']).first()
+
+    # print(req['email'])
 
     error_msg_dict = {
     'email': error_msg_email,
@@ -88,14 +92,27 @@ def validate_login_form(req):
             error_msg_dict[err] = "Field is empty."
 
     for field, value in req.items():
+        email_field = req['email']
+        user_db = User.query.filter_by(email=req['email']).first()
+
         # validate email field
         if field == 'email':
-            email = value
+            email_field = value
 
             # check if email does not exist in database
-            user_data = User.query.filter_by(email=email).first()
+            user_data = User.query.filter_by(email=email_field).first()
 
             if not user_data:
                 error_msg_dict[field] = "Email is wrong."
+
+         # validate passwords field
+        if field == 'password':
+            password_field = value
+
+            # user_db = User.query.filter_by(email=email_field).first()
+
+            # # get user object from db
+            if not bcrypt.check_password_hash(user_db.password, password_field):
+                error_msg_dict[field] = "Password is wrong."
 
     return error_msg_dict

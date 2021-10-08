@@ -21,14 +21,14 @@ app.config['MAIL_USERNAME'] = os.environ.get('EMAIL_USER')
 app.config['MAIL_PASSWORD'] = os.environ.get('EMAIL_PASS')
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-db = SQLAlchemy(app)  # Database instance
+db = SQLAlchemy(app)  # database instance
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 migrate = Migrate(app, db)
 mail = Mail(app)
-cors = CORS(app)
+cors = CORS(app) # for react
 
 
-login_manager.login_view = 'login'  # Function name of route
+login_manager.login_view = 'login'  # function name of route
 
-from anico_application import routes  # Has to be imported at the bottom to prevent 'circular' import
+from anico_application import routes  # has to be imported at the bottom to prevent 'circular' import

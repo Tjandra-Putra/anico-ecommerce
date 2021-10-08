@@ -60,15 +60,10 @@ class Login extends Component {
       this.setState({
         btnEnable: "disabled",
       });
-
       this.notify_success();
-
       setTimeout(() => {
         this.setState({ redirect: <Redirect to="/products" /> });
       }, 3000);
-
-      // todo:
-      // Redirect to login page with a timer. do it after notify success is done
     } else {
       this.notify_error();
     }
