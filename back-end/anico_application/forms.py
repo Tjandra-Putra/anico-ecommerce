@@ -1,4 +1,5 @@
 import re
+from anico_application.models import User
 
 def validate_register_form(req):
     # For client side, just check if error is not empty means got error hence will not submit the form
@@ -23,13 +24,26 @@ def validate_register_form(req):
         if field == 'email':
             email = value
 
+            # check email format
             if(re.fullmatch(regex, email) == None):
                 error_msg_dict[field] = "Email is invalid."
+
+            # check if email exist in database
+            user_data = User.query.filter_by(email=email).first()
+
+            if user_data:
+                error_msg_dict[field] = "This email is already taken."
 
         # validate phone field
         if field == 'phone':
             phone = value
             numerals = "0123456789+"
+
+            # check if email exist in database
+            user_data = User.query.filter_by(email=email).first()
+
+            if user_data.phone_number:
+                error_msg_dict[field] = "This phone number is already taken."
 
             if "+" not in phone:
                 error_msg_dict[field] = "Phone number is invalid."

@@ -50,13 +50,13 @@ class Register extends Component {
     // counting number of valid fields
     let invalidFieldCounter = 1;
     for (const [key, value] of Object.entries(this.state.errorMsg)) {
-      if (value == "") {
+      if (value === "") {
         invalidFieldCounter++;
       }
     }
 
     // if valid fields is 4, means form is completely validated
-    if (invalidFieldCounter == 4) {
+    if (invalidFieldCounter === 4) {
       this.setState({
         btnEnable: "disabled",
       });
@@ -100,7 +100,7 @@ class Register extends Component {
                     onChange={this.fieldChangeHandler.bind(this, "email")}
                     value={this.state.fields["email"]}
                   />
-                  {this.state.errorMsg["email"] == "" ? (
+                  {this.state.errorMsg["email"] === "" ? (
                     <small className="text-success">Looks good!</small>
                   ) : (
                     <small className="text-danger">
@@ -118,7 +118,7 @@ class Register extends Component {
                     onChange={this.fieldChangeHandler.bind(this, "phone")}
                     value={this.state.fields["phone"]}
                   />
-                  {this.state.errorMsg["phone"] == "" ? (
+                  {this.state.errorMsg["phone"] === "" ? (
                     <small className="text-success">Looks good!</small>
                   ) : (
                     <small className="text-danger">
@@ -135,7 +135,7 @@ class Register extends Component {
                     onChange={this.fieldChangeHandler.bind(this, "password")}
                     value={this.state.fields["password"]}
                   />
-                  {this.state.errorMsg["password"] == "" ? (
+                  {this.state.errorMsg["password"] === "" ? (
                     <small className="text-success">Looks good!</small>
                   ) : (
                     <small className="text-danger">
@@ -155,7 +155,7 @@ class Register extends Component {
                     )}
                     value={this.state.fields["password_confirm"]}
                   />
-                  {this.state.errorMsg["password_confirm"] == "" ? (
+                  {this.state.errorMsg["password_confirm"] === "" ? (
                     <small className="text-success">Looks good!</small>
                   ) : (
                     <small className="text-danger">
