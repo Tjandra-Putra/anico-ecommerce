@@ -1,0 +1,29 @@
+.login .title {
+  font-weight: 600;
+  font-size: 2.5rem;
+}
+
+.login .description {
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.2px;
+  font-weight: 500;
+}
+
+.login .btn-dark,
+.form-control {
+  border-radius: 2px;
+}
+
+.login .form-control {
+  border: 1.5px solid #000000;
+  border-radius: 2px;
+  height: 2.8rem;
+}
+
+.login .form-group label {
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  font-family: var(--montserrat) !important;
+}

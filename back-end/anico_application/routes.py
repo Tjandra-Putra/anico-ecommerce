@@ -3,7 +3,7 @@ from flask import render_template, url_for, flash, redirect, request, jsonify
 from flask_login import login_user, logout_user, current_user, login_required
 from flask_mail import Message
 
-from anico_application.forms import validate_register_form
+from anico_application.forms import validate_register_form, validate_login_form
 from anico_application import app, db, bcrypt, mail, csrf
 from anico_application.models import Support, User
 from anico_application.controller import get_username, get_hashed_password, get_custom_date
@@ -40,6 +40,30 @@ def register():
 
     return ''
 
+@app.route('/api/login/form-submit', methods=['POST', 'GET'])
+@csrf.exempt #prevent form spams
+def login():
+    if request.method == 'POST':
+        req = request.json
+
+        validated_form = validate_login_form(req)
+
+        isValidated = True
+
+        for key, value in validated_form.items():
+            if value != '':
+                isValidated = False
+        
+        # save to database
+        if isValidated: # True
+            hashed_password = get_hashed_password(req['password'])
+
+        # send error response to client side
+        else:
+            print("sent to client side")
+            return validated_form
+
+    return ''
 
 @app.route('/api/support/form-submit', methods=['POST', 'GET'])
 @csrf.exempt #prevent form spams

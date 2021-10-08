@@ -74,3 +74,28 @@ def validate_register_form(req):
 
     return error_msg_dict
                     
+
+def validate_login_form(req):
+    error_msg_email = error_msg_password = ''
+
+    error_msg_dict = {
+    'email': error_msg_email,
+    'password': error_msg_password
+    }
+
+    for err in error_msg_dict:
+        if(err not in req):
+            error_msg_dict[err] = "Field is empty."
+
+    for field, value in req.items():
+        # validate email field
+        if field == 'email':
+            email = value
+
+            # check if email does not exist in database
+            user_data = User.query.filter_by(email=email).first()
+
+            if not user_data:
+                error_msg_dict[field] = "Email is wrong."
+
+    return error_msg_dict
