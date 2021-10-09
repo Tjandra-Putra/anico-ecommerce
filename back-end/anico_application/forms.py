@@ -109,7 +109,7 @@ def validate_login_form(req):
             # user_db = User.query.filter_by(email=email_field).first()
 
             # # get user object from db
-            if not bcrypt.check_password_hash(user_db.password, password_field):
-                error_msg_dict[field] = "Email or password is invalid."
+            # if not bcrypt.check_password_hash(user_db.password, password_field):
+            #     error_msg_dict[field] = "Email or password is invalid."
 
     return error_msg_dict
