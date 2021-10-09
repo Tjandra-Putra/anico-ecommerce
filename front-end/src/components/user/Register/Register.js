@@ -38,42 +38,26 @@ class Register extends Component {
     axios
       .post("http://localhost:5000/api/register/form-submit", this.state.fields)
       .then((res) => {
-        console.log(res);
         this.setState({
           errorMsg: res.data,
         });
+
+        // if form is valid
+        if (this.state.errorMsg["isValid"] === "valid") {
+          this.notify_success();
+          setTimeout(() => {
+            this.setState({ redirect: <Redirect to="/login" /> });
+          }, 3000);
+        }
+        // if form is invalid
+        else {
+          this.notify_error();
+        }
       })
       .catch((err) => {
         console.log(err);
+        this.notify_error();
       });
-
-    // counting number of valid fields
-    let invalidFieldCounter = 1;
-    for (const [key, value] of Object.entries(this.state.errorMsg)) {
-      if (value === "") {
-        invalidFieldCounter++;
-      }
-    }
-
-    // if valid fields is 4, means form is completely validated
-    if (invalidFieldCounter === 4) {
-      this.setState({
-        btnEnable: "disabled",
-      });
-
-      this.notify_success();
-
-      setTimeout(() => {
-        this.setState({ redirect: <Redirect to="/login" /> });
-      }, 3000);
-
-      // todo:
-      // Redirect to login page with a timer. do it after notify success is done
-    } else {
-      this.notify_error();
-    }
-
-    console.log(invalidFieldCounter);
   };
 
   render() {

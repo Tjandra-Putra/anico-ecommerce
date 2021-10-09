@@ -9,12 +9,11 @@ from anico_application import app, db, bcrypt, mail, csrf
 from anico_application.models import Support, User
 from anico_application.controller import get_username, get_hashed_password, get_custom_date
 
-@app.route('/api/register/form-submit', methods=['POST', 'GET'])
+@app.route('/api/register/form-submit', methods=['POST'])
 @csrf.exempt #prevent form spams
 def register():
     if request.method == 'POST':
         req = request.json
-
         validated_form = validate_register_form(req)
 
         isValidated = True
@@ -34,12 +33,14 @@ def register():
             db.session.add(user_data)
             db.session.commit()
 
+            return {'isValid': 'valid'}
+
+
         # send error response to client side
         else:
             print("sent to client side")
             return validated_form
 
-    return ''
 
 @app.route('/api/login/form-submit', methods=['POST', 'GET'])
 @csrf.exempt #prevent form spams
@@ -61,6 +62,8 @@ def login():
 
             login_user(user_db)
             print(current_user.email)
+
+            return {'isValid': 'valid'}
 
 
         # send error response to client side

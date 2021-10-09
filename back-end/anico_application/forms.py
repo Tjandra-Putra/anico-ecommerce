@@ -29,11 +29,11 @@ def validate_register_form(req):
             if(re.fullmatch(regex, email) == None):
                 error_msg_dict[field] = "Email is invalid."
 
-            # check if email exist in database
-            user_data = User.query.filter_by(email=email).first()
+            # # check if email exist in database
+            # user_data = User.query.filter_by(email=email).first()
 
-            if user_data:
-                error_msg_dict[field] = "This email is already taken."
+            # if user_data:
+            #     error_msg_dict[field] = "This email is already taken."
 
         # validate phone field
         if field == 'phone':
@@ -41,10 +41,10 @@ def validate_register_form(req):
             numerals = "0123456789+"
 
             # check if email exist in database
-            user_data = User.query.filter_by(email=email).first()
+            # user_data = User.query.filter_by(email=email).first()
 
-            if user_data.phone_number:
-                error_msg_dict[field] = "This phone number is already taken."
+            # if user_data.phone_number:
+            #     error_msg_dict[field] = "This phone number is already taken."
 
             if "+" not in phone:
                 error_msg_dict[field] = "Phone number is invalid."
@@ -78,9 +78,6 @@ def validate_register_form(req):
 
 def validate_login_form(req):
     error_msg_email = error_msg_password = ''
-    # user_db = User.query.filter_by(email=req['email']).first()
-
-    # print(req['email'])
 
     error_msg_dict = {
     'email': error_msg_email,
@@ -103,7 +100,7 @@ def validate_login_form(req):
             user_data = User.query.filter_by(email=email_field).first()
 
             if not user_data:
-                error_msg_dict[field] = "Email is wrong."
+                error_msg_dict[field] = "Email or password is invalid."
 
          # validate passwords field
         if field == 'password':
@@ -113,6 +110,6 @@ def validate_login_form(req):
 
             # # get user object from db
             if not bcrypt.check_password_hash(user_db.password, password_field):
-                error_msg_dict[field] = "Password is wrong."
+                error_msg_dict[field] = "Email or password is invalid."
 
     return error_msg_dict

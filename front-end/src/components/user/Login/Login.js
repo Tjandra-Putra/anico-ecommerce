@@ -14,7 +14,6 @@ class Login extends Component {
       btnEnable: false,
       fields: {},
       errorMsg: {},
-      isValid: false,
       redirect: null,
     };
   }
@@ -42,31 +41,22 @@ class Login extends Component {
         this.setState({
           errorMsg: res.data,
         });
+
+        if (!this.state.errorMsg.hasOwnProperty("isValid")) {
+          this.notify_error();
+        }
+
+        if (this.state.errorMsg["isValid"] === "valid") {
+          this.notify_success();
+
+          setTimeout(() => {
+            this.setState({ redirect: <Redirect to="/product" /> });
+          }, 3000);
+        }
       })
       .catch((err) => {
         console.log(err);
       });
-
-    // counting number of valid fields
-    let invalidFieldCounter = 1;
-    for (const [key, value] of Object.entries(this.state.errorMsg)) {
-      if (value === "") {
-        invalidFieldCounter++;
-      }
-    }
-
-    // if valid fields is 4, means form is completely validated
-    if (invalidFieldCounter === 2) {
-      this.setState({
-        btnEnable: "disabled",
-      });
-      this.notify_success();
-      setTimeout(() => {
-        this.setState({ redirect: <Redirect to="/products" /> });
-      }, 3000);
-    } else {
-      this.notify_error();
-    }
   };
 
   render() {
@@ -93,13 +83,13 @@ class Login extends Component {
                     onChange={this.fieldChangeHandler.bind(this, "email")}
                     value={this.state.fields["email"]}
                   />
-                  {this.state.errorMsg["email"] === "" ? (
-                    <small className="text-success">Looks good!</small>
+                  {/* {this.state.errorMsg["email"] === "" ? (
+                    <small className="text-success"></small>
                   ) : (
                     <small className="text-danger">
                       {this.state.errorMsg["email"]}
                     </small>
-                  )}
+                  )} */}
                 </div>
 
                 <div className="form-group">
@@ -110,13 +100,13 @@ class Login extends Component {
                     onChange={this.fieldChangeHandler.bind(this, "password")}
                     value={this.state.fields["password"]}
                   />
-                  {this.state.errorMsg["password"] === "" ? (
+                  {/* {this.state.errorMsg["password"] === "" ? (
                     <small className="text-success">Looks good!</small>
                   ) : (
                     <small className="text-danger">
                       {this.state.errorMsg["password"]}
                     </small>
-                  )}
+                  )} */}
                 </div>
 
                 <div className="row">
@@ -146,13 +136,22 @@ class Login extends Component {
                   </div>
                 </div>
 
-                <button
-                  className="btn btn-dark btn-lg btn-block mb-3"
-                  type="submit"
-                  disabled={this.state.btnEnable}
-                >
-                  Login
-                </button>
+                {this.state.errorMsg["isValid"] === "valid" ? (
+                  <button
+                    className="btn btn-dark btn-lg btn-block mb-3"
+                    type="submit"
+                    disabled="disabled"
+                  >
+                    Login
+                  </button>
+                ) : (
+                  <button
+                    className="btn btn-dark btn-lg btn-block mb-3"
+                    type="submit"
+                  >
+                    Login
+                  </button>
+                )}
               </form>
 
               <small>
