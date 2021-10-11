@@ -15,15 +15,6 @@ class Support extends Component {
     };
   }
 
-  // componentDidMount = () => {
-  //   fetch("/api/support/form-submit")
-  //     .then((response) => response.json())
-  //     .then((data) => console.log("This is your data", data));
-  //   axios.get("http://localhost:5000/api/support/form-submit").then((res) => {
-  //     console.log(res.data);
-  //   });
-  // };
-
   // dateHandler = () => {
   //   let newDate = new Date();
   //   let date = newDate.getDate();
@@ -92,6 +83,12 @@ class Support extends Component {
     if (fields["message"] && fields["message"].length < 20) {
       formIsValid = false;
       errors["message"] = "Please enter at least 20 characters";
+    }
+
+    // message must have maximum 50 characters
+    if (fields["message"] && fields["message"].length > 500) {
+      formIsValid = false;
+      errors["message"] = "Please enter at most 500 characters.";
     }
 
     this.setState({ errors: errors });

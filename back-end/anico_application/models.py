@@ -63,4 +63,5 @@ class Support(db.Model):
     email = db.Column(db.String(100), nullable=False)
     subject = db.Column(db.String(50), nullable=False)
     message = db.Column(db.String(500), nullable=False)
+    sentiment = db.Column(db.String(10), nullable=False)
     date = db.Column(db.String(50), nullable=False)

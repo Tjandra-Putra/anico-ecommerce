@@ -7,7 +7,7 @@ from flask_migrate import current
 from anico_application.forms import validate_register_form, validate_login_form
 from anico_application import app, db, bcrypt, mail, csrf
 from anico_application.models import Support, User
-from anico_application.controller import get_username, get_hashed_password, get_custom_date
+from anico_application.controller import get_username, get_hashed_password, get_custom_date, get_sentiment_analysis
 
 @app.route('/api/register/form-submit', methods=['POST'])
 @csrf.exempt #prevent form spams
@@ -90,8 +90,9 @@ def support():
 
             formatted_date = get_custom_date()
 
+            sentiment_analysis = get_sentiment_analysis(message_field)
 
-            data = Support(name=name_field, email=email_field, subject=subject_field, message=message_field, date=formatted_date)
+            data = Support(name=name_field, email=email_field, subject=subject_field, message=message_field, date=formatted_date, sentiment=sentiment_analysis)
             
             db.session.add(data)
             db.session.commit()

@@ -1,6 +1,8 @@
+from typing import Text
 from anico_application import bcrypt
 import datetime
 from datetime import date
+from textblob import TextBlob
 
 
 def get_username(email):
@@ -31,3 +33,19 @@ def get_custom_date():
     formatted_date = str(d1) + ", " + str(current_time.strftime("%I")) + ":" + str(current_time.strftime("%M")) + " " + str(current_time.strftime("%p"))
 
     return formatted_date
+
+
+def get_sentiment_analysis(text):
+    blob_obj = TextBlob(text)
+    polarity = blob_obj.sentiment.polarity
+
+    if polarity < 0:
+        return 'Negative'
+
+    elif polarity == 0:
+        return 'Neutral'
+
+    else:
+        return 'Positive'
+ 
+
