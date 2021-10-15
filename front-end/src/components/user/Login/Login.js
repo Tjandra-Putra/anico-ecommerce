@@ -20,7 +20,7 @@ class Login extends Component {
 
   // toast component
   notify_success = () => toast.success("You may now login!");
-  notify_error = () => toast.error("Invalid Field");
+  notify_error = () => toast.error("Incorrect email or password.");
 
   // binding Fields
   fieldChangeHandler = (field, event) => {

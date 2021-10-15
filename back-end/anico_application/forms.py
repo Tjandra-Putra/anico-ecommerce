@@ -77,7 +77,7 @@ def validate_register_form(req):
                     
 
 def validate_login_form(req):
-    error_msg_email = error_msg_password = ''
+    error_msg_email = error_msg_password = global_email = ''
 
     error_msg_dict = {
     'email': error_msg_email,
@@ -89,27 +89,29 @@ def validate_login_form(req):
             error_msg_dict[err] = "Field is empty."
 
     for field, value in req.items():
-        email_field = req['email']
-        user_db = User.query.filter_by(email=req['email']).first()
-
         # validate email field
         if field == 'email':
             email_field = value
+            global_email = value
 
-            # check if email does not exist in database
             user_data = User.query.filter_by(email=email_field).first()
 
+            # check if email does not exist in database
             if not user_data:
-                error_msg_dict[field] = "Email or password is invalid."
+                error_msg_dict[field] = "The email or password you entered is incorrect."
 
          # validate passwords field
         if field == 'password':
             password_field = value
+            try:
+                user_data = User.query.filter_by(email=global_email).first()
 
-            # user_db = User.query.filter_by(email=email_field).first()
+                # get user object from db
+                if not bcrypt.check_password_hash(user_data.password, password_field):
+                    error_msg_dict['password'] = "The email or password you entered is incorrect."
 
-            # # get user object from db
-            # if not bcrypt.check_password_hash(user_db.password, password_field):
-            #     error_msg_dict[field] = "Email or password is invalid."
+            except:
+                error_msg_dict['password'] = "The email or password you entered is incorrect."
+
 
     return error_msg_dict
