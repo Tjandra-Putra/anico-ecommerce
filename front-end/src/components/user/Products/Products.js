@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Products.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
-const products = (props) => {
+const Products = (props) => {
   return (
     <div className="products">
       <div className="container">
         <div className="filter-nav">
           <div className="row">
             <div className="col-md-6">
-              <div className="title">Women's Clothing</div>
+              <div className="title">Collections</div>
             </div>
             <div className="col-md-6">
               <div className="text-right">
@@ -69,16 +70,19 @@ const products = (props) => {
                       <div className="content">
                         <div className="content-overlay"></div>
                         <img
-                          src={product.imgUrl}
+                          src={
+                            require(`../../../assets/products/${product.imgUrl}`)
+                              .default
+                          }
                           alt={product.name}
                           className="img-fluid content-image"
                           style={{ borderRadius: "2px" }}
                         />
-                        <div class="content-details fadeIn-bottom">
+                        <div className="content-details fadeIn-bottom">
                           <h3>{product.name}</h3>
                           <p>
                             View
-                            <i class="fas fa-arrow-right pl-2"></i>
+                            <i className="fas fa-arrow-right pl-2"></i>
                           </p>
                         </div>
                       </div>
@@ -98,4 +102,4 @@ const products = (props) => {
   );
 };
 
-export default products;
+export default Products;

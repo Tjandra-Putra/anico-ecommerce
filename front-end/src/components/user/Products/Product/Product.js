@@ -30,6 +30,8 @@ const Product = (props) => {
 
   const product = props.product_list.filter((item) => item.id === prodId);
 
+  console.log(props.product_list, "TEST");
+
   // state: form submit
   const [size, setSize] = useState("");
 
@@ -91,12 +93,78 @@ const Product = (props) => {
 
         <div className="row">
           <div className="col-md-6">
-            <img
-              src={product[0].imgUrl}
+            {/* <img
+              src={
+                require(`../../../../assets/products/${product[0].imgUrl}`)
+                  .default
+              }
               className="img-fluid carousel-img"
-              alt="product_1"
+              alt={product[0].id}
               width="500"
-            />
+            /> */}
+
+            <div
+              id="carouselExampleControls"
+              class="carousel slide"
+              data-ride="carousel"
+            >
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    class="d-block w-100"
+                    src={
+                      require(`../../../../assets/products/${product[0].imgUrl}`)
+                        .default
+                    }
+                    alt="First slide"
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    class="d-block w-100"
+                    src={
+                      require(`../../../../assets/products/${product[0].imgUrl}`)
+                        .default
+                    }
+                    alt="Second slide"
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    class="d-block w-100"
+                    src={
+                      require(`../../../../assets/products/${product[0].imgUrl}`)
+                        .default
+                    }
+                    alt="Third slide"
+                  />
+                </div>
+              </div>
+              <a
+                class="carousel-control-prev"
+                href="#carouselExampleControls"
+                role="button"
+                data-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#carouselExampleControls"
+                role="button"
+                data-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
           </div>
           <div className="col-md-6">
             <div className="row">

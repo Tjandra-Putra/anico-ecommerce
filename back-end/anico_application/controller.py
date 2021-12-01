@@ -48,4 +48,23 @@ def get_sentiment_analysis(text):
     else:
         return 'Positive'
  
+def get_products(db_product):
+    data_dict = {}
 
+    for product in db_product:
+         images_list = []
+
+         images_list.append(product.image_urls[0].image_url)
+         data_dict[product.id] = {
+            'product_title': product.title,
+            'product_tag': product.tag,
+            'product_description': product.description,
+            'product_price': product.price,
+            'product_size': product.sizes[0].size, # foreign key 
+            'product_image_url': images_list, # foreign key
+            'product_stock': product.stocks[0].stock, # foreign key
+            } 
+
+    
+
+    return data_dict

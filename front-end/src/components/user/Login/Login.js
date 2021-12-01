@@ -19,7 +19,7 @@ class Login extends Component {
   }
 
   // toast component
-  notify_success = () => toast.success("You may now login!");
+  notify_success = () => toast.success("Login Successfully!");
   notify_error = () => toast.error("Incorrect email or password.");
 
   // binding Fields

@@ -22,7 +22,11 @@ const Cart = (props) => {
       <td>
         <div className="d-flex flex-row">
           <div className="p-2">
-            <img src={item.imgUrl} alt="" className="img-fluid" />
+            <img
+              src={require(`../../../assets/products/${item.imgUrl}`).default}
+              alt=""
+              className="img-fluid"
+            />
           </div>
           <div className="p-2">
             <div className="product-info">

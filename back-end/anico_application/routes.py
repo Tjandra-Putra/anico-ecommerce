@@ -6,8 +6,8 @@ from flask_migrate import current
 
 from anico_application.forms import validate_register_form, validate_login_form
 from anico_application import app, db, bcrypt, mail, csrf
-from anico_application.models import Support, User
-from anico_application.controller import get_username, get_hashed_password, get_custom_date, get_sentiment_analysis
+from anico_application.models import Support, User, Product, ProductImage, ProductSize
+from anico_application.controller import get_username, get_hashed_password, get_custom_date, get_sentiment_analysis, get_products
 
 @app.route('/api/register/form-submit', methods=['POST'])
 @csrf.exempt #prevent form spams
@@ -61,7 +61,7 @@ def login():
             user_db = User.query.filter_by(email=req['email']).first()
 
             login_user(user_db)
-            print(current_user.email)
+            print("LOGIN" + current_user.email)
 
             return {'isValid': 'valid'}
 
@@ -106,6 +106,13 @@ def support():
 
 @app.route('/api/favourite/form-submit', methods=['POST', 'GET'])
 def favourite():
-    print(current_user.email)
+    print(current_user.is_authenticated)
 
     return {"Hello": "World"}
+
+@app.route('/api/products/get-products', methods=['POST', 'GET'])
+def products():
+    db_product = Product.query.all()
+    products = get_products(db_product) # type dictionary
+
+    return products

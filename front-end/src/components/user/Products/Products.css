@@ -5,10 +5,22 @@
 .products .product-tag {
   margin-top: 0.8rem;
   color: var(--text-orange);
+  font-family: var(--font-montserrat);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.products .product-price {
+  font-style: italic;
+  font-weight: 500;
 }
 
 .products .product-name {
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 
 .products .product-wrapper:hover {
@@ -16,15 +28,16 @@
 }
 
 .products .filter-nav .title {
-  font-weight: 400 !important;
-  font-size: 1.4rem;
+  font-weight: 600 !important;
+  font-size: 2rem;
   padding-top: 0.1rem;
+  text-transform: uppercase;
 }
 
 .products .content .content-overlay {
   background: rgba(0, 0, 0, 0.7) !important;
   position: absolute;
-  height: 81%;
+  height: 79.5%;
   width: 92%;
   left: 10;
   /* right: 10; */
