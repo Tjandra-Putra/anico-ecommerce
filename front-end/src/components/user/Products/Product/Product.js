@@ -15,7 +15,7 @@ const Product = (props) => {
   // toast component
   const notify_success = () =>
     toast.success(product[0].name + " has been added to cart.", {
-      duration: 2100,
+      duration: 1800,
       style: {
         border: "1px solid #000000",
         padding: "16px",
@@ -142,33 +142,29 @@ const Product = (props) => {
                   )
                 )}
               </div>
-              <a
-                className="carousel-control-prev"
-                href="#carouselExampleControls"
-                role="button"
-                data-slide="prev"
-              >
-                {/* <span
-                  className="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span> */}
-                <i class="fas fa-arrow-left"></i>
+              {productImageUrl.length > 1 ? (
+                <div>
+                  <a
+                    className="carousel-control-prev"
+                    href="#carouselExampleControls"
+                    role="button"
+                    data-slide="prev"
+                  >
+                    <i class="fas fa-arrow-left"></i>
 
-                <span className="sr-only">Previous</span>
-              </a>
-              <a
-                className="carousel-control-next"
-                href="#carouselExampleControls"
-                role="button"
-                data-slide="next"
-              >
-                {/* <span
-                  className="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span> */}
-                <i class="fas fa-arrow-right"></i>
-                <span className="sr-only">Next</span>
-              </a>
+                    <span className="sr-only">Previous</span>
+                  </a>
+                  <a
+                    className="carousel-control-next"
+                    href="#carouselExampleControls"
+                    role="button"
+                    data-slide="next"
+                  >
+                    <i class="fas fa-arrow-right"></i>
+                    <span className="sr-only">Next</span>
+                  </a>
+                </div>
+              ) : null}
             </div>
           </div>
           <div className="col-md-6">
@@ -239,11 +235,38 @@ const Product = (props) => {
               />
               <label htmlFor="radio5">XL</label>
 
+              {(() => {
+                if (product[0].stock == 0)
+                  return <div className="product-stock">out of stock</div>;
+                if (product[0].stock <= 20)
+                  return (
+                    <div className="product-stock">
+                      Only {product[0].stock} left in stock
+                    </div>
+                  );
+                else
+                  return (
+                    <div className="product-stock">
+                      {product[0].stock} in stock
+                    </div>
+                  );
+              })()}
+
               <div className="text-danger">{sizeError}</div>
 
-              <button className="btn btn-dark btn-block" type="submit">
-                {addToBagText}
-              </button>
+              {product[0].stock == 0 ? (
+                <button
+                  className="btn btn-dark btn-block"
+                  type="submit"
+                  disabled
+                >
+                  {addToBagText}
+                </button>
+              ) : (
+                <button className="btn btn-dark btn-block" type="submit">
+                  {addToBagText}
+                </button>
+              )}
             </form>
             <form onSubmit={addToFavouriteHandler}>
               <button className="btn btn-outline-dark btn-block" type="submit">

@@ -31,6 +31,7 @@ const App = () => {
             price: allProducts[key].product_price,
             tag: allProducts[key].product_tag,
             imgUrl: allProducts[key].product_image_url,
+            stock: allProducts[key].product_stock,
           };
           // console.log(tempObj, "OBJECT");
 

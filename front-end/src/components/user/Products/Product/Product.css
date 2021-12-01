@@ -25,14 +25,24 @@
   font-family: var(--font-montserrat);
   font-weight: 600;
   letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 .product-price {
   text-align: right;
+  font-weight: 600;
 }
 
 .product .product-title {
   font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.product .product-stock {
+  text-align: right;
+  color: var(--text-orange);
 }
 
 .product .product-size-box {
