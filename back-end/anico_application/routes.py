@@ -7,7 +7,7 @@ from flask_migrate import current
 from anico_application.forms import validate_register_form, validate_login_form
 from anico_application import app, db, bcrypt, mail, csrf
 from anico_application.models import Support, User, Product, ProductImage, ProductSize
-from anico_application.controller import get_username, get_hashed_password, get_custom_date, get_sentiment_analysis, get_products
+from anico_application.controller import get_username, get_hashed_password, get_custom_date, get_sentiment_analysis, get_products, get_product_image_urls
 
 @app.route('/api/register/form-submit', methods=['POST'])
 @csrf.exempt #prevent form spams
@@ -116,3 +116,17 @@ def products():
     products = get_products(db_product) # type dictionary
 
     return products
+
+@app.route('/api/products/get-product-image', methods=['POST', 'GET'])
+@csrf.exempt # for post request
+def produces_images():
+    if request.method == 'POST':
+        req = request.json
+
+        req_id = req['product_id']
+
+        product_image_url_list = get_product_image_urls(int(req_id), ProductImage.query.all())
+
+        return {'product_image_url': product_image_url_list}
+
+    return {"Development": None}

@@ -52,19 +52,24 @@ def get_products(db_product):
     data_dict = {}
 
     for product in db_product:
-         images_list = []
-
-         images_list.append(product.image_urls[0].image_url)
          data_dict[product.id] = {
             'product_title': product.title,
             'product_tag': product.tag,
             'product_description': product.description,
             'product_price': product.price,
             'product_size': product.sizes[0].size, # foreign key 
-            'product_image_url': images_list, # foreign key
+            'product_image_url': product.image_urls[0].image_url, # foreign key
             'product_stock': product.stocks[0].stock, # foreign key
             } 
 
-    
-
     return data_dict
+
+def get_product_image_urls(req_id, db_product_image):
+    image_url_list = []
+
+    for product in db_product_image:
+        if product.product_id == req_id:
+            image_url_list.append(product.image_url)
+
+
+    return image_url_list

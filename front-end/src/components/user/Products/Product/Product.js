@@ -1,7 +1,8 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
+import axios from "axios";
 
 import * as actionTypes from "../../../../store/actions";
 import "./Product.css";
@@ -9,6 +10,7 @@ import "./Product.css";
 const Product = (props) => {
   // state
   const [addToBagText, setAddToBagText] = useState("Add To Bag");
+  const [productImageUrl, setProductImageUrl] = useState([]);
 
   // toast component
   const notify_success = () =>
@@ -30,7 +32,24 @@ const Product = (props) => {
 
   const product = props.product_list.filter((item) => item.id === prodId);
 
-  console.log(props.product_list, "TEST");
+  // Getting the images based on id from server
+  useEffect(() => {
+    axios
+      .post("http://localhost:5000/api/products/get-product-image", {
+        product_id: prodId,
+      })
+      .then((res) => {
+        let productImageUrlArray = res.data["product_image_url"];
+
+        productImageUrlArray.map((item) => {
+          setProductImageUrl((productImageUrl) => [...productImageUrl, item]);
+        });
+        console.log(productImageUrlArray, "STATE");
+      })
+      .catch((err) => {
+        console.log(err, "==========");
+      });
+  }, []);
 
   // state: form submit
   const [size, setSize] = useState("");
@@ -93,76 +112,59 @@ const Product = (props) => {
 
         <div className="row">
           <div className="col-md-6">
-            {/* <img
-              src={
-                require(`../../../../assets/products/${product[0].imgUrl}`)
-                  .default
-              }
-              className="img-fluid carousel-img"
-              alt={product[0].id}
-              width="500"
-            /> */}
-
             <div
               id="carouselExampleControls"
-              class="carousel slide"
+              className="carousel slide"
               data-ride="carousel"
             >
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img
-                    class="d-block w-100"
-                    src={
-                      require(`../../../../assets/products/${product[0].imgUrl}`)
-                        .default
-                    }
-                    alt="First slide"
-                  />
-                </div>
-                <div class="carousel-item">
-                  <img
-                    class="d-block w-100"
-                    src={
-                      require(`../../../../assets/products/${product[0].imgUrl}`)
-                        .default
-                    }
-                    alt="Second slide"
-                  />
-                </div>
-                <div class="carousel-item">
-                  <img
-                    class="d-block w-100"
-                    src={
-                      require(`../../../../assets/products/${product[0].imgUrl}`)
-                        .default
-                    }
-                    alt="Third slide"
-                  />
-                </div>
+              <div className="carousel-inner">
+                {productImageUrl.map((item, index) =>
+                  index === 0 ? (
+                    <div className="carousel-item active" key={index}>
+                      <img
+                        className="d-block w-100"
+                        src={
+                          require(`../../../../assets/products/${item}`).default
+                        }
+                        alt="First slide"
+                      />
+                    </div>
+                  ) : (
+                    <div className="carousel-item" key={index}>
+                      <img
+                        className="d-block w-100"
+                        src={
+                          require(`../../../../assets/products/${item}`).default
+                        }
+                        alt="First slide"
+                      />
+                    </div>
+                  )
+                )}
               </div>
               <a
-                class="carousel-control-prev"
+                className="carousel-control-prev"
                 href="#carouselExampleControls"
                 role="button"
                 data-slide="prev"
               >
                 <span
-                  class="carousel-control-prev-icon"
+                  className="carousel-control-prev-icon"
                   aria-hidden="true"
                 ></span>
-                <span class="sr-only">Previous</span>
+                <span className="sr-only">Previous</span>
               </a>
               <a
-                class="carousel-control-next"
+                className="carousel-control-next"
                 href="#carouselExampleControls"
                 role="button"
                 data-slide="next"
               >
                 <span
-                  class="carousel-control-next-icon"
+                  className="carousel-control-next-icon"
                   aria-hidden="true"
                 ></span>
-                <span class="sr-only">Next</span>
+                <span className="sr-only">Next</span>
               </a>
             </div>
           </div>

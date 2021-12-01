@@ -32,7 +32,7 @@ const App = () => {
             tag: allProducts[key].product_tag,
             imgUrl: allProducts[key].product_image_url,
           };
-          console.log(tempObj, "OBJECT");
+          // console.log(tempObj, "OBJECT");
 
           // add product to the end of the array
           setProduct((product_list) => [...product_list, tempObj]);
