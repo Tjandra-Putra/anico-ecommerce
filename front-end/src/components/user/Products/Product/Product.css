@@ -98,3 +98,19 @@
 .product .more-detail {
   margin-top: 2rem;
 }
+
+.product .fa-arrow-right {
+  position: absolute;
+  right: 0;
+  background-color: #000000 !important;
+  font-size: 2rem;
+  padding: 0.5rem;
+}
+
+.product .fa-arrow-left {
+  position: absolute;
+  left: 0;
+  background-color: #000000 !important;
+  font-size: 2rem;
+  padding: 0.5rem;
+}

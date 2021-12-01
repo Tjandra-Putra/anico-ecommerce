@@ -148,10 +148,12 @@ const Product = (props) => {
                 role="button"
                 data-slide="prev"
               >
-                <span
+                {/* <span
                   className="carousel-control-prev-icon"
                   aria-hidden="true"
-                ></span>
+                ></span> */}
+                <i class="fas fa-arrow-left"></i>
+
                 <span className="sr-only">Previous</span>
               </a>
               <a
@@ -160,10 +162,11 @@ const Product = (props) => {
                 role="button"
                 data-slide="next"
               >
-                <span
+                {/* <span
                   className="carousel-control-next-icon"
                   aria-hidden="true"
-                ></span>
+                ></span> */}
+                <i class="fas fa-arrow-right"></i>
                 <span className="sr-only">Next</span>
               </a>
             </div>
