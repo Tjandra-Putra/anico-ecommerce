@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actionTypes from "../../../store/actions";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
@@ -55,6 +57,13 @@ class Login extends Component {
               email: this.state.fields["email"],
             })
           );
+
+          // global state update auth information
+          const getAuthData = JSON.parse(
+            sessionStorage.getItem("session_auth_data")
+          );
+
+          this.props.getAuthSessionDataHandler(getAuthData);
 
           this.notify_success();
 
@@ -187,5 +196,15 @@ class Login extends Component {
     );
   }
 }
+// ACTION - returning value to the reducer.js for processing and computation
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getAuthSessionDataHandler: (sessionAuthData) =>
+      dispatch({
+        type: actionTypes.GET_AUTH_INFORMATION,
+        sessionAuthData: sessionAuthData,
+      }),
+  };
+};
 
-export default Login;
+export default connect(null, mapDispatchToProps)(Login);

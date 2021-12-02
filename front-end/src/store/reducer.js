@@ -6,12 +6,21 @@ const initialState = {
   myCart: [], // contains a list of objects
   totalAmount: 0,
   allProducts: 0,
+  sessionAuthData: null,
 };
 
 const reducer = (state = initialState, action) => {
-  // FUNCTION: ADD TO CART
-  // eslint-disable-next-line default-case
   switch (action.type) {
+    // FUNCTION: GET AUTH DETAILS
+    case actionTypes.GET_AUTH_INFORMATION: {
+      return {
+        ...state,
+        sessionAuthData: action.sessionAuthData,
+      };
+    }
+
+    // FUNCTION: ADD TO CART
+    // eslint-disable-next-line default-case
     case actionTypes.ADD_TO_CART: {
       // return index of item that has already existing in the cart. add to existing cart item if exists.
       const itemIndex = state.myCart.findIndex((item) => {

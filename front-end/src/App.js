@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
 import Navbar from "./components/user/Layout/Navbar/Navbar";
 import Footer from "./components/user/Layout/Footer/Footer";
@@ -15,7 +17,7 @@ import Product from "./components/user/Products/Product/Product";
 
 import "./App.css";
 
-const App = () => {
+const App = (props) => {
   const [product_list, setProduct] = useState([]);
 
   useEffect(() => {
@@ -37,19 +39,12 @@ const App = () => {
 
           // add product to the end of the array
           setProduct((product_list) => [...product_list, tempObj]);
-
-          // ==== Programmer's note ====
-          // Push element at end of array
-          // setTheArray(prevArray => [...prevArray, newValue])
-
-          // Update an entire array
-          // setTheObject([...prevState, newValue]);
         });
       })
       .catch((err) => console.log(`Error: ${err}`));
   }, []);
 
-  console.log(product_list, "ARRAY");
+  // console.log(product_list, "ARRAY");
 
   return (
     <BrowserRouter>
@@ -87,7 +82,17 @@ const App = () => {
           <Route exact path="/cart" render={() => <Cart />} />
 
           {/* Favourite Page */}
-          <Route exact path="/favourite" component={Favourite} />
+          <Route
+            exact
+            path="/favourite"
+            render={() => {
+              if (props.sessionAuthData === null) {
+                return <Redirect to="/" />;
+              } else {
+                return <Favourite />;
+              }
+            }}
+          />
         </Switch>
 
         <Footer />
@@ -96,4 +101,13 @@ const App = () => {
   );
 };
 
-export default App;
+// REDUX SECTION
+
+// STORE - Getting all the state from reducer.js
+const mapStateToProps = (global_state) => {
+  return {
+    sessionAuthData: global_state.sessionAuthData,
+  };
+};
+
+export default connect(mapStateToProps, null)(App);

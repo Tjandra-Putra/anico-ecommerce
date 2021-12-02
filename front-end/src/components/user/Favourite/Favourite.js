@@ -25,11 +25,13 @@ const Favourite = () => {
 
   return (
     <React.Fragment>
-      {authFail}
+      {/* {authFail}
       <div className="container">
         <h1>Favourite</h1>
         <p>{email}</p>
-      </div>
+      </div> */}
+
+      <p>Favourite</p>
     </React.Fragment>
   );
 };
