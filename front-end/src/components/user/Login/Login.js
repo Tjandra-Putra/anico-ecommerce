@@ -47,10 +47,19 @@ class Login extends Component {
         }
 
         if (this.state.errorMsg["isValid"] === "valid") {
+          // saving to session storage / local storage for authentication token
+          sessionStorage.setItem(
+            "session_auth_data",
+            JSON.stringify({
+              token: res.data.access_token,
+              email: this.state.fields["email"],
+            })
+          );
+
           this.notify_success();
 
           setTimeout(() => {
-            this.setState({ redirect: <Redirect to="/product" /> });
+            this.setState({ redirect: <Redirect to="/" /> });
           }, 3000);
         }
       })
@@ -72,6 +81,9 @@ class Login extends Component {
               <div className="description">
                 By logging in, you agree to anico's Privacy Policy and Terms of
                 Use.
+                {/* {sessionStorage.getItem("token")
+                  ? "You are logged in with" + sessionStorage.getItem("token")
+                  : null} */}
               </div>
 
               <form onSubmit={this.submitFormHandler}>

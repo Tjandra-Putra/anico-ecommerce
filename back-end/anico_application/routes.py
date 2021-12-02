@@ -1,8 +1,10 @@
 import json
 from flask import render_template, url_for, flash, redirect, request, jsonify
-from flask_login import login_user, logout_user, current_user, login_required
 from flask_mail import Message
 from flask_migrate import current
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
 
 from anico_application.forms import validate_register_form, validate_login_form
 from anico_application import app, db, bcrypt, mail, csrf
@@ -58,21 +60,16 @@ def login():
         
         # successful login
         if isValidated: # True
-            user_db = User.query.filter_by(email=req['email']).first()
+            # user_db = User.query.filter_by(email=req['email']).first()
+            access_token = create_access_token(identity=req['email'])
 
-            login_user(user_db)
-            print("LOGIN" + current_user.email)
-
-            return {'isValid': 'valid'}
+            return {'isValid': 'valid', 'access_token': access_token}
 
 
         # send error response to client side
         else:
             print("sent to client side")
             return validated_form
-
-    else:
-        print(current_user.email)
 
     return ''
 
@@ -104,11 +101,11 @@ def support():
 
     return ''
 
+
 @app.route('/api/favourite/form-submit', methods=['POST', 'GET'])
 def favourite():
-    print(current_user.is_authenticated)
-
     return {"Hello": "World"}
+
 
 @app.route('/api/products/get-products', methods=['POST', 'GET'])
 def products():
@@ -117,9 +114,10 @@ def products():
 
     return products
 
+
 @app.route('/api/products/get-product-image', methods=['POST', 'GET'])
 @csrf.exempt # for post request
-def produces_images():
+def products_images():
     if request.method == 'POST':
         req = request.json
 
@@ -130,3 +128,15 @@ def produces_images():
         return {'product_image_url': product_image_url_list}
 
     return {"Development": None}
+
+
+@app.route('/api/login/authentication-token', methods=['POST'])
+@csrf.exempt # for post request
+def create_authentication_token():
+    if request.method == 'POST':
+        req = request.json
+
+
+        return {"Development": None}
+
+
