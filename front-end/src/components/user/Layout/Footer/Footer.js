@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="col-md-8">
             <div className="title">
               Explore
-              <span style={{ fontFamily: "var(--font-poppins)" }}>anico.</span>
+              <span style={{ fontFamily: "var(--font-poppins)" }}> anico.</span>
             </div>
           </div>
           <div className="col-md-4 text-right">
