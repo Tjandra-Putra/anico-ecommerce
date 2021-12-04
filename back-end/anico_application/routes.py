@@ -130,13 +130,3 @@ def products_images():
     return {"Development": None}
 
 
-@app.route('/api/login/authentication-token', methods=['POST'])
-@csrf.exempt # for post request
-def create_authentication_token():
-    if request.method == 'POST':
-        req = request.json
-
-
-        return {"Development": None}
-
-

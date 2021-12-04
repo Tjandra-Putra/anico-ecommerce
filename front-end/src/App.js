@@ -50,7 +50,6 @@ const App = (props) => {
     <BrowserRouter>
       <React.Fragment>
         <Navbar />
-
         <Switch>
           {/*Default Path*/}
           <Route exact path="/" component={Home} />

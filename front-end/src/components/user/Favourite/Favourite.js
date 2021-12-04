@@ -31,6 +31,8 @@ const Favourite = () => {
         <p>{email}</p>
       </div> */}
 
+      {/* {sessionStorage.getItem("session_auth_data")} */}
+
       <p>Favourite</p>
     </React.Fragment>
   );

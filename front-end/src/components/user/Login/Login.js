@@ -59,11 +59,28 @@ class Login extends Component {
           );
 
           // global state update auth information
-          const getAuthData = JSON.parse(
-            sessionStorage.getItem("session_auth_data")
-          );
-
-          this.props.getAuthSessionDataHandler(getAuthData);
+          // try {
+          //   const getAuthData = JSON.parse(
+          //     sessionStorage.getItem("session_auth_data")
+          //   );
+          //   if (getAuthData === null) {
+          //     return undefined;
+          //   }
+          //   return this.props.getAuthSessionDataHandler(getAuthData);
+          // } catch (err) {
+          //   return undefined;
+          // }
+          try {
+            const getAuthData = JSON.parse(
+              sessionStorage.getItem("session_auth_data")
+            );
+            if (getAuthData === null) {
+              return undefined;
+            }
+            this.props.getAuthSessionDataHandler(getAuthData);
+          } catch (err) {
+            return undefined;
+          }
 
           this.notify_success();
 
@@ -90,9 +107,6 @@ class Login extends Component {
               <div className="description">
                 By logging in, you agree to anico's Privacy Policy and Terms of
                 Use.
-                {/* {sessionStorage.getItem("token")
-                  ? "You are logged in with" + sessionStorage.getItem("token")
-                  : null} */}
               </div>
 
               <form onSubmit={this.submitFormHandler}>
@@ -104,13 +118,6 @@ class Login extends Component {
                     onChange={this.fieldChangeHandler.bind(this, "email")}
                     value={this.state.fields["email"]}
                   />
-                  {/* {this.state.errorMsg["email"] === "" ? (
-                    <small className="text-success"></small>
-                  ) : (
-                    <small className="text-danger">
-                      {this.state.errorMsg["email"]}
-                    </small>
-                  )} */}
                 </div>
 
                 <div className="form-group">
@@ -121,13 +128,6 @@ class Login extends Component {
                     onChange={this.fieldChangeHandler.bind(this, "password")}
                     value={this.state.fields["password"]}
                   />
-                  {/* {this.state.errorMsg["password"] === "" ? (
-                    <small className="text-success">Looks good!</small>
-                  ) : (
-                    <small className="text-danger">
-                      {this.state.errorMsg["password"]}
-                    </small>
-                  )} */}
                 </div>
 
                 <div className="row">
