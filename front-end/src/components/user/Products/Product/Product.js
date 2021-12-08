@@ -26,9 +26,9 @@ const Product = (props) => {
   // toast component
   const notify_success = () =>
     toast.success(product[0].name + " has been added to cart.", {
-      duration: 1800,
+      duration: 2400,
       style: {
-        border: "1px solid #000000",
+        // border: "1px solid #000000",
         padding: "16px",
         color: "#000000",
       },
@@ -36,6 +36,7 @@ const Product = (props) => {
         primary: "#50c878",
         secondary: "#FFFAEE",
       },
+      position: "top-center",
     });
 
   // getting id from parameter url
@@ -108,7 +109,7 @@ const Product = (props) => {
   // making sure data is loaded before rendering to avoid errors
   let loadedData = null;
 
-  if (product.length !== 0) {
+  if (product.length !== 0 && productImageUrl.length !== 0) {
     loadedData = (
       <div className="container">
         <div className="mb-1"></div>

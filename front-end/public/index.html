@@ -52,22 +52,43 @@
     ></script>
 
     <script>
-      // ensure that the dom is fully loaded
-      document.addEventListener("DOMContentLoaded", function () {
-        var navItem = document.querySelector(".navbar-collapse");
-        navItem.addEventListener("click", function () {
-          hamburger.classList.remove("is-active");
-        });
+      if (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) // mobile version only
+      ) {
+        // ensure that the dom is fully loaded
+        document.addEventListener("DOMContentLoaded", function () {
+          var navItem = document.querySelector(".navbar-collapse");
+          navItem.addEventListener("click", function () {
+            hamburger.classList.remove("is-active");
+          });
 
-        var hamburger = document.querySelector(".hamburger");
-        console.log(hamburger);
-        // On click
-        hamburger.addEventListener("click", function () {
-          // Toggle class "is-active"
-          hamburger.classList.toggle("is-active");
-          // Do something else, like open/close menu
+          var hamburger = document.querySelector(".hamburger");
+          console.log(hamburger);
+          // On click
+          hamburger.addEventListener("click", function () {
+            // Toggle class "is-active"
+            hamburger.classList.toggle("is-active");
+            // Do something else, like open/close menu
+          });
         });
-      });
+      }
+
+      //       // ensure that the dom is fully loaded
+      //       document.addEventListener("DOMContentLoaded", function () {
+      //         var navItem = document.querySelector(".navbar-collapse");
+      //         navItem.addEventListener("click", function () {
+      //           hamburger.classList.remove("is-active");
+      //         });
+
+      //         var hamburger = document.querySelector(".hamburger");
+      //         console.log(hamburger);
+      //         // On click
+      //         hamburger.addEventListener("click", function () {
+      //           // Toggle class "is-active"
+      //           hamburger.classList.toggle("is-active");
+      //           // Do something else, like open/close menu
+      //         });
+      //       });
     </script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -32,9 +32,12 @@ const Navbar = (props) => {
             <span className="hamburger-inner"></span>
           </span>
         </button>
+
         <div
           className="collapse navbar-collapse"
           id="navbarNav"
+          // data-toggle={isMobile ? "collapse" : ""}
+          // data-target={isMobile ? "#navbarNav" : ""}
           data-toggle="collapse"
           data-target="#navbarNav"
         >
