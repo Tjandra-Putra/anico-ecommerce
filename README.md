@@ -34,17 +34,35 @@ anico-ecommerce > back-end | http://127.0.0.1:5000/
 
 | Technology   | Type           | 
 | ------------- |:-------------:
-| `Reactjs`     | Client | 
-| `Python`     | Server      |  
+| `Reactjs`     | Framework, Client | 
+| `Python`     | Language, Server      |  
+| `CSS`     | Language      |  
+| `HTML`     | Language      |  
+| `Javascript`     | Language      |  
 | `Flask`     | Framework      |  
-| `Bootstrap`     | Framework      |  
+| `SQLite`     | Database      |  
+
+### Features
+| Function | Description | User Type |
+| :---         |     :---      |    :--- |
+| `shopping cart`   | add to cart     | customer    |
+| `shopping cart`   | remove from cart using the cross icon or decrease quantity     | customer    |
+| `product stocks`   | dynamic stocks such as display messages and disable or enable buttons    | customer    |
+| `user authenticaton`   | user can login and sign up. user's inputs are validated. auth routes     | customer, admin   |
+| `loading of data`   | when getting data such as images or product info, loading animation will be shown to improve ux | customer    |
+| `list of product images`   | each product has multiple dynamic images that has been retrieved from the database    | customer    |
+
+
+
 
 ### Resources
 | Tools | Description | Link |
 | :---         |     :---      |    :--- |
 | `react-spinners`   | Loading animation     | https://www.davidhu.io/react-spinners/    |
 | `react-hot-toast`     | Toast/Alert animation       | https://react-hot-toast.com/docs/toast      |
+| `Bootstrap`   | CSS framework    | https://getbootstrap.com/docs/4.6/getting-started/introduction/    |
 | `Hamburger.js`   | Navbar collapse animation     | https://jonsuh.com/hamburgers/    |
+| `Chart.js`   | Beautiful Charts    |  https://www.chartjs.org/    |
 | `AOS.js`     | On scroll animation       | https://michalsnik.github.io/aos/      |
 | `FontAwesome`     | Icon elements      | https://fontawesome.com/ |
 | `FlatIcon`     | Icon Images       | https://www.flaticon.com/      |
