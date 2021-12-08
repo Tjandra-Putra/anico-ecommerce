@@ -32,7 +32,12 @@ const Navbar = (props) => {
             <span className="hamburger-inner"></span>
           </span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div
+          className="collapse navbar-collapse"
+          id="navbarNav"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+        >
           <ul className="navbar-nav">
             <li className="nav-item active">
               <Link className="nav-link pr-4" to="/products">

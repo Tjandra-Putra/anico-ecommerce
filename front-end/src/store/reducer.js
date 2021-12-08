@@ -1,16 +1,23 @@
 import * as actionTypes from "./actions";
-import axios from "axios";
 
 // =========== GLOBAL STATE ===========
 const initialState = {
   myCart: [], // contains a list of objects
   totalAmount: 0,
-  allProducts: 0,
+  allProducts: [],
   sessionAuthData: null,
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    // FUNCTION: GET ALL PRODUCTS
+    case actionTypes.GET_PRODUCTS: {
+      return {
+        ...state,
+        allProducts: action.product_list,
+      };
+    }
+
     // FUNCTION: GET AUTH DETAILS
     case actionTypes.GET_AUTH_INFORMATION: {
       return {

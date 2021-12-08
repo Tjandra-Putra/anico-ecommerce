@@ -23,12 +23,8 @@ const store = createStore(persistedReducer);
 const persistor = persistStore(store);
 
 // Subscription
-store.subscribe(() => {
-  console.log("[Subscription]", store.getState());
-});
-
-// persistStore.subscribe(() => {
-//   console.log("[Subscription]", persistedStore.getState());
+// store.subscribe(() => {
+//   console.log("[Subscription]", store.getState());
 // });
 
 ReactDOM.render(
@@ -40,15 +36,15 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-// ========================== Hamburger Menu Animation ==========================
-// Look for .hamburger
-var hamburger = document.querySelector(".hamburger");
+// // ========================== Hamburger Menu Animation ==========================
+// // Look for .hamburger
+// var hamburger = document.querySelector(".hamburger");
 
-// On click
-if (hamburger) {
-  hamburger.addEventListener("click", function () {
-    // Toggle class "is-active"
-    hamburger.classList.toggle("is-active");
-    // Do something else, like open/close menu
-  });
-}
+// // On click
+// if (hamburger) {
+//   hamburger.addEventListener("click", function () {
+//     // Toggle class "is-active"
+//     hamburger.classList.toggle("is-active");
+//     // Do something else, like open/close menu
+//   });
+// }

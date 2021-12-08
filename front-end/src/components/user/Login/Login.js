@@ -132,14 +132,14 @@ class Login extends Component {
 
                 <div className="row">
                   <div className="col-md-6">
-                    <div class="form-group form-check">
+                    <div className="form-group form-check">
                       <input
                         type="checkbox"
-                        class="form-check-input"
+                        className="form-check-input"
                         id="exampleCheck1"
                       />
                       <label
-                        class="form-check-label text-muted"
+                        className="form-check-label text-muted"
                         for="exampleCheck1"
                         style={{ textTransform: "none", fontWeight: "400" }}
                       >
@@ -149,7 +149,7 @@ class Login extends Component {
                   </div>
                   <div className="col-md-6">
                     <label
-                      class="form-check-label text-muted float-right"
+                      className="form-check-label text-muted float-right"
                       style={{ textTransform: "none", fontWeight: "400" }}
                     >
                       Forgotten your password?

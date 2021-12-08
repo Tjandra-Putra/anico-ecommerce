@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Products.css";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { connect } from "react-redux";
 
 const Products = (props) => {
   return (
@@ -102,4 +102,11 @@ const Products = (props) => {
   );
 };
 
-export default Products;
+// STORE - Getting all the state from reducer.js
+const mapStateToProps = (global_state) => {
+  return {
+    product_list: global_state.allProducts,
+  };
+};
+
+export default connect(mapStateToProps, null)(Products);

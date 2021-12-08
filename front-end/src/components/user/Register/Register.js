@@ -32,6 +32,7 @@ class Register extends Component {
 
   // form handler
   submitFormHandler = (event) => {
+    // prevent page from refreshing
     event.preventDefault();
 
     // pass form to back-end, back-end returns a response

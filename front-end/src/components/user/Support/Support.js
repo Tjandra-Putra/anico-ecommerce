@@ -15,6 +15,10 @@ class Support extends Component {
     };
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   // dateHandler = () => {
   //   let newDate = new Date();
   //   let date = newDate.getDate();

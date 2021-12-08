@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import * as actionTypes from "../src/store/actions";
 
 import Navbar from "./components/user/Layout/Navbar/Navbar";
 import Footer from "./components/user/Layout/Footer/Footer";
@@ -44,6 +45,9 @@ const App = (props) => {
       .catch((err) => console.log(`Error: ${err}`));
   }, []);
 
+  // store to redux
+  props.getProductsHandler(product_list);
+
   // console.log(product_list, "ARRAY");
 
   return (
@@ -58,18 +62,10 @@ const App = (props) => {
           <Route exact path="/support" component={Support} />
 
           {/* Products Page */}
-          <Route
-            exact
-            path="/products"
-            render={() => <Products product_list={product_list} />}
-          />
+          <Route exact path="/products" render={() => <Products />} />
 
           {/* Product Detail Page */}
-          <Route
-            exact
-            path="/products/:prodId"
-            render={() => <Product product_list={product_list} />}
-          />
+          <Route exact path="/products/:prodId" render={() => <Product />} />
 
           {/* Login Page */}
           <Route exact path="/login" component={Login} />
@@ -106,7 +102,19 @@ const App = (props) => {
 const mapStateToProps = (global_state) => {
   return {
     sessionAuthData: global_state.sessionAuthData,
+    productList: global_state.allProducts,
   };
 };
 
-export default connect(mapStateToProps, null)(App);
+// ACTION - returning value to the reducer.js for processing and computation
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getProductsHandler: (product_list) =>
+      dispatch({
+        type: actionTypes.GET_PRODUCTS,
+        product_list: product_list,
+      }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

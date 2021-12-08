@@ -3,6 +3,8 @@ import { Link, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
+import HashLoader from "react-spinners/HashLoader";
+import { css } from "@emotion/react";
 
 import * as actionTypes from "../../../../store/actions";
 import "./Product.css";
@@ -11,6 +13,15 @@ const Product = (props) => {
   // state
   const [addToBagText, setAddToBagText] = useState("Add To Bag");
   const [productImageUrl, setProductImageUrl] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  let [color, setColor] = useState("#000000");
+
+  // Can be a string as well. Need to ensure each key-value pair ends with ;
+  const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+  `;
 
   // toast component
   const notify_success = () =>
@@ -30,10 +41,19 @@ const Product = (props) => {
   // getting id from parameter url
   let { prodId } = useParams();
 
+  // let product = "";
+
+  // setTimeout(() => {
+  //   product = props.product_list.filter((item) => item.id === prodId);
+  // }, 400);
+
   const product = props.product_list.filter((item) => item.id === prodId);
 
   // Getting the images based on id from server
   useEffect(() => {
+    // Auto restore scroll position after page renders
+    window.scrollTo(0, 0);
+
     axios
       .post("http://localhost:5000/api/products/get-product-image", {
         product_id: prodId,
@@ -44,7 +64,6 @@ const Product = (props) => {
         productImageUrlArray.map((item) => {
           setProductImageUrl((productImageUrl) => [...productImageUrl, item]);
         });
-        console.log(productImageUrlArray, "STATE");
       })
       .catch((err) => {
         console.log(err, "==========");
@@ -86,10 +105,11 @@ const Product = (props) => {
     alert("added to favourite");
   };
 
-  return (
-    <div className="product">
-      <Toaster position="top-right" reverseOrder={false} />
+  // making sure data is loaded before rendering to avoid errors
+  let loadedData = null;
 
+  if (product.length !== 0) {
+    loadedData = (
       <div className="container">
         <div className="mb-1"></div>
         <nav aria-label="breadcrumb">
@@ -150,7 +170,7 @@ const Product = (props) => {
                     role="button"
                     data-slide="prev"
                   >
-                    <i class="fas fa-arrow-left"></i>
+                    <i className="fas fa-arrow-left"></i>
 
                     <span className="sr-only">Previous</span>
                   </a>
@@ -160,7 +180,7 @@ const Product = (props) => {
                     role="button"
                     data-slide="next"
                   >
-                    <i class="fas fa-arrow-right"></i>
+                    <i className="fas fa-arrow-right"></i>
                     <span className="sr-only">Next</span>
                   </a>
                 </div>
@@ -236,7 +256,7 @@ const Product = (props) => {
               <label htmlFor="radio5">XL</label>
 
               {(() => {
-                if (product[0].stock == 0)
+                if (product[0].stock === 0)
                   return <div className="product-stock">out of stock</div>;
                 if (product[0].stock <= 20)
                   return (
@@ -254,7 +274,7 @@ const Product = (props) => {
 
               <div className="text-danger">{sizeError}</div>
 
-              {product[0].stock == 0 ? (
+              {product[0].stock === 0 ? (
                 <button
                   className="btn btn-dark btn-block"
                   type="submit"
@@ -276,6 +296,22 @@ const Product = (props) => {
           </div>
         </div>
       </div>
+    );
+  } else {
+    loadedData = (
+      <div className="container">
+        <div className="loadedWrapper">
+          <HashLoader loading={true} size={50} css={override} color={color} />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="product">
+      <Toaster position="top-right" reverseOrder={false} />
+
+      {loadedData}
     </div>
   );
 };
@@ -284,9 +320,9 @@ const Product = (props) => {
 
 // STORE - Getting all the state from reducer.js
 const mapStateToProps = (global_state) => {
-  // return {
-  //     loadedMyCart: global_state.myCart,
-  // };
+  return {
+    product_list: global_state.allProducts,
+  };
 };
 
 // ACTION - returning value to the reducer.js for processing and computation
