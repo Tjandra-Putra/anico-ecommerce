@@ -48,6 +48,8 @@ OR
 | `Javascript`     | Language      |  
 | `Flask`     | Framework      |  
 | `SQLite`     | Database      |  
+| `LocalStorage`     | Browser      |  
+
 
 ### Features
 | Function | Description | User Type |
