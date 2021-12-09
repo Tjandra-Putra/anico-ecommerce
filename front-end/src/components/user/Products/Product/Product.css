@@ -126,9 +126,14 @@
 }
 
 .product .loadedWrapper {
-  padding-top: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: calc(65vh);
+  /* padding-top: 30vh;
   padding-bottom: 30vh;
-  margin: auto;
+  margin: auto; */
 
   /* margin: auto; CENTRAL MIDDLE AND VERTICAL
   top: 0;

@@ -109,3 +109,14 @@
 .fadeIn-right {
   left: 80%;
 }
+
+.products .loadedWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: calc(40vh);
+
+  /* min-height: calc(100vh - 60.4vh); */
+  /* 60.4 is derived using javascript height of navbar var navHeight = $("#navbar").height() */
+}

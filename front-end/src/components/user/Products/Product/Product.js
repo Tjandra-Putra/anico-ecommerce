@@ -13,7 +13,6 @@ const Product = (props) => {
   // state
   const [addToBagText, setAddToBagText] = useState("Add To Bag");
   const [productImageUrl, setProductImageUrl] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   let [color, setColor] = useState("#000000");
 
   // Can be a string as well. Need to ensure each key-value pair ends with ;
@@ -41,12 +40,6 @@ const Product = (props) => {
 
   // getting id from parameter url
   let { prodId } = useParams();
-
-  // let product = "";
-
-  // setTimeout(() => {
-  //   product = props.product_list.filter((item) => item.id === prodId);
-  // }, 400);
 
   const product = props.product_list.filter((item) => item.id === prodId);
 
