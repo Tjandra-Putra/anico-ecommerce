@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Products.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -6,50 +6,149 @@ import BarLoader from "react-spinners/BarLoader";
 import { css } from "@emotion/react";
 
 const Products = (props) => {
+  // filter component
+  let [category, setCategory] = useState("Recommended");
   let loadedProduct;
 
-  console.log(props.product_list.length);
+  const categoryHandler = (event) => {
+    setCategory(event.target.value);
+  };
 
+  console.log(category);
+
+  // ensures product are rendered
   if (props.product_list.length !== 0) {
-    loadedProduct = props.product_list.map((product) => (
-      <div className="col-md-4 mb-5" key={product.id}>
-        <div className="product-wrapper">
-          <Link
-            to={"/products/" + product.id}
-            style={{
-              textDecoration: "none",
-              color: "unset",
-            }}
-          >
-            <div className="img-wrapper">
-              <div className="content">
-                <div className="content-overlay"></div>
-                <img
-                  src={
-                    require(`../../../assets/products/${product.imgUrl}`)
-                      .default
-                  }
-                  alt={product.name}
-                  className="img-fluid content-image"
-                  style={{ borderRadius: "2px" }}
-                />
-                <div className="content-details fadeIn-bottom">
-                  <h3>{product.name}</h3>
-                  <p>
-                    View
-                    <i className="fas fa-arrow-right pl-2"></i>
-                  </p>
+    if (category === "Recommended") {
+      loadedProduct = props.product_list.map((product) => (
+        <div className="col-md-4 mb-5" key={product.id}>
+          <div className="product-wrapper">
+            <Link
+              to={"/products/" + product.id}
+              style={{
+                textDecoration: "none",
+                color: "unset",
+              }}
+            >
+              <div className="img-wrapper">
+                <div className="content">
+                  <div className="content-overlay"></div>
+                  <img
+                    src={
+                      require(`../../../assets/products/${product.imgUrl}`)
+                        .default
+                    }
+                    alt={product.name}
+                    className="img-fluid content-image"
+                    style={{ borderRadius: "2px" }}
+                  />
+                  <div className="content-details fadeIn-bottom">
+                    <h3>{product.name}</h3>
+                    <p>
+                      View
+                      <i className="fas fa-arrow-right pl-2"></i>
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="product-tag">{product.tag}</div>
-            <div className="product-name">{product.name}</div>
-            <div className="product-price">S${product.price}</div>
-          </Link>
+              <div className="product-tag">{product.tag}</div>
+              <div className="product-name">{product.name}</div>
+              <div className="product-price">S${product.price}</div>
+            </Link>
+          </div>
         </div>
-      </div>
-    ));
+      ));
+    }
+
+    // filter: price low to high
+    if (category === "Price (low - high)") {
+      loadedProduct = props.product_list
+        .sort((a, b) => a.price - b.price)
+        .map((product) => (
+          <div className="col-md-4 mb-5" key={product.id}>
+            <div className="product-wrapper">
+              <Link
+                to={"/products/" + product.id}
+                style={{
+                  textDecoration: "none",
+                  color: "unset",
+                }}
+              >
+                <div className="img-wrapper">
+                  <div className="content">
+                    <div className="content-overlay"></div>
+                    <img
+                      src={
+                        require(`../../../assets/products/${product.imgUrl}`)
+                          .default
+                      }
+                      alt={product.name}
+                      className="img-fluid content-image"
+                      style={{ borderRadius: "2px" }}
+                    />
+                    <div className="content-details fadeIn-bottom">
+                      <h3>{product.name}</h3>
+                      <p>
+                        View
+                        <i className="fas fa-arrow-right pl-2"></i>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="product-tag">{product.tag}</div>
+                <div className="product-name">{product.name}</div>
+                <div className="product-price">S${product.price}</div>
+              </Link>
+            </div>
+          </div>
+        ));
+    }
+
+    // filter: price high to low
+    if (category === "Price (high - low)") {
+      loadedProduct = props.product_list
+        .sort((a, b) => b.price - a.price)
+        .map((product) => (
+          <div className="col-md-4 mb-5" key={product.id}>
+            <div className="product-wrapper">
+              <Link
+                to={"/products/" + product.id}
+                style={{
+                  textDecoration: "none",
+                  color: "unset",
+                }}
+              >
+                <div className="img-wrapper">
+                  <div className="content">
+                    <div className="content-overlay"></div>
+                    <img
+                      src={
+                        require(`../../../assets/products/${product.imgUrl}`)
+                          .default
+                      }
+                      alt={product.name}
+                      className="img-fluid content-image"
+                      style={{ borderRadius: "2px" }}
+                    />
+                    <div className="content-details fadeIn-bottom">
+                      <h3>{product.name}</h3>
+                      <p>
+                        View
+                        <i className="fas fa-arrow-right pl-2"></i>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="product-tag">{product.tag}</div>
+                <div className="product-name">{product.name}</div>
+                <div className="product-price">S${product.price}</div>
+              </Link>
+            </div>
+          </div>
+        ));
+    }
   } else {
     loadedProduct = (
       <div className="container">
@@ -69,91 +168,37 @@ const Products = (props) => {
               <div className="title">Collections</div>
             </div>
             <div className="col-md-6">
-              <div className="text-right">
-                <p className="text-secondary d-inline pr-3">
-                  {props.product_list.length} Results
-                </p>
-                <div className="dropdown d-inline">
-                  <button
-                    className="btn btn-outline-dark dropdown-toggle px-3"
-                    style={{
-                      borderRadius: "2px",
-                      border: "1.5px solid #000000",
-                    }}
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Sort By
-                  </button>
-                  <div
-                    className="dropdown-menu"
-                    aria-labelledby="dropdownMenuButton"
-                  >
-                    <div className="dropdown-item" href="#">
-                      Price (low -high)
-                    </div>
-                    <div className="dropdown-item" href="#">
-                      Newest
-                    </div>
-                    <div className="dropdown-item" href="#">
-                      Top Sellers
-                    </div>
-                    <div className="dropdown-item" href="#">
-                      Price (high - low)
-                    </div>
+              <div className="d-flex flex-row float-right">
+                <div className="px-2 my-auto ">
+                  <div className="results text-secondary d-inline">
+                    {props.product_list.length} Results
                   </div>
+                </div>
+                <div className="px-2 my-auto">
+                  <form
+                    as="select"
+                    value={category}
+                    onChange={(event) => {
+                      categoryHandler(event);
+                    }}
+                  >
+                    <div className="text-right">
+                      <div className="custom-selector">
+                        <select>
+                          <option>Recommended</option>
+                          <option>Price (low - high)</option>
+                          <option>Price (high - low)</option>
+                        </select>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div className="products-wrapper mt-4">
-          <div className="row">
-            {loadedProduct}
-
-            {/* {props.product_list.map((product) => (
-              <div className="col-md-4 mb-5" key={product.id}>
-                <div className="product-wrapper">
-                  <Link
-                    to={"/products/" + product.id}
-                    style={{
-                      textDecoration: "none",
-                      color: "unset",
-                    }}
-                  >
-                    <div className="img-wrapper">
-                      <div className="content">
-                        <div className="content-overlay"></div>
-                        <img
-                          src={
-                            require(`../../../assets/products/${product.imgUrl}`)
-                              .default
-                          }
-                          alt={product.name}
-                          className="img-fluid content-image"
-                          style={{ borderRadius: "2px" }}
-                        />
-                        <div className="content-details fadeIn-bottom">
-                          <h3>{product.name}</h3>
-                          <p>
-                            View
-                            <i className="fas fa-arrow-right pl-2"></i>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="product-tag">{product.tag}</div>
-                    <div className="product-name">{product.name}</div>
-                    <div className="product-price">S${product.price}</div>
-                  </Link>
-                </div>
-              </div>
-            ))} */}
-          </div>
+          <div className="row">{loadedProduct}</div>
         </div>
       </div>
     </div>

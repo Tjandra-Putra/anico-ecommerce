@@ -2,6 +2,31 @@
   margin-top: 1rem;
 }
 
+.products .custom-selector select {
+  border-radius: 2px;
+  border: 1.5px solid rgb(0, 0, 0);
+  width: 11rem;
+  outline: none;
+  padding: 0 10px;
+  min-height: 35px;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  cursor: pointer;
+
+  background: transparent;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 5px;
+}
+
+.products .custom-selector select option:hover {
+  cursor: pointer;
+}
+
 .products .product-tag {
   margin-top: 0.8rem;
   color: var(--text-orange);
