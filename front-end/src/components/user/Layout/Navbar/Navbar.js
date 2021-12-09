@@ -10,16 +10,16 @@ import userIcon from "../../../../assets/img/user.png";
 import favouriteIcon from "../../../../assets/img/heart.png";
 
 const Navbar = (props) => {
-  const [name, setName] = useState("");
+  // const [name, setName] = useState("");
 
-  useEffect(() => {
-    // check if user is authenticated
-    if (props.sessionAuthData) {
-      let email = props.sessionAuthData.email;
+  // useEffect(() => {
+  //   // check if user is authenticated
+  //   if (props.sessionAuthData) {
+  //     let email = props.sessionAuthData.email;
 
-      setName(email.substring(0, email.lastIndexOf("@")));
-    }
-  }, []);
+  //     setName(email.substring(0, email.lastIndexOf("@")));
+  //   }
+  // }, []);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white" id="navbar">
@@ -69,7 +69,11 @@ const Navbar = (props) => {
             {props.sessionAuthData ? (
               <Link className="nav-link" to="/cart">
                 <li className="nav-item mr-2" style={{ marginTop: "1.2rem" }}>
-                  welcome back {name}
+                  welcome back &nbsp;
+                  {props.sessionAuthData.email.substring(
+                    0,
+                    props.sessionAuthData.email.lastIndexOf("@")
+                  )}
                 </li>
               </Link>
             ) : null}
