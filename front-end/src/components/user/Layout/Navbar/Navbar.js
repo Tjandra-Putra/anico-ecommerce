@@ -38,8 +38,8 @@ const Navbar = (props) => {
           id="navbarNav"
           // data-toggle={isMobile ? "collapse" : ""}
           // data-target={isMobile ? "#navbarNav" : ""}
-          data-toggle="collapse"
-          data-target="#navbarNav"
+          // data-toggle="collapse"
+          // data-target="#navbarNav"
         >
           <ul className="navbar-nav">
             <li className="nav-item active">
