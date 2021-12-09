@@ -13,6 +13,9 @@
 
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
+    <!-- Animate on scroll CDN-->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <!-- Bootstrap CDN -->
     <link
       rel="stylesheet"
@@ -51,7 +54,15 @@
       crossorigin="anonymous"
     ></script>
 
+    <!-- Animate on scroll Script-->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
     <script>
+      // ========================== ANIMATE ON SCROLL ==========================
+      AOS.init({
+        once: true,
+      });
+
       if (
         /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) // mobile version only
       ) {
