@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -10,6 +10,17 @@ import userIcon from "../../../../assets/img/user.png";
 import favouriteIcon from "../../../../assets/img/heart.png";
 
 const Navbar = (props) => {
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    // check if user is authenticated
+    if (props.sessionAuthData) {
+      let email = props.sessionAuthData.email;
+
+      setName(email.substring(0, email.lastIndexOf("@")));
+    }
+  }, []);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white" id="navbar">
       <div className="container">
@@ -55,7 +66,18 @@ const Navbar = (props) => {
           </ul>
 
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item  d-none d-sm-block">
+            {props.sessionAuthData ? (
+              <Link className="nav-link" to="/cart">
+                <li className="nav-item mr-2" style={{ marginTop: "1.2rem" }}>
+                  welcome back {name}
+                </li>
+              </Link>
+            ) : null}
+
+            <li
+              className="nav-item  d-none d-sm-block"
+              style={{ marginTop: "1rem" }}
+            >
               <Link className="nav-link" to="/favourite">
                 <img
                   src={favouriteIcon}
@@ -65,17 +87,25 @@ const Navbar = (props) => {
                 />
               </Link>
             </li>
-            <li className="nav-item pl-1  d-none d-sm-block">
-              <Link className="nav-link" to="/register">
-                <img
-                  src={userIcon}
-                  className="img-fluid"
-                  alt="userIcon"
-                  width="25"
-                />
-              </Link>
-            </li>
-            <li className="nav-item pl-1  d-none d-sm-block">
+            {!props.sessionAuthData ? (
+              <li
+                className="nav-item pl-1  d-none d-sm-block"
+                style={{ marginTop: "1rem" }}
+              >
+                <Link className="nav-link" to="/login">
+                  <img
+                    src={userIcon}
+                    className="img-fluid"
+                    alt="userIcon"
+                    width="25"
+                  />
+                </Link>
+              </li>
+            ) : null}
+            <li
+              className="nav-item pl-1  d-none d-sm-block"
+              style={{ marginTop: "1rem" }}
+            >
               <Link className="nav-link" to="/cart">
                 <img
                   src={shoppingBagIcon}
@@ -99,6 +129,7 @@ const Navbar = (props) => {
 const mapStateToProps = (global_state) => {
   return {
     itemCount: global_state.myCart.length,
+    sessionAuthData: global_state.sessionAuthData,
   };
 };
 
