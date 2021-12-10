@@ -64,6 +64,7 @@
 
 .cart td img {
   width: 6.7rem;
+  max-width: none !important;
 }
 
 .cart .table .product-name {

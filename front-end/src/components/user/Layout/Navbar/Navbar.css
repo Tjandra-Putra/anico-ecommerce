@@ -1,10 +1,7 @@
 .navbar {
   margin-bottom: 2rem;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-}
-
-.navbar-nav {
-  padding: 0.5rem 0.5rem !important;
+  height: 7rem;
 }
 
 .navbar-brand {
@@ -43,6 +40,9 @@
 
 /** RESPONSIVE **/
 @media only screen and (min-device-width: 320px) and (max-device-width: 625px) {
+  .navbar {
+    height: 100%;
+  }
   .navbar .navbar-nav .nav-item {
     text-align: center !important;
   }

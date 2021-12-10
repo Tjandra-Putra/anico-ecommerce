@@ -10,23 +10,9 @@ import userIcon from "../../../../assets/img/user.png";
 import favouriteIcon from "../../../../assets/img/heart.png";
 
 const Navbar = (props) => {
-  // const [name, setName] = useState("");
-
-  // useEffect(() => {
-  //   // check if user is authenticated
-  //   if (props.sessionAuthData) {
-  //     let email = props.sessionAuthData.email;
-
-  //     setName(email.substring(0, email.lastIndexOf("@")));
-  //   }
-  // }, []);
-
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white" id="navbar">
       <div className="container">
-        {/* <NavLink className={`navbar-brand ${classes.textRed}`} to="/">
-                    Anico
-                </NavLink> */}
         <Link className="navbar-brand" to="/">
           anico.
         </Link>
@@ -49,8 +35,8 @@ const Navbar = (props) => {
           id="navbarNav"
           // data-toggle={isMobile ? "collapse" : ""}
           // data-target={isMobile ? "#navbarNav" : ""}
-          // data-toggle="collapse"
-          // data-target="#navbarNav"
+          data-toggle="collapse"
+          data-target="#navbarNav"
         >
           <ul className="navbar-nav">
             <li className="nav-item active">

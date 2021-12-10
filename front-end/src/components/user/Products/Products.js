@@ -21,42 +21,40 @@ const Products = (props) => {
     if (category === "Recommended") {
       loadedProduct = props.product_list.map((product) => (
         <div className="col-md-4 mb-5" key={product.id}>
-          <div data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
-            <div className="product-wrapper">
-              <Link
-                to={"/products/" + product.id}
-                style={{
-                  textDecoration: "none",
-                  color: "unset",
-                }}
-              >
-                <div className="img-wrapper">
-                  <div className="content">
-                    <div className="content-overlay"></div>
-                    <img
-                      src={
-                        require(`../../../assets/products/${product.imgUrl}`)
-                          .default
-                      }
-                      alt={product.name}
-                      className="img-fluid content-image"
-                      style={{ borderRadius: "2px" }}
-                    />
-                    <div className="content-details fadeIn-bottom">
-                      <h3>{product.name}</h3>
-                      <p>
-                        View
-                        <i className="fas fa-arrow-right pl-2"></i>
-                      </p>
-                    </div>
+          <div className="product-wrapper">
+            <Link
+              to={"/products/" + product.id}
+              style={{
+                textDecoration: "none",
+                color: "unset",
+              }}
+            >
+              <div className="img-wrapper">
+                <div className="content">
+                  <div className="content-overlay"></div>
+                  <img
+                    src={
+                      require(`../../../assets/products/${product.imgUrl}`)
+                        .default
+                    }
+                    alt={product.name}
+                    className="img-fluid content-image"
+                    style={{ borderRadius: "2px" }}
+                  />
+                  <div className="content-details fadeIn-bottom">
+                    <h3>{product.name}</h3>
+                    <p>
+                      View
+                      <i className="fas fa-arrow-right pl-2"></i>
+                    </p>
                   </div>
                 </div>
+              </div>
 
-                <div className="product-tag">{product.tag}</div>
-                <div className="product-name">{product.name}</div>
-                <div className="product-price">S${product.price}</div>
-              </Link>
-            </div>
+              <div className="product-tag">{product.tag}</div>
+              <div className="product-name">{product.name}</div>
+              <div className="product-price">S${product.price}</div>
+            </Link>
           </div>
         </div>
       ));
