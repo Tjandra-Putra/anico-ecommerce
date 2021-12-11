@@ -1,10 +1,10 @@
-.navbar {
+.Navbar .navbar {
   margin-bottom: 2rem;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-  height: 7rem;
+  /* height: 7rem; */
 }
 
-.navbar-brand {
+.Navbar .navbar-brand {
   font-weight: 600;
   letter-spacing: -0.5px !important;
   /* font-family: var(--font-montserrat); */
@@ -12,27 +12,27 @@
   margin-bottom: 0.2rem;
 }
 
-.nav-item {
+.Navbar .nav-item {
   letter-spacing: 0.5px;
 }
 
-.nav-item:hover {
+.Navbar .nav-item:hover {
   transition: 0.5s;
   transform: translateY(-1.5px);
 }
 
-.nav-link {
+.Navbar .nav-link {
   color: #000000 !important;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 0.9rem;
 }
 
-.nav-link:hover {
+.Navbar .nav-link:hover {
   font-weight: 700 !important;
 }
 
-.navbar .item-count {
+.Navbar .navbar .item-count {
   transform: translateY(-1.2rem);
   text-align: center;
   font-weight: 500;
@@ -40,14 +40,65 @@
 
 /** RESPONSIVE **/
 @media only screen and (min-device-width: 320px) and (max-device-width: 625px) {
-  .navbar {
+  .Navbar .navbar {
     height: 100%;
   }
-  .navbar .navbar-nav .nav-item {
+  .Navbar .navbar .navbar-nav .nav-item {
     text-align: center !important;
   }
 
-  .navbar .navbar-nav .nav-link {
+  .Navbar .navbar .navbar-nav .nav-link {
     padding-right: unset !important;
+  }
+
+  /* centralised */
+  .Navbar .navbar .navbar-brand {
+    margin: 0 auto;
+    display: table;
+  }
+
+  .Navbar .flex-hamburger {
+    transform: translateY(5%);
+  }
+
+  .Navbar .flex-favourite {
+    transform: translateY(17%);
+  }
+
+  .Navbar .flex-brand {
+    transform: translateY(14%);
+  }
+
+  .Navbar .flex-user {
+    transform: translateY(17%);
+  }
+
+  .Navbar .flex-cart {
+    transform: translateY(17%);
+  }
+  .Navbar .flex-item {
+    width: 100%;
+  }
+}
+
+/** Galaxy S5 **/
+@media only screen and (min-device-width: 360px) and (max-device-width: 640px) {
+  .Navbar .flex-item {
+    width: 100%;
+  }
+}
+
+/** iPhone 6/7/8 **/
+@media only screen and (min-device-width: 320px) and (max-device-width: 625px) {
+  .Navbar .flex-item {
+    width: 100%;
+  }
+}
+
+/** Pixel 2 XL **/
+@media only screen and (min-device-width: 411px) and (max-device-width: 823px) {
+  .Navbar .flex-item {
+    /* padding: 0.5rem; */
+    width: 100%;
   }
 }
