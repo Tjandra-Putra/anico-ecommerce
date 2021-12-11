@@ -5,12 +5,12 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 
-import introImage from "../../../../../front-end/src/assets/img/living-room.jpg";
+import introImage from "../../../../../front-end/src/assets/img/IMG_3876_2_720x.jpg";
+import limitedEditionProduct from "../../../../../front-end/src/assets/img/social_share_1080x.jpg";
+
 import "./Home.css";
 
 const Home = (props) => {
-  let loadedProduct;
-
   return (
     <div className="home">
       <div className="container">
@@ -26,7 +26,17 @@ const Home = (props) => {
               <div className="description">
                 anico debuted two consecutive pop-up shops in Taipei more than a
                 year ago. Featuring an all-black look, as well as lifestyle
-                activities such as a dining section where consumers may.
+                activities such as a dining section where consumers may. <br />
+                <br />
+                Find out more at
+                <a
+                  href="https://emea.blvck.com/"
+                  target="_blank"
+                  class="pl-1 text-dark font-weight-bold font-italic"
+                  style={{ textDecoration: "none" }}
+                >
+                  blvck.com
+                </a>
               </div>
               <div class="d-flex flex-row bd-highlight mb-3">
                 <div class="py-1 bd-highlight">
@@ -120,6 +130,7 @@ const Home = (props) => {
             items={4}
             stagePadding={60}
             lazyLoad={true}
+            dots={false}
             // autoplay={true}
             margin={20}
             responsiveClass={true}
@@ -171,6 +182,8 @@ const Home = (props) => {
           </OwlCarousel>
         </div>
       </div>
+
+      <div className="limited-edition-products"></div>
     </div>
   );
 };

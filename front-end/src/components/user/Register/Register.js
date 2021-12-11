@@ -63,7 +63,7 @@ class Register extends Component {
 
   render() {
     return (
-      <div className="Register">
+      <div className="register">
         <Toaster />
         {this.state.redirect}
 

@@ -3,8 +3,11 @@
 }
 
 .home .intro-img {
-  -webkit-clip-path: polygon(24% 0, 100% 0, 100% 100%, 0 100%, 0 25%);
-  clip-path: polygon(24% 0, 100% 0, 100% 100%, 0 100%, 0 25%);
+  /* -webkit-clip-path: polygon(24% 0, 100% 0, 100% 100%, 0 100%, 0 25%);
+clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 18%); */
+
+  clip-path: polygon(23% 0, 100% 0, 100% 100%, 0 100%, 0 20%);
+
   border-radius: 0px 15px 15px 15px;
   /** top-left, top-right, bottom-right, bottom-left **/
 }
@@ -28,7 +31,7 @@
 }
 
 .home .introduction .sub-title {
-  margin-top: 7rem;
+  margin-top: 5rem;
   text-transform: uppercase;
   margin-bottom: 1rem;
   font-family: "Montserrat", sans-serif;
@@ -85,13 +88,15 @@
 }
 
 .home .testimonial {
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
+  background-color: #000000;
+  color: white;
   padding: 2rem;
   margin-top: 5rem;
 }
 
 .home .testimonial .title {
-  color: #616161;
+  /* color: #616161; */
   font-size: 2rem;
   transform: translateY(40%);
 }
