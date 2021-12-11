@@ -1,3 +1,7 @@
+.product {
+  margin-top: 1rem;
+}
+
 .product .breadcrumb {
   background-color: white !important;
 }

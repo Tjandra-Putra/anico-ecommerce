@@ -11,7 +11,7 @@ import favouriteIcon from "../../../../assets/img/heart.png";
 
 const Navbar = (props) => {
   return (
-    <div className="Navbar">
+    <div className="navbar-master">
       {/* ======================= DESKTOP NAV ======================= */}
       <nav
         className="navbar navbar-expand-lg navbar-light bg-white d-none d-sm-block"

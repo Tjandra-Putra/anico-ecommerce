@@ -1,58 +1,62 @@
+.support {
+  margin-top: 2rem;
+}
+
 .support .title {
-    font-size: 2.5rem;
-    font-weight: 600;
+  font-size: 2.5rem;
+  font-weight: 600;
 }
 
 .support .description {
-    letter-spacing: 0.2px;
-    font-weight: 500;
+  letter-spacing: 0.2px;
+  font-weight: 500;
 }
 
 .support .form-wrapper {
-    background-color: #00000010;
-    padding: 2rem;
+  background-color: #00000010;
+  padding: 2rem;
 }
 
 .support .text-area {
-    height: 8rem !important;
+  height: 8rem !important;
 }
 
 .support .form-control {
-    border: 1.5px solid #000000;
-    border-radius: 2px;
-    height: 2.8rem;
+  border: 1.5px solid #000000;
+  border-radius: 2px;
+  height: 2.8rem;
 }
 
 .support .form-group label {
-    font-weight: 600;
-    letter-spacing: 0.4px;
-    text-transform: uppercase;
-    font-family: var(--montserrat) !important;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  font-family: var(--montserrat) !important;
 }
 
 .support .btn-dark {
-    border-radius: 2px;
+  border-radius: 2px;
 }
 
 .support .fa-phone {
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-    padding-top: 0.7rem;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  padding-top: 0.7rem;
 }
 
 .support .icon-wrapper {
-    border: 1px solid #000000;
-    border-radius: 50px;
-    width: 40px;
-    height: 40px;
-    text-align: center;
+  border: 1px solid #000000;
+  border-radius: 50px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
 }
 
 .support .contact-container {
-    border: 1px solid #000000;
-    padding: 0.5rem;
+  border: 1px solid #000000;
+  padding: 0.5rem;
 }
 
 .support .bd-highlight {
-    padding-top: 0.3rem;
+  padding-top: 0.3rem;
 }

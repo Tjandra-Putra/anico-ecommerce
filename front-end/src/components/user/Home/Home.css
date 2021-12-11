@@ -1,0 +1,10 @@
+.home {
+  margin-top: 1rem;
+}
+
+.home .intro-img {
+  -webkit-clip-path: polygon(24% 0, 100% 0, 100% 100%, 0 100%, 0 25%);
+  clip-path: polygon(24% 0, 100% 0, 100% 100%, 0 100%, 0 25%);
+  border-radius: 0px 15px 15px 15px;
+  /** top-left, top-right, bottom-right, bottom-left **/
+}
