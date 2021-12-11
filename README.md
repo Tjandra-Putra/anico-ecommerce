@@ -73,11 +73,10 @@ OR
 | `Hamburger.js`   | Navbar collapse animation     | https://jonsuh.com/hamburgers/    |
 | `Chart.js`   | Beautiful Charts    |  https://www.chartjs.org/    |
 | `AOS.js`     | On scroll animation       | https://michalsnik.github.io/aos/      |
+| `Own Carousel 2`     | Carousel      | https://owlcarousel2.github.io/OwlCarousel2/      |
 | `FontAwesome`     | Icon elements      | https://fontawesome.com/ |
 | `FlatIcon`     | Icon Images       | https://www.flaticon.com/      |
 | `Google Font`     | Font Family     | https://fonts.google.com/      |
 | `Product Images`    | All product images are taken from BLVCK and displayed for demo purposes only, not for commercial use. Check out their products! :) -->| https://blvck.com/      |
-
-
 
 
