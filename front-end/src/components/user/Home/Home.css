@@ -54,7 +54,7 @@
   padding-bottom: 0.7rem;
   -webkit-clip-path: polygon(0 0, 100% 0, 88% 100%, 0% 100%);
   clip-path: polygon(0 0, 100% 0, 88% 100%, 0% 100%);
-  font-weight: 600;
+  font-weight: 500;
   width: 12.5rem;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
 }
@@ -67,21 +67,21 @@
   padding-bottom: 0.7rem;
   -webkit-clip-path: polygon(14% 0, 100% 0, 100% 100%, 0% 100%);
   clip-path: polygon(11.5% 0, 100% 0, 100% 100%, 0% 100%);
-  font-weight: 600;
+  font-weight: 500;
   width: 12.5rem;
   background-color: #e6e6e6;
 }
 
 .home .btn-shop:hover {
-  font-weight: 700;
+  font-weight: 600;
   transition: 1.5s;
-  transform: translateX(23px);
+  transform: translateX(5px);
 }
 
 .home .btn-free-delivery:hover {
-  font-weight: 700;
+  font-weight: 600;
   transition: 1.5s;
-  transform: translateX(-23px);
+  transform: translateX(-5px);
 }
 
 .home .testimonial {
@@ -144,13 +144,26 @@
   background-color: #474747;
   font-family: "Montserrat", sans-serif;
   padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
   font-weight: 500;
-  color: white;
+  color: rgba(255, 255, 255, 0.795);
   text-transform: uppercase;
-  width: 6rem;
-  /* height: 100%; */
+  width: 9rem;
   min-height: 2.5rem;
   text-align: center;
   transform: translateY(1.1rem) translateX(1rem);
   position: absolute;
+  /* box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.home .loadedWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: calc(65vh);
 }
