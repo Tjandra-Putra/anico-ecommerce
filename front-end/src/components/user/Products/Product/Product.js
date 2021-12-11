@@ -187,7 +187,9 @@ const Product = (props) => {
                 <div className="product-tag">{product[0].tag}</div>
               </div>
               <div className="col-md-6">
-                <div className="product-price">S${product[0].price}</div>
+                <div className="product-price">
+                  S${product[0].price.toFixed(2)}
+                </div>
               </div>
             </div>
             <div className="product-title">{product[0].name}</div>
