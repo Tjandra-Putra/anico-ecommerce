@@ -1,8 +1,8 @@
 # anico ecommerce platform
 
 ### Introduction
-This is a full stack ecommerce website. My objective is to create an ecommerce platform that enhances the consumer experience while also increasing admin efficiency. The platform must be elegant, simple, responsive, and feature-rich in order to increase the process's efficiency and effectiveness.
-live demo: [coming soon]
+This is a full stack ecommerce website. My goal is to build an ecommerce platform that improves the customer experience while simultaneously enhancing administrative efficiency. To boost the process's efficiency and efficacy, the platform must be attractive, straightforward, responsive, and feature-rich.
+[Coming Soon] a live demonstration!
 
 ### Installation
 Installing dependencies 
