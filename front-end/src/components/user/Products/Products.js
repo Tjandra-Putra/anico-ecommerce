@@ -10,6 +10,8 @@ const Products = (props) => {
   let [category, setCategory] = useState("Recommended");
   let loadedProduct;
 
+  let localProductList = [...props.product_list];
+
   const categoryHandler = (event) => {
     setCategory(event.target.value);
   };
@@ -17,9 +19,9 @@ const Products = (props) => {
   console.log(category);
 
   // ensures product are rendered
-  if (props.product_list.length !== 0) {
+  if (localProductList.length !== 0) {
     if (category === "Recommended") {
-      loadedProduct = props.product_list.map((product) => (
+      loadedProduct = localProductList.map((product) => (
         <div className="col-md-4 mb-5" key={product.id}>
           <div className="product-wrapper">
             <Link
@@ -62,7 +64,7 @@ const Products = (props) => {
 
     // filter: price low to high
     if (category === "Price (low - high)") {
-      loadedProduct = props.product_list
+      loadedProduct = localProductList
         .sort((a, b) => a.price - b.price)
         .map((product) => (
           <div className="col-md-4 mb-5" key={product.id}>
@@ -107,7 +109,7 @@ const Products = (props) => {
 
     // filter: price high to low
     if (category === "Price (high - low)") {
-      loadedProduct = props.product_list
+      loadedProduct = localProductList
         .sort((a, b) => b.price - a.price)
         .map((product) => (
           <div className="col-md-4 mb-5" key={product.id}>
@@ -171,7 +173,7 @@ const Products = (props) => {
               <div className="d-flex flex-row float-right">
                 <div className="px-2 my-auto ">
                   <div className="results text-secondary d-inline">
-                    {props.product_list.length} Results
+                    {localProductList.length} Results
                   </div>
                 </div>
                 <div className="px-2 my-auto">
