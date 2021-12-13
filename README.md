@@ -4,6 +4,9 @@
 This is a full stack ecommerce website. My goal is to build an ecommerce platform that improves the customer experience while simultaneously enhancing administrative efficiency. To boost the process's efficiency and efficacy, the platform must be attractive, straightforward, responsive, and feature-rich.
 [Coming Soon] a live demonstration!
 
+![anico-showcase](https://user-images.githubusercontent.com/57522674/145765403-4d4ab7bf-fe3a-4b0e-9580-83b6b2196d49.png)
+
+
 ### Installation
 Installing dependencies 
 > Front-end
