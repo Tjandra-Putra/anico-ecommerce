@@ -1,7 +1,8 @@
-.home {
-  margin-top: 5rem;
-}
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap");
 
+.home {
+  background-color: black;
+}
 .home .intro-img {
   /* -webkit-clip-path: polygon(24% 0, 100% 0, 100% 100%, 0 100%, 0 25%);
 clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 18%); */
@@ -10,6 +11,66 @@ clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 18%); */
 
   border-radius: 0px 15px 15px 15px;
   /** top-left, top-right, bottom-right, bottom-left **/
+}
+
+.home .introduction-bg {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: white;
+
+  /* background-image: linear-gradient(
+      112.5deg,
+      rgb(214, 214, 214) 0%,
+      rgb(214, 214, 214) 10%,
+      rgb(195, 195, 195) 10%,
+      rgb(195, 195, 195) 53%,
+      rgb(176, 176, 176) 53%,
+      rgb(176, 176, 176) 55%,
+      rgb(157, 157, 157) 55%,
+      rgb(157, 157, 157) 60%,
+      rgb(137, 137, 137) 60%,
+      rgb(137, 137, 137) 88%,
+      rgb(118, 118, 118) 88%,
+      rgb(118, 118, 118) 91%,
+      rgb(99, 99, 99) 91%,
+      rgb(99, 99, 99) 100%
+    ),
+    linear-gradient(
+      157.5deg,
+      rgb(214, 214, 214) 0%,
+      rgb(214, 214, 214) 10%,
+      rgb(195, 195, 195) 10%,
+      rgb(195, 195, 195) 53%,
+      rgb(176, 176, 176) 53%,
+      rgb(176, 176, 176) 55%,
+      rgb(157, 157, 157) 55%,
+      rgb(157, 157, 157) 60%,
+      rgb(137, 137, 137) 60%,
+      rgb(137, 137, 137) 88%,
+      rgb(118, 118, 118) 88%,
+      rgb(118, 118, 118) 91%,
+      rgb(99, 99, 99) 91%,
+      rgb(99, 99, 99) 100%
+    ),
+    linear-gradient(
+      135deg,
+      rgb(214, 214, 214) 0%,
+      rgb(214, 214, 214) 10%,
+      rgb(195, 195, 195) 10%,
+      rgb(195, 195, 195) 53%,
+      rgb(176, 176, 176) 53%,
+      rgb(176, 176, 176) 55%,
+      rgb(157, 157, 157) 55%,
+      rgb(157, 157, 157) 60%,
+      rgb(137, 137, 137) 60%,
+      rgb(137, 137, 137) 88%,
+      rgb(118, 118, 118) 88%,
+      rgb(118, 118, 118) 91%,
+      rgb(99, 99, 99) 91%,
+      rgb(99, 99, 99) 100%
+    ),
+    linear-gradient(90deg, rgb(195, 195, 195), rgb(228, 228, 228));
+  background-blend-mode: overlay, overlay, overlay, normal; */
 }
 
 .home .introduction .title {
@@ -23,6 +84,7 @@ clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 18%); */
 .home .introduction .emphasis {
   font-weight: 500;
   /* color: #727272; */
+  /* color: #ff577b; */
   background: linear-gradient(
     to top,
     rgba(0, 0, 0, 0.144) 50%,
@@ -37,6 +99,8 @@ clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 18%); */
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   color: #727272;
+
+  /* color: rgba(255, 255, 255, 0.781); */
   letter-spacing: 2px;
 }
 
@@ -44,6 +108,7 @@ clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 18%); */
   max-width: 30rem;
   text-align: justify;
   margin-bottom: 2rem;
+  /* color: rgba(255, 255, 255, 0.822); */
 }
 
 .home .btn-wrap {
@@ -88,54 +153,8 @@ clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 18%); */
 }
 
 .home .testimonial {
-  /* background-color: #f9f9f9; */
-  /* background-color: #000000; */
-  /* background-image: repeating-linear-gradient(
-      0deg,
-      rgb(6, 6, 6) 0px,
-      rgb(6, 6, 6) 1px,
-      transparent 1px,
-      transparent 21px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      rgb(6, 6, 6) 0px,
-      rgb(6, 6, 6) 1px,
-      transparent 1px,
-      transparent 21px
-    ),
-    linear-gradient(90deg, hsl(144, 0%, 9%), hsl(144, 0%, 9%)); */
-  background-image: linear-gradient(
-      283deg,
-      rgba(228, 228, 228, 0.04) 0%,
-      rgba(228, 228, 228, 0.04) 30%,
-      rgba(130, 130, 130, 0.04) 30%,
-      rgba(130, 130, 130, 0.04) 49%,
-      rgba(31, 31, 31, 0.04) 49%,
-      rgba(31, 31, 31, 0.04) 100%
-    ),
-    linear-gradient(
-      297deg,
-      rgba(228, 228, 228, 0.04) 0%,
-      rgba(228, 228, 228, 0.04) 20%,
-      rgba(130, 130, 130, 0.04) 20%,
-      rgba(130, 130, 130, 0.04) 60%,
-      rgba(31, 31, 31, 0.04) 60%,
-      rgba(31, 31, 31, 0.04) 100%
-    ),
-    linear-gradient(
-      242deg,
-      rgba(228, 228, 228, 0.04) 0%,
-      rgba(228, 228, 228, 0.04) 29%,
-      rgba(130, 130, 130, 0.04) 29%,
-      rgba(130, 130, 130, 0.04) 48%,
-      rgba(31, 31, 31, 0.04) 48%,
-      rgba(31, 31, 31, 0.04) 100%
-    ),
-    linear-gradient(90deg, rgb(0, 0, 0), rgb(0, 0, 0));
   color: white;
   padding: 2rem;
-  margin-top: 5rem;
 }
 
 .home .testimonial .title {
@@ -162,14 +181,20 @@ clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 18%); */
 }
 
 .home .featured-products .title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  letter-spacing: 3px;
 }
 
 .home .featured-products .sub-title {
   font-size: 1.3rem;
   text-align: center;
   margin-bottom: 5rem;
+  color: rgba(255, 255, 255, 0.74);
 }
 
 .home .featured-products .item-information-container {
@@ -214,4 +239,176 @@ clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 18%); */
   align-items: center;
   text-align: center;
   min-height: calc(65vh);
+}
+
+.home .limited-edition-products {
+  margin-top: 1rem;
+  position: relative;
+  background: url("../../../../src/assets/img/casetify_6f1d1ac2-f7b4-450c-9a99-ebe7a5e62b6b 1.png");
+  background-size: cover;
+  background-attachment: fixed;
+  height: 65vh;
+}
+
+.home .limited-edition-products .img-limited-edition-products {
+  width: 100%;
+  background-attachment: fixed;
+}
+
+.home .limited-edition-products .sub-title {
+  position: absolute;
+  top: 37%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255, 255, 255, 0.767);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  font-size: 2vh;
+}
+
+.home .limited-edition-products .title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 4vh;
+  line-height: 10vh;
+  letter-spacing: 1.4rem;
+  font-weight: 500;
+}
+
+.home .limited-edition-products .collab-icon {
+  filter: invert(100%);
+  margin-bottom: 4px;
+}
+
+.home .limited-edition-products .btn-limited-edition {
+  border: 2px solid white !important;
+  position: absolute;
+  top: 66%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(255, 255, 255);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  background-color: black;
+  border: none;
+  width: 12rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0px;
+}
+
+.home .limited-edition-products .btn-limited-edition:hover {
+  font-weight: 600;
+  letter-spacing: 3px;
+  transition: 0.4s ease-in;
+}
+
+.home .sales-products {
+  /* background-color: #000000f5; */
+  background-color: #0f0f0f;
+  padding-bottom: 0.8rem;
+  padding-top: 0.8rem;
+}
+
+.home .sales-products .img-sales-products {
+  width: 100%;
+}
+
+.home .sales-products .top-section {
+  background-color: #0000006c;
+  padding: 12vh;
+  color: white;
+  position: inherit;
+  height: 61vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  overflow: hidden;
+  margin-bottom: 0.2rem;
+}
+
+.home .sales-products .top-section .sub-title {
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.home .sales-products .top-section .title {
+  font-size: 4vh;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.2rem;
+  line-height: 6vh;
+  margin-top: 2rem;
+}
+
+.home .sales-products .top-section .price {
+  font-size: 2rem;
+  font-weight: 300 !important;
+}
+
+.home .sales-products .top-section .btn-buy-now {
+  border-radius: 0px;
+  text-transform: uppercase;
+  width: 8rem;
+}
+
+.home .sales-products .top-section .wrapper {
+  padding-top: 2rem;
+}
+
+.home .sales-products .bottom-section {
+  padding-top: 10px;
+}
+
+.home .sales-products .left-section {
+  background-color: #0000006c;
+  text-align: center;
+  padding-top: 13vh;
+  height: 37vh;
+}
+
+.home .sales-products .left-section .title {
+  font-size: 5vh;
+  font-weight: 500;
+  line-height: 8vh;
+}
+
+.home .sales-products .left-section .sub-title {
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  letter-spacing: 2px;
+  font-size: 2vh;
+}
+
+.home .sales-products .right-section {
+  background-color: #0000006c;
+  padding: 12vh;
+  height: 37vh;
+  color: white;
+}
+
+.home .sales-products .right-section .title {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  font-size: 2vh;
+}
+
+.home .sales-products .right-section .description {
+  line-height: 3vh;
+  font-size: 1.7vh;
 }

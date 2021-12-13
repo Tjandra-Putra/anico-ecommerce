@@ -6,67 +6,73 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 
 import introImage from "../../../../../front-end/src/assets/img/IMG_3876_2_720x.jpg";
-import limitedEditionProduct from "../../../../../front-end/src/assets/img/social_share_1080x.jpg";
+import crossImage from "../../../../../front-end/src/assets/img/cross.png";
+
+import limitedEditionProduct from "../../../../../front-end/src/assets/img/casetify_6f1d1ac2-f7b4-450c-9a99-ebe7a5e62b6b 1.png";
+import salesProduct from "../../../../../front-end/src/assets/img/260437797_889392161942869_6313503206954777084_n 1.png";
 
 import "./Home.css";
 
 const Home = (props) => {
   return (
     <div className="home">
-      <div className="container">
-        <div className="introduction">
-          <div className="row">
-            <div className="col-md-6">
-              <div className="sub-title">Feel trendy. Feel authentic.</div>
-              <div className="title">
-                Explore your true style with
-                <span className="emphasis ml-3">luxury</span> and
-                <span className="emphasis ml-3">comfort.</span>
-              </div>
-              <div className="description">
-                anico debuted two consecutive pop-up shops in Taipei more than a
-                year ago. Featuring an all-black look, as well as lifestyle
-                activities such as a dining section where consumers may. <br />
-                <br />
-                Find out more at
-                <a
-                  href="https://emea.blvck.com/"
-                  target="_blank"
-                  class="pl-1 text-dark font-weight-bold font-italic"
-                  style={{ textDecoration: "none" }}
-                >
-                  blvck.com
-                </a>
-              </div>
-              <div class="d-flex flex-row bd-highlight mb-3">
-                <div class="py-1 bd-highlight">
-                  <div className="btn-wrap">
-                    <Link to="/products">
-                      <div className="btn btn-dark rounded-0 btn-shop">
-                        Shop collections
-                      </div>
-                    </Link>
+      <div className="introduction-bg">
+        <div className="container">
+          <div className="introduction">
+            <div className="row">
+              <div className="col-md-6">
+                <div className="sub-title">Feel trendy. Feel authentic.</div>
+                <div className="title">
+                  Explore your true style with
+                  <span className="emphasis ml-3">luxury</span> and
+                  <span className="emphasis ml-3">comfort.</span>
+                </div>
+                <div className="description">
+                  anico debuted two consecutive pop-up shops in Taipei more than
+                  a year ago. Featuring an all-black look, as well as lifestyle
+                  activities such as a dining section where consumers may.{" "}
+                  <br />
+                  <br />
+                  Find out more at
+                  <a
+                    href="https://emea.blvck.com/"
+                    target="_blank"
+                    class="pl-1 text-dark font-weight-bold font-italic"
+                    style={{ textDecoration: "none" }}
+                  >
+                    blvck.com
+                  </a>
+                </div>
+                <div class="d-flex flex-row bd-highlight mb-3">
+                  <div class="py-1 bd-highlight">
+                    <div className="btn-wrap">
+                      <Link to="/products">
+                        <div className="btn btn-dark rounded-0 btn-shop">
+                          Shop collections
+                        </div>
+                      </Link>
+                    </div>
+                  </div>
+                  <div class="py-1 bd-highlight">
+                    <div className="btn-wrap">
+                      <a href="#featured">
+                        <div className="btn btn-light rounded-0 btn-free-delivery">
+                          Featured
+                        </div>
+                      </a>
+                    </div>
                   </div>
                 </div>
-                <div class="py-1 bd-highlight">
-                  <div className="btn-wrap">
-                    <a href="#featured">
-                      <div className="btn btn-light rounded-0 btn-free-delivery">
-                        Featured
-                      </div>
-                    </a>
-                  </div>
-                </div>
               </div>
-            </div>
-            <div className="col-md-6">
-              <img src={introImage} alt="" className="intro-img img-fluid" />
+              <div className="col-md-6">
+                <img src={introImage} alt="" className="intro-img img-fluid" />
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="testimonial">
+      {/* <div className="testimonial">
         <div className="container">
           <div className="row">
             <div className="col-md-6">
@@ -112,11 +118,11 @@ const Home = (props) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="featured-products" id="featured">
         <div className="container">
-          <div className="title">Designer's Choice</div>
+          <div className="title">2021 New Arrivals</div>
           <div className="sub-title">
             We provide your dream modern and compact design
           </div>
@@ -183,7 +189,82 @@ const Home = (props) => {
         </div>
       </div>
 
-      <div className="limited-edition-products"></div>
+      <div className="limited-edition-products">
+        {/* <img
+          src={limitedEditionProduct}
+          alt="limited edition bg"
+          className="img-fluid img-limited-edition-products"
+        /> */}
+        <div className="sub-title">
+          BLVCK
+          <img
+            src={crossImage}
+            alt=""
+            className="img-fluid collab-icon"
+            width="30"
+          />
+          CASETIFY
+        </div>
+
+        <div className="title">LIMITED COLLAB.</div>
+
+        <div className="btn btn-dark btn-limited-edition ">Shop now</div>
+      </div>
+
+      <div className="sales-products container-fluid pl-0">
+        <div className="row">
+          <div className="col-md-6 img-section">
+            <img
+              src={salesProduct}
+              alt="salesProduct"
+              className="img-fluid img-sales-products"
+            />
+          </div>
+          <div className="col-md-6">
+            <div className="row top-section">
+              <div className="col-md-12">
+                <div className="sub-title">hot sales</div>
+                <div className="title">
+                  <span style={{ fontWeight: "700", color: "#ff577b" }}>
+                    Empower
+                  </span>{" "}
+                  with style that signals of
+                  <span style={{ fontWeight: "700" }}> status</span> &
+                  <span style={{ fontWeight: "700" }}> dominance</span>
+                </div>
+                <div class="d-flex justify-content-between wrapper">
+                  <div class="p-2 bd-highlight">
+                    <div className="price">$280</div>
+                  </div>
+                  <div class="p-2 bd-highlight"></div>
+                  <div class="p-2 bd-highlight">
+                    <button className="btn btn-outline-light btn-buy-now">
+                      buy now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="row bottom-section">
+              <div className="col-md-4 pl-0 text-white">
+                <div className="left-section">
+                  <div className="title">850K</div>
+                  <div className="sub-title">customers</div>
+                </div>
+              </div>
+              <div className="col-md-8 right-section">
+                <div className="title">New Collection</div>
+                <div className="description">
+                  Blvck Paris debuted two consecutive pop-up shops in Taipei
+                  more than a year ago. Featuring an all-black look, as well as
+                  lifestyle activities including a restaurant nook where
+                  visitors may...
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
