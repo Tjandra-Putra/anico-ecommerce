@@ -1,26 +1,105 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { gsap, Power2 } from "gsap";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 
 import introImage from "../../../../../front-end/src/assets/img/IMG_3876_2_720x.jpg";
 import crossImage from "../../../../../front-end/src/assets/img/cross.png";
-
-import limitedEditionProduct from "../../../../../front-end/src/assets/img/casetify_6f1d1ac2-f7b4-450c-9a99-ebe7a5e62b6b 1.png";
 import salesProduct from "../../../../../front-end/src/assets/img/260437797_889392161942869_6313503206954777084_n 1.png";
 
 import "./Home.css";
 
 const Home = (props) => {
+  // variables
+  let home = useRef(null);
+  let introImages = useRef(null);
+  let introContent = useRef(null);
+
+  // declarations
+  let tl = gsap.timeline();
+
+  useEffect(() => {
+    // image vars - get first child of div
+    const introImagesFirst = introImages.firstElementChild;
+
+    // content vars
+    const introHeadLineFirst = introContent.children[0];
+    const introHeadLineSecond = introContent.children[1];
+    const introContentP = introContent.children[2];
+    const introButtons = introContent.children[3];
+
+    // to prevent page flashing during slow rendering
+    gsap.to(home, { duration: 0, css: { visibility: "visible" } }); // parent, properties
+
+    // image animations
+    tl.from(introImagesFirst, {
+      duration: 1.2,
+      y: 500,
+      ease: Power2.easeOut,
+    }).from(
+      introImagesFirst.firstElementChild,
+      {
+        duration: 1,
+        opacity: 0,
+        scale: 0.6,
+        ease: Power2.easeInOut,
+      },
+      0.2,
+      "Start"
+    );
+
+    console.log(introHeadLineFirst);
+
+    // content animations
+    tl.from(
+      [introHeadLineFirst, introHeadLineSecond],
+      {
+        duration: 1,
+        y: 44,
+        ease: Power2.easeOut,
+        delay: 0.8,
+        stagger: 0.2,
+        opacity: 0,
+      },
+      0.15,
+      "Start"
+    )
+      .from(
+        introContentP,
+        {
+          duration: 1,
+          y: 20,
+          opacity: 0,
+          ease: Power2.easeOut,
+          delay: 0.8,
+          stagger: 0.2,
+        },
+        1.4
+      )
+      .from(
+        introButtons,
+        {
+          duration: 1,
+          y: 20,
+          opacity: 0,
+          ease: Power2.easeOut,
+          delay: 0.8,
+          stagger: 0.2,
+        },
+        1.6
+      );
+  }, []);
+
   return (
-    <div className="home">
+    <div className="home" ref={(el) => (home = el)}>
       <div className="introduction-bg">
         <div className="container">
           <div className="introduction">
             <div className="row">
-              <div className="col-md-6">
+              <div className="col-md-6" ref={(el) => (introContent = el)}>
                 <div className="sub-title">Feel trendy. Feel authentic.</div>
                 <div className="title">
                   Explore your true style with
@@ -30,7 +109,7 @@ const Home = (props) => {
                 <div className="description">
                   anico debuted two consecutive pop-up shops in Taipei more than
                   a year ago. Featuring an all-black look, as well as lifestyle
-                  activities such as a dining section where consumers may.{" "}
+                  activities such as a dining section where consumers may.
                   <br />
                   <br />
                   Find out more at
@@ -65,7 +144,20 @@ const Home = (props) => {
                 </div>
               </div>
               <div className="col-md-6">
-                <img src={introImage} alt="" className="intro-img img-fluid" />
+                <div className="intro-images">
+                  <div
+                    className="intro-images-inner"
+                    ref={(el) => (introImages = el)}
+                  >
+                    <div className="intro-image-first">
+                      <img
+                        src={introImage}
+                        alt=""
+                        className="intro-img img-fluid"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

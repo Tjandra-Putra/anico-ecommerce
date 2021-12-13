@@ -2,12 +2,14 @@
 
 .home {
   background-color: black;
+  visibility: hidden;
 }
 .home .intro-img {
   /* -webkit-clip-path: polygon(24% 0, 100% 0, 100% 100%, 0 100%, 0 25%);
 clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 18%); */
 
   clip-path: polygon(23% 0, 100% 0, 100% 100%, 0 100%, 0 20%);
+  width: 100%;
 
   border-radius: 0px 15px 15px 15px;
   /** top-left, top-right, bottom-right, bottom-left **/
