@@ -1,5 +1,6 @@
 .products {
   margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .products .custom-selector select {
