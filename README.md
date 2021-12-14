@@ -73,6 +73,7 @@ OR
 ### Resources
 | Tools | Description | Link |
 | :---         |     :---      |    :--- |
+| `gsap`   | GreenSock  modern web animation     | https://greensock.com/    |
 | `react-spinners`   | Loading animation     | https://www.davidhu.io/react-spinners/    |
 | `react-hot-toast`     | Toast/Alert animation       | https://react-hot-toast.com/docs/toast      |
 | `Bootstrap`   | CSS framework    | https://getbootstrap.com/docs/4.6/getting-started/introduction/    |
