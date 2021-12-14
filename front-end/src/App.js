@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionTypes from "../src/store/actions";
+import { gsap, Power1 } from "gsap";
 
 import Navbar from "./components/user/Layout/Navbar/Navbar";
 import Footer from "./components/user/Layout/Footer/Footer";
@@ -16,12 +17,34 @@ import Cart from "./components/user/Cart/Cart";
 import Favourite from "./components/user/Favourite/Favourite";
 import Product from "./components/user/Products/Product/Product";
 
+import "./components/user/Home/Home.css";
 import "./App.css";
 
 const App = (props) => {
   const [product_list, setProduct] = useState([]);
+  const [preloader, setPreLoader] = useState(true);
+  const [timer, setTimer] = useState(3);
+
+  let tl = gsap.timeline({ defaults: { ease: Power1.easeOut } });
+
+  // loader timing
+  const id = useRef(null);
+
+  const clear = () => {
+    window.clearInterval(id.current);
+    setPreLoader(false);
+  };
 
   useEffect(() => {
+    // loader animation
+    tl.to(".loader-heading", { y: "0%", duration: 2, stagger: 0.2 });
+
+    // loader timing count down
+    id.current = window.setInterval(() => {
+      setTimer((timer) => timer - 1);
+    }, 1000);
+
+    // get products
     axios
       .get("http://localhost:5000/api/products/get-products")
       .then((res) => {
@@ -36,7 +59,6 @@ const App = (props) => {
             imgUrl: allProducts[key].product_image_url,
             stock: allProducts[key].product_stock,
           };
-          // console.log(tempObj, "OBJECT");
 
           // add product to the end of the array
           setProduct((product_list) => [...product_list, tempObj]);
@@ -48,49 +70,83 @@ const App = (props) => {
   // store to redux
   props.getProductsHandler(product_list);
 
-  // console.log(product_list, "ARRAY");
+  useEffect(() => {
+    // check after timer reaches target value then do something
+    if (timer === 0) {
+      tl.to(".loader-wrapper", {
+        y: "100%",
+        duration: 1.5,
+        delay: 0.5,
+      }).then(() => {
+        // ensure loader only render once, with session storage
+        sessionStorage.setItem("loader", "active");
+
+        clear();
+      });
+    }
+  }, [timer]); // listen to timer
 
   return (
     <BrowserRouter>
       <React.Fragment>
-        <Navbar />
-        <Switch>
-          {/*Default Path*/}
-          <Route exact path="/" component={Home} />
+        {/* loader only loads once per session */}
+        {sessionStorage.getItem("loader") !== "active" && preloader ? (
+          <div className="loader-wrapper absolute">
+            <h1>
+              <span className="loader-heading">anico</span>
+            </h1>
 
-          {/* Support Page */}
-          <Route exact path="/support" component={Support} />
+            <h2>
+              <span className="loader-heading">
+                Feel trendy. Feel authentic.
+              </span>
+            </h2>
+          </div>
+        ) : (
+          <>
+            <Navbar />
+            <Switch>
+              {/*Default Path*/}
+              <Route exact path="/" component={Home} />
 
-          {/* Products Page */}
-          <Route exact path="/products" render={() => <Products />} />
+              {/* Support Page */}
+              <Route exact path="/support" component={Support} />
 
-          {/* Product Detail Page */}
-          <Route exact path="/products/:prodId" render={() => <Product />} />
+              {/* Products Page */}
+              <Route exact path="/products" render={() => <Products />} />
 
-          {/* Login Page */}
-          <Route exact path="/login" component={Login} />
+              {/* Product Detail Page */}
+              <Route
+                exact
+                path="/products/:prodId"
+                render={() => <Product />}
+              />
 
-          {/* Register Page */}
-          <Route exact path="/register" component={Register} />
+              {/* Login Page */}
+              <Route exact path="/login" component={Login} />
 
-          {/* Cart Page */}
-          <Route exact path="/cart" render={() => <Cart />} />
+              {/* Register Page */}
+              <Route exact path="/register" component={Register} />
 
-          {/* Favourite Page */}
-          <Route
-            exact
-            path="/favourite"
-            render={() => {
-              if (props.sessionAuthData === null) {
-                return <Redirect to="/" />;
-              } else {
-                return <Favourite />;
-              }
-            }}
-          />
-        </Switch>
+              {/* Cart Page */}
+              <Route exact path="/cart" render={() => <Cart />} />
 
-        <Footer />
+              {/* Favourite Page */}
+              <Route
+                exact
+                path="/favourite"
+                render={() => {
+                  if (props.sessionAuthData === null) {
+                    return <Redirect to="/" />;
+                  } else {
+                    return <Favourite />;
+                  }
+                }}
+              />
+            </Switch>
+            <Footer />
+          </>
+        )}
       </React.Fragment>
     </BrowserRouter>
   );

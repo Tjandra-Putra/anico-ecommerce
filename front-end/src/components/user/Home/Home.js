@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { gsap, Power2 } from "gsap";
+import { gsap, Power0 } from "gsap";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
@@ -16,81 +16,35 @@ const Home = (props) => {
   // variables
   let home = useRef(null);
   let introImages = useRef(null);
-  let introContent = useRef(null);
 
   // declarations
-  let tl = gsap.timeline();
+  let tl = gsap.timeline({ defaults: { ease: Power0.easeOut } });
 
   useEffect(() => {
     // image vars - get first child of div
     const introImagesFirst = introImages.firstElementChild;
 
-    // content vars
-    const introHeadLineFirst = introContent.children[0];
-    const introHeadLineSecond = introContent.children[1];
-    const introContentP = introContent.children[2];
-    const introButtons = introContent.children[3];
-
     // to prevent page flashing during slow rendering
     gsap.to(home, { duration: 0, css: { visibility: "visible" } }); // parent, properties
 
-    // image animations
-    tl.from(introImagesFirst, {
-      duration: 1.2,
-      y: 500,
-      ease: Power2.easeOut,
-    }).from(
-      introImagesFirst.firstElementChild,
-      {
-        duration: 1,
-        opacity: 0,
-        scale: 0.6,
-        ease: Power2.easeInOut,
-      },
-      0.2,
+    tl.to(
+      ".gsapIntroHeading",
+      { y: "0%", duration: 0.7, stagger: 0.2 },
       "Start"
     );
 
-    console.log(introHeadLineFirst);
-
-    // content animations
     tl.from(
-      [introHeadLineFirst, introHeadLineSecond],
+      introImagesFirst,
       {
         duration: 1,
         y: 44,
-        ease: Power2.easeOut,
-        delay: 0.8,
+        ease: Power0.easeOut,
+        delay: 2,
         stagger: 0.2,
         opacity: 0,
       },
-      0.15,
       "Start"
-    )
-      .from(
-        introContentP,
-        {
-          duration: 1,
-          y: 20,
-          opacity: 0,
-          ease: Power2.easeOut,
-          delay: 0.8,
-          stagger: 0.2,
-        },
-        1.4
-      )
-      .from(
-        introButtons,
-        {
-          duration: 1,
-          y: 20,
-          opacity: 0,
-          ease: Power2.easeOut,
-          delay: 0.8,
-          stagger: 0.2,
-        },
-        1.6
-      );
+    );
   }, []);
 
   return (
@@ -99,46 +53,71 @@ const Home = (props) => {
         <div className="container">
           <div className="introduction">
             <div className="row">
-              <div className="col-md-6" ref={(el) => (introContent = el)}>
-                <div className="sub-title">Feel trendy. Feel authentic.</div>
+              <div className="col-md-6">
+                <div className="sub-title">
+                  <span className="gsapIntroHeading">
+                    Feel trendy. Feel authentic.
+                  </span>
+                </div>
                 <div className="title">
-                  Explore your true style with
-                  <span className="emphasis ml-3">luxury</span> and
-                  <span className="emphasis ml-3">comfort.</span>
+                  <h2>
+                    <span className="gsapIntroHeading">Explore your true</span>
+                  </h2>
+                  <h2>
+                    <span className="gsapIntroHeading ">
+                      style with <span className="emphasis">luxury</span>
+                    </span>
+                  </h2>
+                  <h2>
+                    <span className="gsapIntroHeading">
+                      and <span className="emphasis">comfort.</span>
+                    </span>
+                  </h2>
                 </div>
                 <div className="description">
-                  anico debuted two consecutive pop-up shops in Taipei more than
-                  a year ago. Featuring an all-black look, as well as lifestyle
-                  activities such as a dining section where consumers may.
-                  <br />
-                  <br />
-                  Find out more at
-                  <a
-                    href="https://emea.blvck.com/"
-                    target="_blank"
-                    class="pl-1 text-dark font-weight-bold font-italic"
-                    style={{ textDecoration: "none" }}
-                  >
-                    blvck.com
-                  </a>
+                  <p>
+                    <span className="gsapIntroHeading">
+                      anico debuted two consecutive pop-up shops in Taipei more
+                      than a year ago. Featuring an all-black look, as well as
+                      lifestyle activities such as a dining section where
+                      consumers may.
+                    </span>
+                  </p>
+                  <p>
+                    <span className="gsapIntroHeading">
+                      Find out more at
+                      <a
+                        href="https://emea.blvck.com/"
+                        target="_blank"
+                        class="pl-1 text-dark font-weight-bold font-italic"
+                        style={{ textDecoration: "none" }}
+                      >
+                        blvck.com
+                      </a>
+                    </span>
+                  </p>
                 </div>
                 <div class="d-flex flex-row bd-highlight mb-3">
                   <div class="py-1 bd-highlight">
                     <div className="btn-wrap">
-                      <Link to="/products">
-                        <div className="btn btn-dark rounded-0 btn-shop">
-                          Shop collections
-                        </div>
-                      </Link>
+                      <span className="gsapIntroHeading">
+                        <Link to="/products">
+                          <div className="btn btn-dark rounded-0 btn-shop">
+                            Shop collections
+                          </div>
+                        </Link>
+                      </span>
                     </div>
                   </div>
                   <div class="py-1 bd-highlight">
                     <div className="btn-wrap">
-                      <a href="#featured">
-                        <div className="btn btn-light rounded-0 btn-free-delivery">
-                          Featured
-                        </div>
-                      </a>
+                      <span className="gsapIntroHeading">
+                        <a href="#featured">
+                          <div className="btn btn-light rounded-0 btn-free-delivery">
+                            Featured
+                          </div>
+                        </a>
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -163,54 +142,6 @@ const Home = (props) => {
           </div>
         </div>
       </div>
-
-      {/* <div className="testimonial">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6">
-              <div className="title">
-                850,000+ customers worldwide since 2019
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div class="d-flex justify-content-center text-center">
-                <div class="px-5 bd-highlight">
-                  <div
-                    class="d-flex flex-column bd-highlight mb-3"
-                    style={{ width: "11rem" }}
-                  >
-                    <div class="bd-highlight">
-                      <div className="rating-figure">4.6</div>
-                    </div>
-                    <div class="bd-highlight">
-                      <div className="rating-icons">
-                        <i class="fas fa-star px-1"></i>
-                        <i class="fas fa-star px-1"></i>
-                        <i class="fas fa-star px-1"></i>
-                        <i class="fas fa-star px-1"></i>
-                        <i class="fas fa-star px-1"></i>
-                      </div>
-                    </div>
-                    <div class="bd-highlight mt-1">
-                      <div className="rating-description">60,578 ratings</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="px-5 bd-highlight">
-                  <div class="d-flex flex-column bd-highlight mb-3">
-                    <div class="bd-highlight">
-                      <div className="rating-figure">10M+</div>
-                    </div>
-                    <div class="bd-highlight mt-1 rating-description">
-                      Worldwide Product sales per year
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
 
       <div className="featured-products" id="featured">
         <div className="container">
@@ -282,11 +213,6 @@ const Home = (props) => {
       </div>
 
       <div className="limited-edition-products">
-        {/* <img
-          src={limitedEditionProduct}
-          alt="limited edition bg"
-          className="img-fluid img-limited-edition-products"
-        /> */}
         <div className="sub-title">
           BLVCK
           <img
@@ -319,7 +245,7 @@ const Home = (props) => {
                 <div className="title">
                   <span style={{ fontWeight: "700", color: "#ff577b" }}>
                     Empower
-                  </span>{" "}
+                  </span>
                   with style that signals of
                   <span style={{ fontWeight: "700" }}> status</span> &
                   <span style={{ fontWeight: "700" }}> dominance</span>
