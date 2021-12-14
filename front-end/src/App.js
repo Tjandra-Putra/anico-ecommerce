@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actionTypes from "../src/store/actions";
 import { gsap, Power1 } from "gsap";
+import CustomCursor from "../src/components/user/CustomCursor/CustomCursor";
 
 import Navbar from "./components/user/Layout/Navbar/Navbar";
 import Footer from "./components/user/Layout/Footer/Footer";
@@ -104,6 +105,8 @@ const App = (props) => {
           </div>
         ) : (
           <>
+            <CustomCursor />
+
             <Navbar />
             <Switch>
               {/*Default Path*/}

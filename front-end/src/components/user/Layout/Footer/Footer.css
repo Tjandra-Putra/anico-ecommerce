@@ -14,6 +14,7 @@ footer .title {
 footer .fa-arrow-up {
   font-size: 3rem;
   margin-top: 1rem;
+  cursor: none !important;
 }
 
 footer .info {
@@ -43,6 +44,7 @@ footer .info-title {
 
 footer .info-sub p {
   font-weight: 400;
+  cursor: none !important;
 }
 
 footer .info-sub p:hover {
@@ -54,6 +56,7 @@ footer .info-sub p:hover {
 
 footer .footer-icon {
   font-size: 2rem;
+  cursor: none !important;
 }
 
 footer .footer-icon:hover {
@@ -80,6 +83,7 @@ footer .legal-rights {
 
 footer .legal-rights p {
   font-weight: 300;
+  cursor: none !important;
 }
 
 footer .legal-rights p:hover {

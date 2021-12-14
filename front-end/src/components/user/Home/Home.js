@@ -1,10 +1,12 @@
 import React, { useRef, useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { gsap, Power0 } from "gsap";
+import { gsap, Power1 } from "gsap";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
+
+import CustomCursor from "../CustomCursor/CustomCursor";
 
 import introImage from "../../../../../front-end/src/assets/img/IMG_3876_2_720x.jpg";
 import crossImage from "../../../../../front-end/src/assets/img/cross.png";
@@ -18,7 +20,7 @@ const Home = (props) => {
   let introImages = useRef(null);
 
   // declarations
-  let tl = gsap.timeline({ defaults: { ease: Power0.easeOut } });
+  let tl = gsap.timeline({ defaults: { ease: Power1.easeOut } });
 
   useEffect(() => {
     // image vars - get first child of div
@@ -38,7 +40,7 @@ const Home = (props) => {
       {
         duration: 1,
         y: 44,
-        ease: Power0.easeOut,
+        ease: Power1.easeOut,
         delay: 2,
         stagger: 0.2,
         opacity: 0,
@@ -49,6 +51,8 @@ const Home = (props) => {
 
   return (
     <div className="home" ref={(el) => (home = el)}>
+      {/* <CustomCursor /> */}
+
       <div className="introduction-bg">
         <div className="container">
           <div className="introduction">

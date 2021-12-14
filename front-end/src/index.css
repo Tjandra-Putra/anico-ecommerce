@@ -9,6 +9,7 @@
 
 html {
   scroll-behavior: smooth;
+  cursor: none !important;
 }
 
 * {
@@ -18,4 +19,9 @@ html {
 body {
   margin: 0;
   padding: 0;
+}
+
+body,
+a {
+  cursor: none !important;
 }

@@ -165,6 +165,7 @@ clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 18%); */
   font-weight: 500;
   width: 12.5rem;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+  cursor: none;
 }
 
 .home .introduction .btn-free-delivery {
@@ -178,6 +179,7 @@ clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 18%); */
   font-weight: 500;
   width: 12.5rem;
   background-color: #e6e6e6;
+  cursor: none;
 }
 
 .home .btn-shop:hover {
@@ -344,6 +346,7 @@ clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 18%); */
   align-items: center;
   justify-content: center;
   border-radius: 0px;
+  cursor: none;
 }
 
 .home .limited-edition-products .btn-limited-edition:hover {
@@ -402,6 +405,7 @@ clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 18%); */
   border-radius: 0px;
   text-transform: uppercase;
   width: 8rem;
+  cursor: none;
 }
 
 .home .sales-products .top-section .wrapper {
