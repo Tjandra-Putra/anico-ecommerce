@@ -1,12 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { gsap, Power1 } from "gsap";
+import { gsap, Power1, Power2 } from "gsap";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-
-import CustomCursor from "../CustomCursor/CustomCursor";
+import CSSRulePlugin from "gsap/CSSRulePlugin";
 
 import introImage from "../../../../../front-end/src/assets/img/IMG_3876_2_720x.jpg";
 import crossImage from "../../../../../front-end/src/assets/img/cross.png";
@@ -16,43 +15,40 @@ import "./Home.css";
 
 const Home = (props) => {
   // variables
-  let home = useRef(null);
+  let container = useRef(null);
   let introImages = useRef(null);
+  let introImagesReveal = CSSRulePlugin.getRule(
+    ".home .intro-img-container:after"
+  );
 
-  // declarations
+  console.log(introImagesReveal);
+
+  // gsap timeline
   let tl = gsap.timeline({ defaults: { ease: Power1.easeOut } });
 
   useEffect(() => {
-    // image vars - get first child of div
-    const introImagesFirst = introImages.firstElementChild;
-
-    // to prevent page flashing during slow rendering
-    gsap.to(home, { duration: 0, css: { visibility: "visible" } }); // parent, properties
-
-    tl.to(
-      ".gsapIntroHeading",
-      { y: "0%", duration: 0.7, stagger: 0.2 },
-      "Start"
-    );
-
-    tl.from(
-      introImagesFirst,
-      {
+    // [1] Timeline: To prevent flashing when render, [2] Timeline: Animate heading, [3] Animate image reveal
+    tl.to(container, { duration: 0, css: { visibility: "visible" } })
+      .to(
+        ".gsapIntroHeading",
+        { y: "0%", duration: 0.7, stagger: 0.2 },
+        "variableNameAny"
+      )
+      .to(introImagesReveal, {
         duration: 1,
-        y: 44,
-        ease: Power1.easeOut,
-        delay: 2,
-        stagger: 0.2,
-        opacity: 0,
-      },
-      "Start"
-    );
+        width: "0%",
+        ease: Power2.easeInOut,
+      })
+      .from(introImages, {
+        duration: 1,
+        scale: 2,
+        ease: Power2.easeOut,
+        delay: -1,
+      });
   }, []);
 
   return (
-    <div className="home" ref={(el) => (home = el)}>
-      {/* <CustomCursor /> */}
-
+    <div className="home" ref={(el) => (container = el)}>
       <div className="introduction-bg">
         <div className="container">
           <div className="introduction">
@@ -93,7 +89,7 @@ const Home = (props) => {
                       <a
                         href="https://emea.blvck.com/"
                         target="_blank"
-                        class="pl-1 text-dark font-weight-bold font-italic"
+                        className="pl-1 text-dark font-weight-bold font-italic"
                         style={{ textDecoration: "none" }}
                       >
                         blvck.com
@@ -101,8 +97,8 @@ const Home = (props) => {
                     </span>
                   </p>
                 </div>
-                <div class="d-flex flex-row bd-highlight mb-3">
-                  <div class="py-1 bd-highlight">
+                <div className="d-flex flex-row bd-highlight mb-3">
+                  <div className="py-1 bd-highlight">
                     <div className="btn-wrap">
                       <span className="gsapIntroHeading">
                         <Link to="/products">
@@ -113,7 +109,7 @@ const Home = (props) => {
                       </span>
                     </div>
                   </div>
-                  <div class="py-1 bd-highlight">
+                  <div className="py-1 bd-highlight">
                     <div className="btn-wrap">
                       <span className="gsapIntroHeading">
                         <a href="#featured">
@@ -127,19 +123,13 @@ const Home = (props) => {
                 </div>
               </div>
               <div className="col-md-6">
-                <div className="intro-images">
-                  <div
-                    className="intro-images-inner"
+                <div className="intro-img-container">
+                  <img
+                    src={introImage}
+                    alt={introImage}
+                    className="intro-img img-fluid"
                     ref={(el) => (introImages = el)}
-                  >
-                    <div className="intro-image-first">
-                      <img
-                        src={introImage}
-                        alt=""
-                        className="intro-img img-fluid"
-                      />
-                    </div>
-                  </div>
+                  />
                 </div>
               </div>
             </div>
@@ -197,7 +187,7 @@ const Home = (props) => {
               >
                 <div className="tag">{item.tag}</div>
 
-                <div class="item">
+                <div className="item">
                   <img
                     src={
                       require(`../../../assets/products/${item.imgUrl}`).default
@@ -247,19 +237,25 @@ const Home = (props) => {
               <div className="col-md-12">
                 <div className="sub-title">hot sales</div>
                 <div className="title">
-                  <span style={{ fontWeight: "700", color: "#ff577b" }}>
+                  <span
+                    style={{
+                      fontWeight: "700",
+                      color: "#ff577b",
+                      marginRight: "0.8rem",
+                    }}
+                  >
                     Empower
                   </span>
                   with style that signals of
                   <span style={{ fontWeight: "700" }}> status</span> &
                   <span style={{ fontWeight: "700" }}> dominance</span>
                 </div>
-                <div class="d-flex justify-content-between wrapper">
-                  <div class="p-2 bd-highlight">
+                <div className="d-flex justify-content-between wrapper">
+                  <div className="p-2 bd-highlight">
                     <div className="price">$280</div>
                   </div>
-                  <div class="p-2 bd-highlight"></div>
-                  <div class="p-2 bd-highlight">
+                  <div className="p-2 bd-highlight"></div>
+                  <div className="p-2 bd-highlight">
                     <button className="btn btn-outline-light btn-buy-now">
                       buy now
                     </button>
