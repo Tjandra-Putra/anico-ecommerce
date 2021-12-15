@@ -5,7 +5,7 @@ import { gsap, Power1, Power2 } from "gsap";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-import CSSRulePlugin from "gsap/CSSRulePlugin";
+import CSSRulePlugin from "gsap/CSSRulePlugin"; // to get the css property
 
 import introImage from "../../../../../front-end/src/assets/img/IMG_3876_2_720x.jpg";
 import crossImage from "../../../../../front-end/src/assets/img/cross.png";
