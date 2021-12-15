@@ -20,18 +20,22 @@ const Home = (props) => {
   let introImagesReveal = CSSRulePlugin.getRule(
     ".home .intro-img-container:after"
   );
+  let limitedEdImage = useRef(null);
+  let limitedEdImageReveal = CSSRulePlugin.getRule(
+    ".limited-edition-products-container:after"
+  );
 
-  console.log(introImagesReveal);
+  // console.log(introImagesReveal);
 
   // gsap timeline
-  let tl = gsap.timeline({ defaults: { ease: Power1.easeOut } });
+  let tl = gsap.timeline({ defaults: { ease: Power1.easeInOut } });
 
   useEffect(() => {
     // [1] Timeline: To prevent flashing when render, [2] Timeline: Animate heading, [3] Animate image reveal
     tl.to(container, { duration: 0, css: { visibility: "visible" } })
       .to(
         ".gsapIntroHeading",
-        { y: "0%", duration: 0.7, stagger: 0.2 },
+        { y: "0%", duration: 1.2, stagger: 0.2 },
         "variableNameAny"
       )
       .to(introImagesReveal, {
@@ -206,21 +210,24 @@ const Home = (props) => {
         </div>
       </div>
 
-      <div className="limited-edition-products">
-        <div className="sub-title">
-          BLVCK
-          <img
-            src={crossImage}
-            alt=""
-            className="img-fluid collab-icon"
-            width="30"
-          />
-          CASETIFY
+      <div className="limited-edition-products-container">
+        <div className="limited-edition-products">
+          <div className="sub-title">
+            BLVCK
+            <img
+              src={crossImage}
+              alt=""
+              className="img-fluid collab-icon"
+              width="30"
+              // ref={(el) => (limitedEdImage = el)}
+            />
+            CASETIFY
+          </div>
+
+          <div className="title">LIMITED COLLAB.</div>
+
+          <div className="btn btn-dark btn-limited-edition ">Shop now</div>
         </div>
-
-        <div className="title">LIMITED COLLAB.</div>
-
-        <div className="btn btn-dark btn-limited-edition ">Shop now</div>
       </div>
 
       <div className="sales-products container-fluid pl-0">

@@ -49,6 +49,7 @@ const App = (props) => {
     axios
       .get("http://localhost:5000/api/products/get-products")
       .then((res) => {
+        res.setHeader("Access-Control-Allow-Origin", "*");
         const allProducts = res.data;
         Object.keys(allProducts).map((key, index) => {
           let tempObj = {
