@@ -10,7 +10,17 @@
 }
 
 .home .intro-img {
-  clip-path: polygon(23% 0, 100% 0, 100% 100%, 0 100%, 0 20%);
+  clip-path: polygon(
+    15% 0,
+    100% 0,
+    100% 43%,
+    100% 79%,
+    100% 100%,
+    32% 100%,
+    0 100%,
+    0% 43%,
+    0 16%
+  );
   width: 100%;
 
   border-radius: 0px 15px 15px 15px;
@@ -75,7 +85,7 @@
 }
 
 .home .introduction .sub-title {
-  margin-top: 7.5vh;
+  margin-top: 5vh;
   text-transform: uppercase;
   margin-bottom: 1rem;
   font-family: "Montserrat", sans-serif;
