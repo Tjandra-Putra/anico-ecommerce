@@ -20,10 +20,17 @@ Installing dependencies
 > Back-end
 ```sh
 > cd back-end
+
+> py -m venv venv #(creating virtual environment, for windows)
+> venv\Scripts\activate #(activating virtual environment, for windows)
+OR
+> virtualenv venv #(for mac)
+> source venv/bin/activate #(for mac)
+
 > pip install -r requirements.txt
 ```
 
-### Running the application
+### Running the applicaton
 anico-ecommerce > front-end | http://localhost:3000/
 ```sh
 > cd front-end
@@ -33,13 +40,6 @@ anico-ecommerce > front-end | http://localhost:3000/
 anico-ecommerce > back-end | http://127.0.0.1:5000/
 ```sh
 > cd back-end
-
-> py -m venv venv #(creating virtual environment, for windows)
-> venv\Scripts\activate #(activating virtual environment, for windows)
-OR
-> virtualenv venv #(for mac)
-> source venv/bin/activate #(for mac)
-
 > python app.py
 ```
 
