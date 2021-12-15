@@ -68,6 +68,17 @@
       ) {
         // ensure that the dom is fully loaded
         document.addEventListener("DOMContentLoaded", function () {
+          $(document).mousemove(function (e) {
+            $("#cursor").css({
+              left: e.pageX + "px",
+              top: e.pageY + "px",
+            });
+            $("#cursorFollow").css({
+              left: e.pageX + "px",
+              top: e.pageY + "px",
+            });
+          });
+
           var navItem = document.querySelector(".navbar-collapse");
           navItem.addEventListener("click", function () {
             hamburger.classList.remove("is-active");

@@ -105,13 +105,24 @@ const App = (props) => {
             </h2>
           </div>
         ) : (
-          <>
+          <React.Fragment>
             <CustomCursor />
 
             <Navbar />
+
             <Switch>
               {/*Default Path*/}
-              <Route exact path="/" component={Home} />
+              <Route
+                exact
+                path="/"
+                render={() => (
+                  <React.Fragment>
+                    {/* <CustomCursor /> */}
+
+                    <Home />
+                  </React.Fragment>
+                )}
+              />
 
               {/* Support Page */}
               <Route exact path="/support" component={Support} />
@@ -149,7 +160,7 @@ const App = (props) => {
               />
             </Switch>
             <Footer />
-          </>
+          </React.Fragment>
         )}
       </React.Fragment>
     </BrowserRouter>
