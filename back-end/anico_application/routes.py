@@ -6,6 +6,9 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 
+from flask_cors import CORS, cross_origin
+
+
 from anico_application.forms import validate_register_form, validate_login_form
 from anico_application import app, db, bcrypt, mail, csrf
 from anico_application.models import Support, User, Product, ProductImage, ProductSize
@@ -108,6 +111,7 @@ def favourite():
 
 
 @app.route('/api/products/get-products', methods=['POST', 'GET'])
+# @cross_origin(origin='localhost',headers=['Content- Type','Authorization'])
 def products():
     db_product = Product.query.all()
     products = get_products(db_product) # type dictionary

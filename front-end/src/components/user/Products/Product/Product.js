@@ -49,7 +49,7 @@ const Product = (props) => {
     window.scrollTo(0, 0);
 
     axios
-      .post("http://localhost:5000/api/products/get-product-image", {
+      .post("http://localhost:81/api/products/get-product-image", {
         product_id: prodId,
       })
       .then((res) => {

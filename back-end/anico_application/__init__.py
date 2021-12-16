@@ -28,6 +28,7 @@ bcrypt = Bcrypt(app)
 migrate = Migrate(app, db)
 mail = Mail(app)
 jwt = JWTManager(app)
-cors = CORS(app) # for react
+# cors = CORS(app,  resources={r"/foo": {"origins": "http://127.0.0.1:81"}}) # for react
+cors = CORS(app)
 
 from anico_application import routes  # has to be imported at the bottom to prevent 'circular' import
