@@ -37,7 +37,7 @@ class Register extends Component {
 
     // pass form to back-end, back-end returns a response
     axios
-      .post("http://localhost:5000/api/register/form-submit", this.state.fields)
+      .post("http://localhost:81/api/register/form-submit", this.state.fields)
       .then((res) => {
         this.setState({
           errorMsg: res.data,

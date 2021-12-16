@@ -226,7 +226,9 @@ const Home = (props) => {
 
           <div className="title">LIMITED COLLAB.</div>
 
-          <div className="btn btn-dark btn-limited-edition ">Shop now</div>
+          <button className="btn btn-dark btn-limited-edition ">
+            Shop now
+          </button>
         </div>
       </div>
 

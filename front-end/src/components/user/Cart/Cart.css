@@ -55,7 +55,6 @@
   color: rgba(73, 73, 73, 0.486);
   font-size: 1.8rem !important;
   -webkit-text-stroke: 3px white;
-  cursor: none !important;
 }
 
 .cart .icon-delete:hover {
@@ -88,7 +87,6 @@
   background-color: rgba(204, 204, 204, 0.281);
   width: 3rem;
   height: 3rem;
-  cursor: none !important;
 }
 
 .cart .table .btn-quantity:hover {
@@ -141,7 +139,6 @@ input::-webkit-inner-spin-button {
   height: 3rem;
   /* border-radius: 50px; */
   border-radius: 2px !important;
-  cursor: none !important;
 }
 
 .cart .text-move-to-favourite {
@@ -149,7 +146,6 @@ input::-webkit-inner-spin-button {
   border-bottom: 1px solid black;
   transform: translateX(0.5rem);
   cursor: pointer;
-  cursor: none !important;
 }
 
 .cart .text-move-to-favourite:hover {
