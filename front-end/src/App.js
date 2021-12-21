@@ -34,17 +34,35 @@ const Product = React.lazy(() =>
   import("./components/user/Products/Product/Product")
 );
 
-const Favourite = React.lazy(() =>
-  import("./components/user/Favourite/Favourite")
-);
+const Favourite = React.lazy(() => {
+  return new Promise((resolve) => {
+    setTimeout(
+      () => resolve(import("./components/user/Favourite/Favourite")),
+      1000
+    );
+  });
+});
 
-const Cart = React.lazy(() => import("./components/user/Cart/Cart"));
+const Cart = React.lazy(() => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(import("./components/user/Cart/Cart")), 1000);
+  });
+});
 
-const Login = React.lazy(() => import("./components/user/Login/Login"));
+const Login = React.lazy(() => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(import("./components/user/Login/Login")), 1000);
+  });
+});
 
-const Register = React.lazy(() =>
-  import("./components/user/Register/Register")
-);
+const Register = React.lazy(() => {
+  return new Promise((resolve) => {
+    setTimeout(
+      () => resolve(import("./components/user/Register/Register")),
+      1000
+    );
+  });
+});
 
 // main application
 const App = (props) => {
@@ -63,10 +81,10 @@ const App = (props) => {
   };
 
   useEffect(() => {
-    // loader animation
+    // gsap: loader animation
     tl.to(".loader-heading", { y: "0%", duration: 2, stagger: 0.2 });
 
-    // loader timing count down
+    // gsap: loader timing count down
     id.current = window.setInterval(() => {
       setTimer((timer) => timer - 1);
     }, 1000);
