@@ -1,26 +1,52 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import * as actionTypes from "../src/store/actions";
 import { gsap, Power1 } from "gsap";
+
+import * as actionTypes from "../src/store/actions";
 import CustomCursor from "../src/components/user/CustomCursor/CustomCursor";
 
-import Navbar from "./components/user/Layout/Navbar/Navbar";
-import Footer from "./components/user/Layout/Footer/Footer";
-import Home from "./components/user/Home/Home";
-import Support from "./components/user/Support/Support";
-import Products from "./components/user/Products/Products";
-import Login from "./components/user/Login/Login";
-import Register from "./components/user/Register/Register";
-import Cart from "./components/user/Cart/Cart";
-import Favourite from "./components/user/Favourite/Favourite";
-import Product from "./components/user/Products/Product/Product";
+import Loader from "./components/user/Layout/Loader/Loader";
 
 import "./components/user/Home/Home.css";
 import "./App.css";
 
+// lazy loading components
+const Navbar = React.lazy(() =>
+  import("./components/user/Layout/Navbar/Navbar")
+);
+
+const Footer = React.lazy(() =>
+  import("./components/user/Layout/Footer/Footer")
+);
+
+const Home = React.lazy(() => import("./components/user/Home/Home"));
+
+const Support = React.lazy(() => import("./components/user/Support/Support"));
+
+const Products = React.lazy(() =>
+  import("./components/user/Products/Products")
+);
+
+const Product = React.lazy(() =>
+  import("./components/user/Products/Product/Product")
+);
+
+const Favourite = React.lazy(() =>
+  import("./components/user/Favourite/Favourite")
+);
+
+const Cart = React.lazy(() => import("./components/user/Cart/Cart"));
+
+const Login = React.lazy(() => import("./components/user/Login/Login"));
+
+const Register = React.lazy(() =>
+  import("./components/user/Register/Register")
+);
+
+// main application
 const App = (props) => {
   const [product_list, setProduct] = useState([]);
   const [preloader, setPreLoader] = useState(true);
@@ -109,7 +135,9 @@ const App = (props) => {
           <React.Fragment>
             <CustomCursor />
 
-            <Navbar />
+            <Suspense fallback={null}>
+              <Navbar />
+            </Suspense>
 
             <Switch>
               {/*Default Path*/}
@@ -117,35 +145,77 @@ const App = (props) => {
                 exact
                 path="/"
                 render={() => (
-                  <React.Fragment>
-                    {/* <CustomCursor /> */}
-
+                  <Suspense fallback={null}>
                     <Home />
-                  </React.Fragment>
+                  </Suspense>
                 )}
               />
 
               {/* Support Page */}
-              <Route exact path="/support" component={Support} />
+              <Route
+                exact
+                path="/support"
+                render={() => (
+                  <Suspense fallback={<Loader />}>
+                    <Support />
+                  </Suspense>
+                )}
+              />
 
               {/* Products Page */}
-              <Route exact path="/products" render={() => <Products />} />
+              <Route
+                exact
+                path="/products"
+                render={() => (
+                  <Suspense fallback={null}>
+                    <Products />
+                  </Suspense>
+                )}
+              />
 
               {/* Product Detail Page */}
               <Route
                 exact
                 path="/products/:prodId"
-                render={() => <Product />}
+                render={() => (
+                  <Suspense fallback={null}>
+                    <Product />
+                  </Suspense>
+                )}
               />
 
               {/* Login Page */}
-              <Route exact path="/login" component={Login} />
+              <Route
+                exact
+                path="/login"
+                render={() => (
+                  <Suspense fallback={<Loader />}>
+                    <Login />
+                  </Suspense>
+                )}
+              />
 
               {/* Register Page */}
-              <Route exact path="/register" component={Register} />
+              <Route
+                exact
+                path="/register"
+                render={() => (
+                  <Suspense fallback={<Loader />}>
+                    <Register />
+                  </Suspense>
+                )}
+              />
 
               {/* Cart Page */}
-              <Route exact path="/cart" render={() => <Cart />} />
+              <Route
+                exact
+                path="/cart"
+                render={() => (
+                  <Suspense fallback={<Loader />}>
+                    <Cart />
+                  </Suspense>
+                )}
+              />
 
               {/* Favourite Page */}
               <Route
@@ -155,12 +225,19 @@ const App = (props) => {
                   if (props.sessionAuthData === null) {
                     return <Redirect to="/" />;
                   } else {
-                    return <Favourite />;
+                    return (
+                      <Suspense fallback={<Loader />}>
+                        <Favourite />
+                      </Suspense>
+                    );
                   }
                 }}
               />
             </Switch>
-            <Footer />
+
+            <Suspense fallback={null}>
+              <Footer />
+            </Suspense>
           </React.Fragment>
         )}
       </React.Fragment>

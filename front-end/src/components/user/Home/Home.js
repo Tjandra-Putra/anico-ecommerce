@@ -157,7 +157,7 @@ const Home = (props) => {
             items={4}
             stagePadding={60}
             lazyLoad={true}
-            dots={false}
+            // dots={false}
             // autoplay={true}
             margin={20}
             responsiveClass={true}
