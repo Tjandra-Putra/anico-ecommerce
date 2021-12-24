@@ -151,6 +151,7 @@ const Home = (props) => {
         <div className="container-fluid">
           <OwlCarousel
             className="owl-theme"
+            style={{ marginBottom: "4rem" }}
             loop
             margin={10}
             nav={false}
@@ -169,12 +170,12 @@ const Home = (props) => {
                 margin: 30,
               },
               600: {
-                items: 3,
+                items: 4,
                 nav: false,
                 loop: false,
               },
               1000: {
-                items: 3,
+                items: 4,
                 nav: false,
                 loop: false,
               },
