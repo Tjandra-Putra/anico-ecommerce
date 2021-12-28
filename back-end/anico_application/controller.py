@@ -18,7 +18,8 @@ def get_username(email):
 
 
 def get_hashed_password(password):
-    hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')  # To make a string instead of byte
+    hashed_password = bcrypt.generate_password_hash(
+        password).decode('utf-8')  # To make a string instead of byte
 
     return hashed_password
 
@@ -30,7 +31,8 @@ def get_custom_date():
 
     current_time = datetime.datetime.now()
 
-    formatted_date = str(d1) + ", " + str(current_time.strftime("%I")) + ":" + str(current_time.strftime("%M")) + " " + str(current_time.strftime("%p"))
+    formatted_date = str(d1) + ", " + str(current_time.strftime("%I")) + ":" + str(
+        current_time.strftime("%M")) + " " + str(current_time.strftime("%p"))
 
     return formatted_date
 
@@ -47,22 +49,25 @@ def get_sentiment_analysis(text):
 
     else:
         return 'Positive'
- 
+
+
 def get_products(db_product):
     data_dict = {}
 
     for product in db_product:
-         data_dict[product.id] = {
+        data_dict[product.id] = {
             'product_title': product.title,
             'product_tag': product.tag,
             'product_description': product.description,
             'product_price': product.price,
-            'product_size': product.sizes[0].size, # foreign key 
-            'product_image_url': product.image_urls[0].image_url, # foreign key
-            'product_stock': product.stocks[0].stock, # foreign key
-            } 
+            'product_size': product.sizes[0].size,  # foreign key
+            # foreign key
+            'product_image_url': product.image_urls[0].image_url,
+            'product_stock': product.stocks[0].stock,  # foreign key
+        }
 
     return data_dict
+
 
 def get_product_image_urls(req_id, db_product_image):
     image_url_list = []
@@ -70,6 +75,5 @@ def get_product_image_urls(req_id, db_product_image):
     for product in db_product_image:
         if product.product_id == req_id:
             image_url_list.append(product.image_url)
-
 
     return image_url_list

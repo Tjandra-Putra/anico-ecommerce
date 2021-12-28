@@ -2,6 +2,7 @@ import re
 from anico_application.models import User
 from anico_application import bcrypt
 
+
 def validate_register_form(req):
     # For client side, just check if error is not empty means got error hence will not submit the form
     regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
@@ -13,7 +14,7 @@ def validate_register_form(req):
         'phone': error_msg_phone,
         'password': error_msg_password,
         'password_confirm': error_msg_password_confirm,
-        }
+    }
 
     # check if the field exists in the response json, if empty, it will not be in the response
     for err in error_msg_dict:
@@ -23,10 +24,11 @@ def validate_register_form(req):
     for field, value in req.items():
 
         # valid email
-        if error_msg_dict['email'] == '': # value of email field is not empty
+        if error_msg_dict['email'] == '':  # value of email field is not empty
 
             # Initiation
-            user_data = User.query.filter_by(email=req['email']).first() # By email address
+            user_data = User.query.filter_by(
+                email=req['email']).first()  # By email address
 
             # validate email field
             if field == 'email':
@@ -39,7 +41,6 @@ def validate_register_form(req):
                 # check if email exist in database
                 elif user_data:
                     error_msg_dict[field] = "This email is already taken."
-                    
 
             # validate phone field
             if field == 'phone':
@@ -49,7 +50,8 @@ def validate_register_form(req):
                 if "+" not in phone:
                     error_msg_dict[field] = "Phone number is invalid."
 
-                user_data = User.query.filter_by(phone_number=phone).first() # By phone number
+                user_data = User.query.filter_by(
+                    phone_number=phone).first()  # By phone number
 
                 if user_data:
                     error_msg_dict[field] = "This phone number is already taken."
@@ -65,7 +67,8 @@ def validate_register_form(req):
                         elif len(phone) != 11:
                             error_msg_dict[field] = "Phone number is invalid."
 
-            if error_msg_dict['password'] == '': # value of password field is not empty                                 
+            # value of password field is not empty
+            if error_msg_dict['password'] == '':
                 # validate passwords field
                 if field == 'password':
                     password = value
@@ -73,7 +76,7 @@ def validate_register_form(req):
                     if len(password) < 8:
                         error_msg_dict[field] = "Password must be at least 8 characters."
 
-                    else: # password field is valid
+                    else:  # password field is valid
                         password_confirm = req['password_confirm']
 
                         if password_confirm != password:
@@ -94,14 +97,14 @@ def validate_register_form(req):
                 error_msg_dict[field] = "Please enter your email first."
 
     return error_msg_dict
-                    
+
 
 def validate_login_form(req):
     error_msg_email = error_msg_password = global_email = ''
 
     error_msg_dict = {
-    'email': error_msg_email,
-    'password': error_msg_password
+        'email': error_msg_email,
+        'password': error_msg_password
     }
 
     for err in error_msg_dict:
@@ -132,6 +135,5 @@ def validate_login_form(req):
 
             except:
                 error_msg_dict['password'] = "The email or password you entered is incorrect."
-
 
     return error_msg_dict

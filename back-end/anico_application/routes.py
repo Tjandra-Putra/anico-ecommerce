@@ -14,8 +14,9 @@ from anico_application import app, db, bcrypt, mail, csrf
 from anico_application.models import Support, User, Product, ProductImage, ProductSize
 from anico_application.controller import get_username, get_hashed_password, get_custom_date, get_sentiment_analysis, get_products, get_product_image_urls
 
+
 @app.route('/api/register/form-submit', methods=['POST'])
-@csrf.exempt #prevent form spams
+@csrf.exempt  # prevent form spams
 def register():
     if request.method == 'POST':
         req = request.json
@@ -27,19 +28,19 @@ def register():
         for key, value in validated_form.items():
             if value != '':
                 isValidated = False
-        
+
         # save to database
-        if isValidated: # True
+        if isValidated:  # True
             user_name_sliced = get_username(req['email'])
             hashed_password = get_hashed_password(req['password'])
 
-            user_data = User(username=user_name_sliced, email=req['email'], phone_number=req['phone'], password=hashed_password)
+            user_data = User(username=user_name_sliced,
+                             email=req['email'], phone_number=req['phone'], password=hashed_password)
 
             db.session.add(user_data)
             db.session.commit()
 
             return {'isValid': 'valid'}
-
 
         # send error response to client side
         else:
@@ -48,7 +49,7 @@ def register():
 
 
 @app.route('/api/login/form-submit', methods=['POST', 'GET'])
-@csrf.exempt #prevent form spams
+@csrf.exempt  # prevent form spams
 def login():
     if request.method == 'POST':
         req = request.json
@@ -60,14 +61,13 @@ def login():
         for key, value in validated_form.items():
             if value != '':
                 isValidated = False
-        
+
         # successful login
-        if isValidated: # True
+        if isValidated:  # True
             # user_db = User.query.filter_by(email=req['email']).first()
             access_token = create_access_token(identity=req['email'])
 
             return {'isValid': 'valid', 'access_token': access_token}
-
 
         # send error response to client side
         else:
@@ -76,8 +76,9 @@ def login():
 
     return ''
 
+
 @app.route('/api/support/form-submit', methods=['POST', 'GET'])
-@csrf.exempt #prevent form spams
+@csrf.exempt  # prevent form spams
 def support():
     if request.method == 'POST':
         try:
@@ -92,8 +93,9 @@ def support():
 
             sentiment_analysis = get_sentiment_analysis(message_field)
 
-            data = Support(name=name_field, email=email_field, subject=subject_field, message=message_field, date=formatted_date, sentiment=sentiment_analysis)
-            
+            data = Support(name=name_field, email=email_field, subject=subject_field,
+                           message=message_field, date=formatted_date, sentiment=sentiment_analysis)
+
             db.session.add(data)
             db.session.commit()
 
@@ -114,23 +116,22 @@ def favourite():
 # @cross_origin(origin='localhost',headers=['Content- Type','Authorization'])
 def products():
     db_product = Product.query.all()
-    products = get_products(db_product) # type dictionary
+    products = get_products(db_product)  # type dictionary
 
     return products
 
 
 @app.route('/api/products/get-product-image', methods=['POST', 'GET'])
-@csrf.exempt # for post request
+@csrf.exempt  # for post request
 def products_images():
     if request.method == 'POST':
         req = request.json
 
         req_id = req['product_id']
 
-        product_image_url_list = get_product_image_urls(int(req_id), ProductImage.query.all())
+        product_image_url_list = get_product_image_urls(
+            int(req_id), ProductImage.query.all())
 
         return {'product_image_url': product_image_url_list}
 
     return {"Development": None}
-
-

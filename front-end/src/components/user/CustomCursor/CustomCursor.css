@@ -3,7 +3,7 @@
   border-radius: 50%;
   pointer-events: none;
   overflow: hidden;
-  transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   position: fixed;
   background: white;
   mix-blend-mode: difference;

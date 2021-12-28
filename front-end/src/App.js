@@ -151,7 +151,7 @@ const App = (props) => {
           </div>
         ) : (
           <React.Fragment>
-            <CustomCursor />
+            {/* <CustomCursor /> */}
 
             <Suspense fallback={null}>
               <Navbar />

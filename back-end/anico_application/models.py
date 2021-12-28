@@ -32,7 +32,8 @@ class ProductSize(db.Model):
     size = db.Column(db.String(50), nullable=False)
 
     # Foreign Keys
-    product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
+    product_id = db.Column(db.Integer, db.ForeignKey(
+        'product.id'), nullable=False)
 
 
 class ProductImage(db.Model):
@@ -40,7 +41,8 @@ class ProductImage(db.Model):
     image_url = db.Column(db.String(300), nullable=False)
 
     # Foreign Keys
-    product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
+    product_id = db.Column(db.Integer, db.ForeignKey(
+        'product.id'), nullable=False)
 
 
 class ProductStock(db.Model):
@@ -48,13 +50,14 @@ class ProductStock(db.Model):
     stock = db.Column(db.Integer, nullable=False)
 
     # Foreign Keys
-    product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
+    product_id = db.Column(db.Integer, db.ForeignKey(
+        'product.id'), nullable=False)
 
 
 class Support(db.Model):
     __tablename__ = 'support'
 
-    id = db.Column(db.Integer,primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(100), nullable=False)
     subject = db.Column(db.String(50), nullable=False)

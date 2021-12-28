@@ -155,7 +155,7 @@ const Home = (props) => {
             loop
             margin={10}
             nav={false}
-            items={4}
+            items={props.product_list.length}
             stagePadding={60}
             lazyLoad={true}
             // dots={false}
