@@ -84,7 +84,9 @@ const Home = (props) => {
                       anico debuted two consecutive pop-up shops in Taipei more
                       than a year ago. Featuring an all-black look, as well as
                       lifestyle activities such as a dining section where
-                      consumers may.
+                      consumers may. <br /> <br />
+                      Up your fashion game in 2022 with products that you will
+                      love.
                     </span>
                   </p>
                   <p>
