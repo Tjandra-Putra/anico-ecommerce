@@ -1,0 +1,76 @@
+.review {
+  margin-top: 4rem;
+}
+
+.review .background {
+  background-color: #1d1c1c0f;
+  height: 100%;
+  min-height: 70vh;
+  padding-bottom: 4rem;
+}
+
+.review .container {
+  padding-top: 3.5rem;
+}
+
+.review .title {
+  font-size: 28px;
+}
+
+.review .btn-wrappers {
+  float: right;
+}
+
+.review .btn-outline-dark {
+  width: 7rem;
+}
+
+.review .review-box-wrapper .col-md-6 {
+  margin-top: 2rem;
+}
+
+.review .review-box {
+  background-color: white;
+  padding: 1rem;
+  height: 100%;
+  min-height: 25vh;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+
+.review .review-box:hover {
+  transition: 0.1s all ease-in-out;
+  border: 3px solid black;
+}
+
+.review .review-box .name {
+  font-weight: 500 !important;
+}
+
+.review .review-box .review-bar {
+  height: 2.5vh;
+  width: 4.5vh;
+  background-color: black;
+  margin-left: 0.2rem;
+  border-radius: 3px;
+  margin-top: 0.5rem;
+}
+
+.review .review-sub-title {
+  padding-top: 1rem;
+  font-weight: 500;
+}
+
+.review .review-description {
+  font-weight: 300;
+  padding-top: 1rem;
+}
+
+/** PIXEL 2 XL **/
+@media only screen and (min-device-width: 411px) and (max-device-width: 823px) {
+  .review .btn-wrappers {
+    float: left !important;
+    margin-top: 0.5rem;
+  }
+}

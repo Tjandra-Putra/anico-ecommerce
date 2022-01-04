@@ -6,6 +6,7 @@ import axios from "axios";
 import HashLoader from "react-spinners/HashLoader";
 import { css } from "@emotion/react";
 
+import Review from "../../Review/Review";
 import * as actionTypes from "../../../../store/actions";
 import "./Product.css";
 
@@ -304,11 +305,14 @@ const Product = (props) => {
   }
 
   return (
-    <div className="product">
-      <Toaster position="top-right" reverseOrder={false} />
+    <>
+      <div className="product">
+        <Toaster position="top-right" reverseOrder={false} />
 
-      {loadedData}
-    </div>
+        {loadedData}
+      </div>
+      <Review />
+    </>
   );
 };
 

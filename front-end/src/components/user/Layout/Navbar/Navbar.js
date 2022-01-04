@@ -21,7 +21,7 @@ const Navbar = (props) => {
           <Link className="navbar-brand" to="/">
             anico.
           </Link>
-          <button
+          {/* <button
             className="hamburger hamburger--collapse navbar-toggler"
             type="button"
             data-toggle="collapse"
@@ -33,7 +33,7 @@ const Navbar = (props) => {
             <span className="hamburger-box">
               <span className="hamburger-inner"></span>
             </span>
-          </button>
+          </button> */}
 
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
@@ -130,7 +130,7 @@ const Navbar = (props) => {
       >
         <div class="d-flex flex-row">
           <div class="flex-item flex-hamburger">
-            <button
+            {/* <button
               className="hamburger hamburger--collapse navbar-toggler"
               type="button"
               data-toggle="collapse"
@@ -142,6 +142,17 @@ const Navbar = (props) => {
               <span className="hamburger-box">
                 <span className="hamburger-inner"></span>
               </span>
+            </button> */}
+            <button
+              class="navbar-toggler mt-2 border-0 text-dark"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
             </button>
           </div>
           <div class="flex-item flex-favourite">
