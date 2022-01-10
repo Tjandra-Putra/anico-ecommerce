@@ -154,8 +154,6 @@ const App = (props) => {
           <React.Fragment>
             {/* <CustomCursor /> */}
 
-            <Toaster position="top-right" reverseOrder={false} />
-
             <Suspense fallback={null}>
               <Navbar />
             </Suspense>

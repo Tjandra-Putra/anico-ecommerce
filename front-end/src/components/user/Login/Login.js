@@ -85,7 +85,7 @@ class Login extends Component {
           this.notify_success();
 
           setTimeout(() => {
-            this.setState({ redirect: <Redirect to="/" /> });
+            this.setState({ redirect: <Redirect to="/products" /> });
           }, 3000);
         }
       })
