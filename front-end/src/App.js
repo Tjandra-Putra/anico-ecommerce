@@ -4,6 +4,7 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { gsap, Power1 } from "gsap";
+import toast, { Toaster } from "react-hot-toast";
 
 import * as actionTypes from "../src/store/actions";
 import CustomCursor from "../src/components/user/CustomCursor/CustomCursor";
@@ -153,6 +154,8 @@ const App = (props) => {
           <React.Fragment>
             {/* <CustomCursor /> */}
 
+            <Toaster position="top-right" reverseOrder={false} />
+
             <Suspense fallback={null}>
               <Navbar />
             </Suspense>
@@ -241,6 +244,11 @@ const App = (props) => {
                 path="/favourite"
                 render={() => {
                   if (props.sessionAuthData === null) {
+                    toast.error("Login is requried", {
+                      duration: 2400,
+                      position: "top-center",
+                    });
+
                     return <Redirect to="/" />;
                   } else {
                     return (
