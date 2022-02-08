@@ -21,23 +21,10 @@ const Navbar = (props) => {
           <Link className="navbar-brand" to="/">
             anico.
           </Link>
-          {/* <button
-            className="hamburger hamburger--collapse navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="hamburger-box">
-              <span className="hamburger-inner"></span>
-            </span>
-          </button> */}
 
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
-              <li className="nav-item active">
+              <li className="nav-item  pl-4 active">
                 <Link className="nav-link pr-4" to="/products">
                   Shop
                 </Link>
@@ -84,37 +71,37 @@ const Navbar = (props) => {
                 <Link className="nav-link" to="/favourite">
                   <img
                     src={favouriteIcon}
-                    className="img-fluid"
+                    className="img-fluid icon"
                     alt="shopping bag"
-                    width="25"
+                    width="30"
                   />
                 </Link>
               </li>
               {!props.sessionAuthData ? (
                 <li
-                  className="nav-item pl-1  d-none d-sm-block"
+                  className="nav-item pl-2  d-none d-sm-block"
                   style={{ marginTop: "1rem" }}
                 >
                   <Link className="nav-link" to="/login">
                     <img
                       src={userIcon}
-                      className="img-fluid"
+                      className="img-fluid icon"
                       alt="userIcon"
-                      width="25"
+                      width="30"
                     />
                   </Link>
                 </li>
               ) : null}
               <li
-                className="nav-item pl-1  d-none d-sm-block"
+                className="nav-item pl-2  d-none d-sm-block"
                 style={{ marginTop: "1rem" }}
               >
                 <Link className="nav-link" to="/cart">
                   <img
                     src={shoppingBagIcon}
-                    className="img-fluid d-inline"
+                    className="img-fluid d-inline icon"
                     alt="shopping bag"
-                    width="25"
+                    width="30"
                   />
                   <div className="item-count">{props.itemCount}</div>
                 </Link>
@@ -130,19 +117,6 @@ const Navbar = (props) => {
       >
         <div class="d-flex flex-row">
           <div class="flex-item flex-hamburger">
-            {/* <button
-              className="hamburger hamburger--collapse navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="hamburger-box">
-                <span className="hamburger-inner"></span>
-              </span>
-            </button> */}
             <button
               class="navbar-toggler mt-2 border-0 text-dark"
               type="button"
@@ -188,8 +162,6 @@ const Navbar = (props) => {
           <div
             className="collapse navbar-collapse"
             id="navbarNav"
-            // data-toggle={isMobile ? "collapse" : ""}
-            // data-target={isMobile ? "#navbarNav" : ""}
             data-toggle="collapse"
             data-target="#navbarNav"
           >

@@ -49,10 +49,10 @@
 }
 
 .review .review-box .review-bar {
-  height: 2.5vh;
-  width: 4.5vh;
+  height: 2.1vh;
+  width: 3.4vh;
   background-color: black;
-  margin-left: 0.2rem;
+  margin-right: 0.3rem;
   border-radius: 3px;
   margin-top: 0.5rem;
 }

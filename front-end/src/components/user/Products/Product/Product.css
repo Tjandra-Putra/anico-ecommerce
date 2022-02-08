@@ -13,7 +13,7 @@
   padding: 0 5px;
 }
 
-.carousel-img {
+.product .carousel-img {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   margin-top: 0.4rem;
@@ -23,6 +23,15 @@
   text-align: justify;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  height: 14.2vh;
+  overflow-y: auto;
+}
+
+.product .card .card-header,
+.card {
+  background-color: white !important;
+  border: none;
+  border-top: 0.5px solid #ddd !important;
 }
 
 .product .product-tag {

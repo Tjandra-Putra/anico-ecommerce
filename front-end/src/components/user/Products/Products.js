@@ -46,7 +46,7 @@ const Products = (props) => {
                   <div className="content-details fadeIn-bottom">
                     <h3>{product.name}</h3>
                     <p>
-                      View
+                      Shop Now
                       <i className="fas fa-arrow-right pl-2"></i>
                     </p>
                   </div>

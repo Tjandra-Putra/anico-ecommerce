@@ -26,7 +26,7 @@ const Product = (props) => {
   // toast component
   const notify_success = () =>
     toast.success(product[0].name + " has been added to cart.", {
-      duration: 2400,
+      duration: 3000,
       style: {
         // border: "1px solid #000000",
         padding: "16px",
@@ -36,7 +36,7 @@ const Product = (props) => {
         primary: "#50c878",
         secondary: "#FFFAEE",
       },
-      position: "top-center",
+      position: "bottom-right",
     });
 
   // getting id from parameter url

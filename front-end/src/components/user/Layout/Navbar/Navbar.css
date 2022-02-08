@@ -1,13 +1,13 @@
 .navbar-master .navbar {
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-  height: 95px;
+  /* height: 100px; */
 }
 
 .navbar-master .navbar-brand {
   font-weight: 600;
   letter-spacing: -0.5px !important;
   /* font-family: var(--font-montserrat); */
-  font-size: 1.5rem;
+  font-size: 1.5rem !important;
   margin-bottom: 0.2rem;
 }
 
@@ -20,11 +20,15 @@
   transform: translateY(-1.5px);
 }
 
+.navbar-master .icon {
+  margin-top: 0.3rem;
+}
+
 .navbar-master .nav-link {
   color: #000000 !important;
-  font-weight: 500;
+  font-weight: 400;
   /* text-transform: uppercase; */
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 .navbar-master.nav-link:hover {
@@ -32,7 +36,7 @@
 }
 
 .navbar-master .navbar .item-count {
-  transform: translateY(-1.2rem);
+  transform: translateY(-1.4rem);
   text-align: center;
   font-weight: 500;
   font-size: 0.9rem;
