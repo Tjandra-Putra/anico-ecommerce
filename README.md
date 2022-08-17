@@ -27,7 +27,6 @@ OR
 > virtualenv venv #(for mac)
 > source venv/bin/activate #(for mac)
 
-> pip install -r requirements.txt
 ```
 
 ### Running the applicaton
